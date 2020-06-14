@@ -3257,7 +3257,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XZ984ASHCF;
+				DEVELOPMENT_TEAM = 295PH49WVH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MagicImage/Class/PECommon/Three/Tapjoy.embeddedframework",
@@ -3289,7 +3289,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XZ984ASHCF;
+				DEVELOPMENT_TEAM = 295PH49WVH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MagicImage/Class/PECommon/Three/Tapjoy.embeddedframework",
