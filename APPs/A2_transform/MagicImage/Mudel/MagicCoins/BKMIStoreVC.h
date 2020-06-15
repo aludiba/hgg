@@ -1,5 +1,5 @@
 //
-//  MIBaseTabBarVC.h
+//  MIStoreVC.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/4/30.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIBaseTabBarVC : UITabBarController
+@interface BKMIStoreVC : UIViewController
 
 @end
 

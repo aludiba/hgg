@@ -1,5 +1,5 @@
 //
-//  MIMoreHeaderView.h
+//  MIBaseTabBarVC.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/4/30.
@@ -10,10 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIMoreHeaderView : UIView
-@property (nonatomic, copy) void (^block)(void);
-
-- (void)updateViews;
+@interface BKMIBaseTabBarVC : UITabBarController
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  PEFeedbackViewController.h
+//  MIMoreHeaderView.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/4/30.
@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIFeedbackVC : UIViewController
+@interface BKMIMoreHeaderView : UIView
+@property (nonatomic, copy) void (^block)(void);
+
+- (void)BKupdateViews;
 
 @end
 

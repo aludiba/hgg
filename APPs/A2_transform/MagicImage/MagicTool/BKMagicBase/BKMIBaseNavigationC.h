@@ -1,8 +1,8 @@
 //
-//  MILoginVC.h
+//  MIBaseNavigationC.h
 //  MagicImage
 //
-//  Created by MagicImage on 2019/4/30.
+//  Created by MagicImage on 2019/4/29.
 //  Copyright © 2019 April. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MILoginVC : UIViewController
+@interface BKMIBaseNavigationC : UINavigationController
 
 @end
 

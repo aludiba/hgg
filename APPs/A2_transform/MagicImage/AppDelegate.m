@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "MIBaseNavigationC.h"
-#import "MIHomeVC.h"
-#import "MIBaseTabBarVC.h"
+#import "BKMIBaseNavigationC.h"
+#import "BKMIHomeVC.h"
+#import "BKMIBaseTabBarVC.h"
 @interface AppDelegate ()
 @end
 
@@ -18,16 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
     self.window.backgroundColor = UIColor.whiteColor;
-    MIBaseTabBarVC * baserVC = [[MIBaseTabBarVC alloc] init];
+    BKMIBaseTabBarVC * baserVC = [[BKMIBaseTabBarVC alloc] init];
     self.window.rootViewController = baserVC;
-    
     [self.window makeKeyAndVisible];
-    return YES;
-   
-    
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

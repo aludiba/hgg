@@ -1,5 +1,5 @@
 //
-//  MIStoreVC.h
+//  MILoginVC.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/4/30.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIStoreVC : UIViewController
+@interface BKMILoginVC : UIViewController
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  MICoinsCell.h
+//  MIRegisterVC.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/5/1.
@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class MICoinsModel;
-@interface MICoinsCell : UITableViewCell
-@property (nonatomic, strong) MICoinsModel * model;
+
+@interface BKMIRegisterVC : UIViewController
+@property (nonatomic, copy) void (^block)(NSString * BKusername,NSString * BKpassword);
 @end
 
 NS_ASSUME_NONNULL_END

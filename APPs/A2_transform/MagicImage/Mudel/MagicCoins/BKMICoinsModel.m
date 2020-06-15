@@ -6,8 +6,8 @@
 //  Copyright © 2019 April. All rights reserved.
 //
 
-#import "MICoinsModel.h"
+#import "BKMICoinsModel.h"
 
-@implementation MICoinsModel
+@implementation BKMICoinsModel
 
 @end

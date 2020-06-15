@@ -12,8 +12,8 @@
 #import "YWebDataHandle.h"
 #import "YWebDownManager.h"
 #import "MIUserModel.h"
-#import "MILoginVC.h"
-#import "MIStoreVC.h"
+#import "BKMILoginVC.h"
+#import "BKMIStoreVC.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "QMPhotoEffectViewController.h"
@@ -234,13 +234,13 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     if (!UserId) {
-        MILoginVC * logVC = [[MILoginVC alloc] init];
+        BKMILoginVC * logVC = [[BKMILoginVC alloc] init];
         UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:logVC];
         [self presentViewController:navi animated:YES completion:nil];
         return;
     }
     
-    MIStoreVC * storeVC = [[MIStoreVC alloc] init];
+    BKMIStoreVC * storeVC = [[BKMIStoreVC alloc] init];
     [self.navigationController pushViewController:storeVC animated:YES];
 }
 

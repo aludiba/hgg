@@ -6,49 +6,49 @@
 //  Copyright © 2019 April. All rights reserved.
 //
 
-#import "MIBaseTypeVC.h"
+#import "BKMIBaseTypeVC.h"
 #import "MISlideVC.h"
 #import "MIFilterVC.h"
-#import "MIStickerVC.h"
+#import "BKMIStickerVC.h"
 #import "MIUserModel.h"
-#import "MIStoreVC.h"
-#import "MILoginVC.h"
-@interface MIBaseTypeVC ()
-@property (nonatomic, strong) MIUserModel * model;
-@property (nonatomic, strong) UILabel * coinsLabel;
+#import "BKMIStoreVC.h"
+#import "BKMILoginVC.h"
+@interface BKMIBaseTypeVC ()
+@property (nonatomic, strong) MIUserModel *BKmodel;
+@property (nonatomic, strong) UILabel *BKcoinsLabel;
 @end
 
-@implementation MIBaseTypeVC
+@implementation BKMIBaseTypeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"SHOP";
-    MISlideVC * slideMenu = [[MISlideVC alloc] init];
-    MIStickerVC * stickerVC = [[MIStickerVC alloc] init];
-    MIFilterVC * filterVC = [[MIFilterVC alloc] init];
-    slideMenu.showBottomLine = NO;
-    slideMenu.titleSelectColor = RGB(62, 85, 250);
-    slideMenu.bottomLineColor = RGB(62, 85, 250);
-    slideMenu.titles = @[@"Sticker",@"Filter"];
-    slideMenu.controllers = @[stickerVC,filterVC];
+    MISlideVC *BKslideMenu = [[MISlideVC alloc] init];
+    BKMIStickerVC *BKstickerVC = [[BKMIStickerVC alloc] init];
+    MIFilterVC *BKfilterVC = [[MIFilterVC alloc] init];
+    BKslideMenu.showBottomLine = NO;
+    BKslideMenu.titleSelectColor = RGB(62, 85, 250);
+    BKslideMenu.bottomLineColor = RGB(62, 85, 250);
+    BKslideMenu.titles = @[@"Sticker",@"Filter"];
+    BKslideMenu.controllers = @[BKstickerVC,BKfilterVC];
 //    slideMenu.currentItem = self.jumpType;
-    [self.view addSubview:slideMenu.view];
-    [self addChildViewController:slideMenu];
+    [self.view addSubview:BKslideMenu.view];
+    [self addChildViewController:BKslideMenu];
     if (UserId) {
-        [self loadUserInfo];
+        [self BKloadUserInfo];
     }
-    [self createCoinsView];
+    [self BKcreateCoinsView];
     
-    [NotifiCenter addObserver:self selector:@selector(loadUserInfo) name:@"loginSuccess" object:nil];
-    [NotifiCenter addObserver:self selector:@selector(loginOut) name:@"loginOut" object:nil];
+    [NotifiCenter addObserver:self selector:@selector(BKloadUserInfo) name:@"loginSuccess" object:nil];
+    [NotifiCenter addObserver:self selector:@selector(BKloginOut) name:@"loginOut" object:nil];
 }
 
-- (void)loginOut{
-    self.coinsLabel.text = @"";
+- (void)BKloginOut{
+    self.BKcoinsLabel.text = @"";
 }
 
-- (void)createCoinsView{
+- (void)BKcreateCoinsView{
     
 //    UIView * rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 25)];
 //    rightView.userInteractionEnabled = YES;
@@ -79,27 +79,27 @@
 //    spaceItem.width = -10;
 //    self.navigationItem.rightBarButtonItems = @[spaceItem,rigthBtn];
 }
-- (void)loadUserInfo{
+- (void)BKloadUserInfo{
     [MIHttpTool Post:SHUserDetail parameters:@{@"user_id":UserId} success:^(id responseObject) {
         if ([responseObject[@"status"] integerValue] == 1) {
-            MIUserModel * model = [MIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
-            self.model = model;
-            self.coinsLabel.text = model.peanut_num;
+            MIUserModel *BKmodel = [MIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
+            self.BKmodel = BKmodel;
+            self.BKcoinsLabel.text = BKmodel.peanut_num;
         }
     } failure:^(NSError *error) {
         
     }];
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tap{
+- (void)BKtapAction:(UITapGestureRecognizer *)BKtap{
     if (!UserId) {
-        MILoginVC * logVC = [[MILoginVC alloc] init];
-        UINavigationController * navi = [[UINavigationController alloc] initWithRootViewController:logVC];
-        [self presentViewController:navi animated:YES completion:nil];
+        BKMILoginVC *BKlogVC = [[BKMILoginVC alloc] init];
+        UINavigationController *BKnavi = [[UINavigationController alloc] initWithRootViewController:BKlogVC];
+        [self presentViewController:BKnavi animated:YES completion:nil];
         return;
     }
-    MIStoreVC * storeVC = [[MIStoreVC alloc] init];
-    [self.navigationController pushViewController:storeVC animated:YES];
+    BKMIStoreVC *BKstoreVC = [[BKMIStoreVC alloc] init];
+    [self.navigationController pushViewController:BKstoreVC animated:YES];
     
 }
 - (void)dealloc{

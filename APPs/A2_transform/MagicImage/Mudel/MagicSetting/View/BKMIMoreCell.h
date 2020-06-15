@@ -1,8 +1,8 @@
 //
-//  MIHomeVC.h
+//  MIMoreCell.h
 //  MagicImage
 //
-//  Created by MagicImage on 2019/4/29.
+//  Created by MagicImage on 2019/4/30.
 //  Copyright © 2019 April. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIHomeVC : UIViewController
-
+@interface BKMIMoreCell : UITableViewCell
+@property (nonatomic, strong) UILabel *BKtitleLabel;
 @end
 
 NS_ASSUME_NONNULL_END

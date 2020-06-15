@@ -1,5 +1,5 @@
 //
-//  MIStickerVC.h
+//  PEFeedbackViewController.h
 //  MagicImage
 //
 //  Created by MagicImage on 2019/4/30.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MISlideVC.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIStickerVC : UIViewController<MISlideVCDelegate>
+@interface BKMIFeedbackVC : UIViewController
 
 @end
 

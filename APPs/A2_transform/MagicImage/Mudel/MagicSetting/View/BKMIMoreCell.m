@@ -6,33 +6,33 @@
 //  Copyright © 2019 April. All rights reserved.
 //
 
-#import "MIMoreCell.h"
+#import "BKMIMoreCell.h"
 
-@interface MIMoreCell ()
+@interface BKMIMoreCell ()
 
 @end
 
-@implementation MIMoreCell
+@implementation BKMIMoreCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.font = FontSize(16, ScreenWidth);
-        self.titleLabel.textColor = UIColor.blackColor;
-        [self.contentView addSubview:self.titleLabel];
-        self.titleLabel.sd_layout
+        self.BKtitleLabel = [[UILabel alloc] init];
+        self.BKtitleLabel.font = FontSize(16, ScreenWidth);
+        self.BKtitleLabel.textColor = UIColor.blackColor;
+        [self.contentView addSubview:self.BKtitleLabel];
+        self.BKtitleLabel.sd_layout
         .leftSpaceToView(self.contentView, 10)
         .centerYEqualToView(self.contentView)
         .autoHeightRatio(0);
-        [self.titleLabel setSingleLineAutoResizeWithMaxWidth:180];
+        [self.BKtitleLabel setSingleLineAutoResizeWithMaxWidth:180];
         
         
-        UIImageView * arrowView = [[UIImageView alloc] initWithImage:PEImage(@"PEArrow")];
-        [self.contentView addSubview:arrowView];
-        arrowView.sd_layout
+        UIImageView *BKarrowView = [[UIImageView alloc] initWithImage:PEImage(@"PEArrow")];
+        [self.contentView addSubview:BKarrowView];
+        BKarrowView.sd_layout
         .rightSpaceToView(self.contentView, 15)
         .centerYEqualToView(self.contentView)
         .widthEqualToHeight()
