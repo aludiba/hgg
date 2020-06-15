@@ -12,12 +12,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor cyanColor];
         CGFloat w = (ScreenWidth-20)/2;
         CGFloat h = w*2/5;
         
         NSArray * imageArray = @[@"a",@"b"];
-        NSArray * titleArray = @[@"PHOTO",@"HOTTAGS"];
-        NSArray * contentArray = @[@"beautiful you",@"hot post tag"];
+        NSArray * titleArray = @[@"Photo",@"Hottags"];
+        NSArray * contentArray = @[@"Beautiful you",@"Hot post tag"];
         
         for (NSInteger i = 0; i<2; i++) {
             UIView * bgView = [[UIView alloc] init];

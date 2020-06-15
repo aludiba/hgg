@@ -14,21 +14,19 @@
     if (self = [super initWithFrame:frame]) {
         CGFloat w = (ScreenWidth-20)/2;
         CGFloat h = w*3/5-5;
-        NSArray * titleArray = @[@"CAMERA",@"STICKER",@"TAILOR",@"FILTER"];
+        NSArray * titleArray = @[@"Camera",@"Sticker",@"Tailor",@"Filter"];
         NSArray * imageArray = @[@"CAMERA",@"STICKER",@"TAILOR",@"FILTER"];
-        NSArray * colorArray = @[RGB(237, 164, 61),RGB(232, 111, 73),RGB(62, 85, 250),RGB(51, 35, 201)];
-        NSArray * contentArray = @[@"Instant beauty",@"Simple fastt",@"Any size",@"Switch scene"];
+        NSArray * colorArray = @[[UIColor redColor],[UIColor orangeColor],[UIColor blueColor],[UIColor greenColor]];
+        NSArray * contentArray = @[@"Quick beautiful",@"Rapid concise",@"Optional size",@"Scene change"];
         
         for (NSInteger i = 0; i<4; i++) {
             UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake((i%2)*w, (i/2)*h, w, h)];
-//            bgView.backgroundColor = UIColor.redColor;
             [self addSubview:bgView];
             
-            UIImageView * iconImageView = [[UIImageView alloc] initWithImage:PEImage(@"")];
+            UIImageView *iconImageView = [[UIImageView alloc] initWithImage:PEImage(@"")];
             iconImageView.backgroundColor = colorArray[i];
             iconImageView.layer.cornerRadius = 6;
-//            iconImageView.layer.masksToBounds = YES;
-            iconImageView.tag = 100+i;
+            iconImageView.tag = 100 + i;
             iconImageView.userInteractionEnabled = YES;
             UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
             [iconImageView addGestureRecognizer:tap];

@@ -36,6 +36,7 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = RGB(242, 242, 242);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
@@ -70,7 +71,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = RGB(242, 242, 242);
     
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
@@ -78,30 +79,9 @@
     .rightEqualToView(self.view)
     .topEqualToView(self.view).offset(-StatusBarHeight)
     .bottomEqualToView(self.view);
-     self.bannerImageArr = @[@"http://api.ip2.club/static/pic/sticker/3/0.png",@"http://api.ip2.club/static/pic/filter/Sweet.png",@"http://api.ip2.club/static/pic/sticker/7/0.png"];
+     self.bannerImageArr = @[@"http://api.zhewo.top/static/pic/sticker/1/0.png",@"http://api.zhewo.top/static/pic/filter/Cult.png"];
     
     [self loadData];
-    
-//    MIHomeView * homeView = [[MIHomeView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
-//    homeView.block = ^(NSInteger tag) {
-//        if (tag == 0) {
-//            QMCameraViewController * cmVC = [[QMCameraViewController alloc] init];
-//            QMBaseNavigationController * navi = [[QMBaseNavigationController alloc] initWithRootViewController:cmVC];
-//            [self presentViewController:navi animated:YES completion:nil];
-//        }else if (tag == 1){
-//
-//        }else if (tag == 2){
-//
-//        }else{
-//
-//        }
-//    };
-//    [self.view addSubview:homeView];
-//    homeView.sd_layout
-//    .topSpaceToView(self.view, 90)
-//    .centerYEqualToView(self.view)
-//    .widthIs(ScreenWidth)
-//    .heightIs(ScreenWidth);
     
     [self createHeaderView];
     [NotifiCenter addObserver:self selector:@selector(loadData) name:@"loginSuccess" object:nil];
@@ -111,10 +91,9 @@
 - (void)loginOut{
     [self loadData];
 }
-//- (void)loginSuccess
 - (void)createHeaderView{
     
-    UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight/2-60)];
+    UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight/2-40)];
     bgView.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:bgView];
     self.tableView.tableHeaderView = bgView;
