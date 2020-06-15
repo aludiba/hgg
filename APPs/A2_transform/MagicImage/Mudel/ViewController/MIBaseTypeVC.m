@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Shop";
+    self.title = @"SHOP";
     MISlideVC * slideMenu = [[MISlideVC alloc] init];
     MIStickerVC * stickerVC = [[MIStickerVC alloc] init];
     MIFilterVC * filterVC = [[MIFilterVC alloc] init];
@@ -80,7 +80,6 @@
 //    self.navigationItem.rightBarButtonItems = @[spaceItem,rigthBtn];
 }
 - (void)loadUserInfo{
-    
     [MIHttpTool Post:SHUserDetail parameters:@{@"user_id":UserId} success:^(id responseObject) {
         if ([responseObject[@"status"] integerValue] == 1) {
             MIUserModel * model = [MIUserModel mj_objectWithKeyValues:responseObject[@"data"]];

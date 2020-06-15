@@ -47,10 +47,16 @@
     [self loadData];
     
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (!self.dataArray.count) {
+        [self loadData];
+    }
+}
 - (void)loadData{
     
     [MIHttpTool Post:PicList parameters:@{@"type":@(2)} success:^(id responseObject) {
+        MyLog(@"responseObject:%@",responseObject);
         if ([responseObject[@"status"] integerValue] == 1) {
             for (NSInteger i = 0; i<[responseObject[@"data"] count]; i++) {
                 NSDictionary * dict = responseObject[@"data"][i];
@@ -58,7 +64,6 @@
                [self.dataArray addObject:model];
             }
         }
-
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         MyLog(@"%@",error);
@@ -68,6 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"count:%ld",self.dataArray.count);
     return self.dataArray.count;
 }
 

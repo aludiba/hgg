@@ -56,6 +56,12 @@
     [NotifiCenter addObserver:self selector:@selector(loginOut) name:@"loginOut" object:nil];
     // Do any additional setup after loading the view.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (!self.dataArray.count) {
+        [self loadData];
+    }
+}
 - (void)updatePrice{
     [self loadData];
 //    [self load]
