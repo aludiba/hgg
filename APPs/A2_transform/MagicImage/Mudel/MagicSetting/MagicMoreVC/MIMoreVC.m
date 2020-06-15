@@ -23,6 +23,7 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = RGB(242, 242, 242);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -41,7 +42,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.view.backgroundColor = RGB(242, 242, 242);
+
     [self.view addSubview:self.tableView];
     self.tableView.sd_layout
     .leftEqualToView(self.view)
@@ -53,7 +55,11 @@
     MIMoreHeaderView * headerView = [[MIMoreHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScareValue(160, ScreenWidth))];
     self.headerView = headerView;
     [headerView updateViews];
-    headerView.backgroundColor = RGB(62, 85, 250);
+    if (@available(iOS 9.0, *)) {
+        headerView.backgroundColor = [UIColor systemGreenColor];
+    } else {
+        headerView.backgroundColor = [UIColor greenColor];
+    }
     headerView.block = ^{
         if (!UserId) {
             MILoginVC * logVC = [[MILoginVC alloc] init];
@@ -103,7 +109,6 @@
     if (!cell) {
         cell = [[MIMoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.iconImageView.image = PEImage(self.imageArray[indexPath.section][indexPath.row]);
     cell.titleLabel.text = self.titleArray[indexPath.section][indexPath.row];
     return cell;
 }

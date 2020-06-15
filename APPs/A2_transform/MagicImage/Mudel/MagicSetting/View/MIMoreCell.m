@@ -18,22 +18,14 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.iconImageView = [[UIImageView alloc] init];
-        
-        [self.contentView addSubview:self.iconImageView];
-        self.iconImageView.sd_layout
-        .leftSpaceToView(self.contentView, 15)
-        .centerYEqualToView(self.contentView)
-        .heightIs(25)
-        .widthEqualToHeight();
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.font = FontSize(16, ScreenWidth);
         self.titleLabel.textColor = UIColor.blackColor;
         [self.contentView addSubview:self.titleLabel];
         self.titleLabel.sd_layout
-        .leftSpaceToView(self.iconImageView, 10)
-        .centerYEqualToView(self.iconImageView)
+        .leftSpaceToView(self.contentView, 10)
+        .centerYEqualToView(self.contentView)
         .autoHeightRatio(0);
         [self.titleLabel setSingleLineAutoResizeWithMaxWidth:180];
         
@@ -42,7 +34,7 @@
         [self.contentView addSubview:arrowView];
         arrowView.sd_layout
         .rightSpaceToView(self.contentView, 15)
-        .centerYEqualToView(self.iconImageView)
+        .centerYEqualToView(self.contentView)
         .widthEqualToHeight()
         .heightIs(20);
         

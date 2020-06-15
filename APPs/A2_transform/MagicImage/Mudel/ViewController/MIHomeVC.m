@@ -92,14 +92,13 @@
     [self loadData];
 }
 - (void)createHeaderView{
-    
     UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight/2-40)];
     bgView.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:bgView];
     self.tableView.tableHeaderView = bgView;
 
     UIView * colorView = [[UIView alloc] init];
-    colorView.backgroundColor = RGB(62, 85, 250);
+    colorView.backgroundColor = RGB(242, 242, 242);
     [bgView addSubview:colorView];
     
     colorView.sd_layout
@@ -115,9 +114,9 @@
         h = StatusBarHeight+15;
     }
     UILabel * contentLabel = [[UILabel alloc] init];
-    contentLabel.font = FontBoldSize(27, ScreenWidth);
-    contentLabel.text = @"Photo Edit";
-    contentLabel.textColor = UIColor.whiteColor;
+    contentLabel.font = FontBoldSize(25, ScreenWidth);
+    contentLabel.text = @"PHOTO EDIT";
+    contentLabel.textColor = UIColor.blackColor;
     [bgView addSubview:contentLabel];
     contentLabel.sd_layout
     .leftSpaceToView(bgView, 15)
@@ -126,11 +125,15 @@
     [contentLabel setSingleLineAutoResizeWithMaxWidth:ScreenWidth];
     
     UIButton * shopBtn = [[UIButton alloc] init];
-    [shopBtn setTitle:@"Shop" forState:UIControlStateNormal];
+    [shopBtn setTitle:@"SHOP" forState:UIControlStateNormal];
     [shopBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    [shopBtn setBackgroundColor:RGB(239, 225, 148)];
-    shopBtn.titleLabel.font = FontBoldSize(15, ScreenWidth);
-    shopBtn.layer.cornerRadius = 8;
+    if (@available(iOS 9.0, *)) {
+        [shopBtn setBackgroundColor:[UIColor systemPurpleColor]];
+    } else {
+        [shopBtn setBackgroundColor:[UIColor purpleColor]];
+    }
+    shopBtn.titleLabel.font = FontBoldSize(14, ScreenWidth);
+    shopBtn.layer.cornerRadius = 4;
     shopBtn.layer.masksToBounds = YES;
     [shopBtn addTarget:self action:@selector(shopBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -141,7 +144,7 @@
     .widthIs(50)
     .heightIs(25);
     
-    _bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 70, ScreenWidth, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    _bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 55, ScreenWidth, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     _bannerView.backgroundColor = UIColor.clearColor;
     _bannerView.localizationImageNamesGroup = self.bannerImageArr;
     [bgView addSubview:_bannerView];
@@ -158,7 +161,7 @@
     if (UserId) {
         dict = @{@"type":@(1),@"is_hot":@(2),@"user_id":UserId};
     }else{
-        dict = @{@"type":@(1),@"is_hot":@(2)};
+        dict = @{@"type":@(1),@"is_hot":@(1)};
     }
     
     [MIHttpTool Post:PicList parameters:dict success:^(id responseObject) {
@@ -343,10 +346,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    NSArray * titleArray = @[@"Tools",@"Sticker"];
+    NSArray * titleArray = @[@"TOOLS",@"STICKER"];
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    view.backgroundColor = UIColor.whiteColor;
+    view.backgroundColor = RGB(242, 242, 242);
     UILabel * titileLabel = [[UILabel alloc] init];
     titileLabel.font = [UIFont boldSystemFontOfSize:16];
     titileLabel.textColor = UIColor.blackColor;
