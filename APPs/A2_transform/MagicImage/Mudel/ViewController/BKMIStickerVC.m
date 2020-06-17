@@ -7,14 +7,14 @@
 //
 
 #import "BKMIStickerVC.h"
-#import "MIHomeSectionTowCell.h"
-#import "MIHomeModel.h"
-#import "MIStickerDetailVC.h"
+#import "BKMIHomeSectionTowCell.h"
+#import "BKMIHomeModel.h"
+#import "BKMIStickerDetailVC.h"
 @interface BKMIStickerVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView * BKtableView;
 @property (nonatomic, strong) NSMutableArray * BKdataArray;
 @property (nonatomic, strong) UIImageView * BKpicImageView;
-@property (nonatomic, strong) MIHomeModel * BKmodel;
+@property (nonatomic, strong) BKMIHomeModel * BKmodel;
 @end
 
 @implementation BKMIStickerVC
@@ -72,8 +72,8 @@
 }
 
 - (void)BKtapAction:(UITapGestureRecognizer *)BKtap{
-    MIStickerDetailVC *BKdetailVC = [[MIStickerDetailVC alloc] init];
-    BKdetailVC.model = self.BKmodel;
+    BKMIStickerDetailVC *BKdetailVC = [[BKMIStickerDetailVC alloc] init];
+    BKdetailVC.BKmodel = self.BKmodel;
     [self.navigationController pushViewController:BKdetailVC animated:YES];
 }
 - (void)BKloadData{
@@ -89,7 +89,7 @@
             [self.BKdataArray removeAllObjects];
             for (NSInteger BKi = 0; BKi<[BKresponseObject[@"data"] count]; BKi++) {
                 NSDictionary *BKdict = BKresponseObject[@"data"][BKi];
-                MIHomeModel *BKmodel = [MIHomeModel mj_objectWithKeyValues:BKdict];
+                BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];
                     [self.BKdataArray addObject:BKmodel];
             }
         }
@@ -107,23 +107,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    MIHomeSectionTowCell *BKcell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    BKMIHomeSectionTowCell *BKcell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!BKcell) {
-        BKcell = [[MIHomeSectionTowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        BKcell = [[BKMIHomeSectionTowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    BKcell.model = self.BKdataArray[indexPath.row];
+    BKcell.BKmodel = self.BKdataArray[indexPath.row];
     return BKcell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MIHomeModel *BKmodel = self.BKdataArray[indexPath.row];
-    MIStickerDetailVC * BKdetailVC = [[MIStickerDetailVC alloc] init];
-    BKdetailVC.model = BKmodel;
-    BKdetailVC.pId = BKmodel.id;
+    BKMIHomeModel *BKmodel = self.BKdataArray[indexPath.row];
+    BKMIStickerDetailVC * BKdetailVC = [[BKMIStickerDetailVC alloc] init];
+    BKdetailVC.BKmodel = BKmodel;
+    BKdetailVC.BKpId = BKmodel.BKid;
     [self.navigationController pushViewController:BKdetailVC animated:YES];
 }
 
-- (void)buyStickersWithFilterModel:(MIHomeModel *)BKmodel{
+- (void)buyStickersWithFilterModel:(BKMIHomeModel *)BKmodel{
     UIAlertController *BKalert = [UIAlertController alertControllerWithTitle:@"Prompt" message:@"Determine to buy?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *BKcancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull BKaction) {
     }];

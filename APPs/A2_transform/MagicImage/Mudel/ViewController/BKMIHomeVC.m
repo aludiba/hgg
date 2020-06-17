@@ -7,22 +7,22 @@
 //
 
 #import "BKMIHomeVC.h"
-#import "MIHomeView.h"
+#import "BKMIHomeView.h"
 #import "QMBaseNavigationController.h"
 #import "QMCameraViewController.h"
 
-#import "MIHomeSectionOneCell.h"
-#import "MIHomeSectionTowCell.h"
+#import "BKMIHomeSectionOneCell.h"
+#import "BKMIHomeSectionTowCell.h"
 #import "SDCycleScrollView.h"
-#import "MIHomeHeaderView.h"
-#import "MIHomeModel.h"
+#import "BKMIHomeHeaderView.h"
+#import "BKMIHomeModel.h"
 #import "BKMIBaseTypeVC.h"
 #import "QMPhotoEffectViewController.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "MIStickerDetailVC.h"
-#import "MITagsVC.h"
-#import "MIFilterDetailVC.h"
+#import "BKMIStickerDetailVC.h"
+#import "BKMITagsVC.h"
+#import "BKMIFilterDetailVC.h"
 @interface BKMIHomeVC ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UITableView *BKtableView;
 @property (nonatomic, strong) NSMutableArray *BKdataArray;
@@ -167,7 +167,7 @@
         if ([responseObject[@"status"] integerValue] == 1) {
             [self.BKdataArray removeAllObjects];
             for (NSDictionary *BKdict in responseObject[@"data"]) {
-                MIHomeModel *BKmodel = [MIHomeModel mj_objectWithKeyValues:BKdict];
+                BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];
                 [self.BKdataArray addObject:BKmodel];
             }
         }
@@ -198,9 +198,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)BKtableView cellForRowAtIndexPath:(NSIndexPath *)BKindexPath{
     if (BKindexPath.section == 0) {
-        MIHomeSectionOneCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"BKcell"];
+        BKMIHomeSectionOneCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"BKcell"];
         if (!BKcell) {
-            BKcell = [[MIHomeSectionOneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BKcell"];
+            BKcell = [[BKMIHomeSectionOneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BKcell"];
         }
         BKcell.block = ^(NSInteger BKtag) {
             switch (BKtag) {
@@ -231,7 +231,7 @@
                 }
                     break;
                 case 5:{
-                    MITagsVC *BKtagsVC = [[MITagsVC alloc] init];
+                    BKMITagsVC *BKtagsVC = [[BKMITagsVC alloc] init];
                     [self.navigationController pushViewController:BKtagsVC animated:YES];
                 }
                     break;
@@ -243,21 +243,21 @@
         return BKcell;
         
     }else{
-        MIHomeSectionTowCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"cell1"];
+        BKMIHomeSectionTowCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"cell1"];
         if (!BKcell) {
-            BKcell = [[MIHomeSectionTowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell1"];
+            BKcell = [[BKMIHomeSectionTowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell1"];
         }
-        MIHomeModel *BKmodel = self.BKdataArray[BKindexPath.row];
-        BKcell.model = BKmodel;
+        BKMIHomeModel *BKmodel = self.BKdataArray[BKindexPath.row];
+        BKcell.BKmodel = BKmodel;
         return BKcell;
     }
 }
 
 - (void)tableView:(UITableView *)BKtableView didSelectRowAtIndexPath:(NSIndexPath *)BKindexPath{
-    MIHomeModel *BKmodel = self.BKdataArray[BKindexPath.row];
-    MIStickerDetailVC *BKdetailVC = [[MIStickerDetailVC alloc] init];
-    BKdetailVC.model = BKmodel;
-    BKdetailVC.pId = BKmodel.id;
+    BKMIHomeModel *BKmodel = self.BKdataArray[BKindexPath.row];
+    BKMIStickerDetailVC *BKdetailVC = [[BKMIStickerDetailVC alloc] init];
+    BKdetailVC.BKmodel = BKmodel;
+    BKdetailVC.BKpId = BKmodel.BKid;
     [self.navigationController pushViewController:BKdetailVC animated:YES];
 }
 
@@ -291,7 +291,6 @@
         }];
     }
 }
-
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)BKalertView clickedButtonAtIndex:(NSInteger)BKbuttonIndex{
     if (BKbuttonIndex == 1) {
@@ -304,17 +303,12 @@
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)BKpicker{
     [BKpicker dismissViewControllerAnimated:YES completion:nil];
 }
-
 -(void)imagePickerController:(UIImagePickerController *)BKpicker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)BKinfo{
     NSURL *BKurl = [BKinfo objectForKey:UIImagePickerControllerReferenceURL];
-    
     //导入 #import <AssetsLibrary/AssetsLibrary.h> 库
     //创建 ALAssetsLibrary 对象
     ALAssetsLibrary *BKlibrary = [[ALAssetsLibrary alloc]init];
-    
     [BKlibrary assetForURL:BKurl resultBlock:^(ALAsset *BKasset){
-        
-        
         //获取图片
         UIImage *BKimage = BKinfo[UIImagePickerControllerOriginalImage];
         //获取照片名称
@@ -384,42 +378,42 @@
     }
     return BKview;
 }
-- (void)senderAction:(UIButton *)BKsender{
+- (void)BKsenderAction:(UIButton *)BKsender{
     BKMIBaseTypeVC *BKbaseType = [[BKMIBaseTypeVC alloc] init];
     [self.navigationController pushViewController:BKbaseType animated:YES];
 }
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+- (UIView *)tableView:(UITableView *)BKtableView viewForFooterInSection:(NSInteger)BKsection{
     return [UIView new];
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)BKtableView heightForHeaderInSection:(NSInteger)BKsection{
     return 30;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)BKtableView heightForFooterInSection:(NSInteger)BKsection{
     return 10;
 }
 
 
-- (Class)customCollectionViewCellClassForCycleScrollView:(SDCycleScrollView *)view{
-    return [MIHomeHeaderView class];
+- (Class)customCollectionViewCellClassForCycleScrollView:(SDCycleScrollView *)BKview{
+    return [BKMIHomeHeaderView class];
 }
 - (void)setupCustomCell:(UICollectionViewCell *)BKcell forIndex:(NSInteger)BKindex cycleScrollView:(SDCycleScrollView *)view{
-    MIHomeHeaderView *BKhomeCell = (MIHomeHeaderView*)BKcell;
-    [BKhomeCell.picImageView sd_setImageWithURL:[NSURL URLWithString:self.BKbannerImageArr[BKindex]]];
+    BKMIHomeHeaderView *BKhomeCell = (BKMIHomeHeaderView*)BKcell;
+    [BKhomeCell.BKpicImageView sd_setImageWithURL:[NSURL URLWithString:self.BKbannerImageArr[BKindex]]];
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)BKcycleScrollView didSelectItemAtIndex:(NSInteger)BKindex{
     if (BKindex == 0) {
-        MIStickerDetailVC *BKstickerVC = [[MIStickerDetailVC alloc] init];
-        BKstickerVC.pId = @"3";
+        BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
+        BKstickerVC.BKpId = @"3";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }else if (index == 1){
-        MIFilterDetailVC *BKfilterVC = [[MIFilterDetailVC alloc] init];
-        BKfilterVC.pid = @"21";
+        BKMIFilterDetailVC *BKfilterVC = [[BKMIFilterDetailVC alloc] init];
+        BKfilterVC.BKpid = @"21";
         [self.navigationController pushViewController:BKfilterVC animated:YES];
     }else{
-        MIStickerDetailVC *BKstickerVC = [[MIStickerDetailVC alloc] init];
-        BKstickerVC.pId = @"7";
+        BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
+        BKstickerVC.BKpId = @"7";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }
     

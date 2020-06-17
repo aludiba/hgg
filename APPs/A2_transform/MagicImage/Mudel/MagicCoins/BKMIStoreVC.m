@@ -7,7 +7,7 @@
 //
 
 #import "BKMIStoreVC.h"
-#import "MIUserModel.h"
+#import "BKMIUserModel.h"
 #import "BKMICoinsModel.h"
 #import "BKMICoinsCell.h"
 #import "MIIPAPurchase.h"
@@ -139,8 +139,8 @@
     
     [MIHttpTool Post:SHUserDetail parameters:@{@"user_id":UserId} success:^(id responseObject) {
         if ([responseObject[@"status"] integerValue] == 1) {
-            MIUserModel *BKmodel = [MIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
-            self.BKcoinsLabel.text = BKmodel.peanut_num;
+            BKMIUserModel *BKmodel = [BKMIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
+            self.BKcoinsLabel.text = BKmodel.BKpeanut_num;
         }
     } failure:^(NSError *error) {
         

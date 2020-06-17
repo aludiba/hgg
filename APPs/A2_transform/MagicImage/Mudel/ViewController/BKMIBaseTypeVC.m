@@ -8,13 +8,13 @@
 
 #import "BKMIBaseTypeVC.h"
 #import "MISlideVC.h"
-#import "MIFilterVC.h"
+#import "BKMIFilterVC.h"
 #import "BKMIStickerVC.h"
-#import "MIUserModel.h"
+#import "BKMIUserModel.h"
 #import "BKMIStoreVC.h"
 #import "BKMILoginVC.h"
 @interface BKMIBaseTypeVC ()
-@property (nonatomic, strong) MIUserModel *BKmodel;
+@property (nonatomic, strong) BKMIUserModel *BKmodel;
 @property (nonatomic, strong) UILabel *BKcoinsLabel;
 @end
 
@@ -26,7 +26,7 @@
     self.title = @"SHOP";
     MISlideVC *BKslideMenu = [[MISlideVC alloc] init];
     BKMIStickerVC *BKstickerVC = [[BKMIStickerVC alloc] init];
-    MIFilterVC *BKfilterVC = [[MIFilterVC alloc] init];
+    BKMIFilterVC *BKfilterVC = [[BKMIFilterVC alloc] init];
     BKslideMenu.showBottomLine = NO;
     BKslideMenu.titleSelectColor = RGB(62, 85, 250);
     BKslideMenu.bottomLineColor = RGB(62, 85, 250);
@@ -82,9 +82,9 @@
 - (void)BKloadUserInfo{
     [MIHttpTool Post:SHUserDetail parameters:@{@"user_id":UserId} success:^(id responseObject) {
         if ([responseObject[@"status"] integerValue] == 1) {
-            MIUserModel *BKmodel = [MIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
+            BKMIUserModel *BKmodel = [BKMIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
             self.BKmodel = BKmodel;
-            self.BKcoinsLabel.text = BKmodel.peanut_num;
+            self.BKcoinsLabel.text = BKmodel.BKpeanut_num;
         }
     } failure:^(NSError *error) {
         
