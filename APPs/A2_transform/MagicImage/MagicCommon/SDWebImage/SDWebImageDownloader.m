@@ -63,7 +63,33 @@
         _downloadQueue.name = @"com.hackemist.SDWebImageDownloader";
         _URLOperations = [NSMutableDictionary new];
 #ifdef SD_WEBP
-        _HTTPHeaders = [@{@"Accept": @"image/webp,image
+        _HTTPHeaders = [@{@"Accept": @"image/webp,image/*;q=0.8"} mutableCopy];
+#else
+        _HTTPHeaders = [@{@"Accept": @"image/*;q=0.8"} mutableCopy];
+#endif
+        _operationsLock = dispatch_semaphore_create(1);
+        _headersLock = dispatch_semaphore_create(1);
+        _downloadTimeout = 15.0;
+
+        [self createNewSessionWithConfiguration:sessionConfiguration];
+    }
+    return self;
+}
+
+- (void)createNewSessionWithConfiguration:(NSURLSessionConfiguration *)sessionConfiguration {
+    [self cancelAllDownloads];
+
+    if (self.session) {
+        [self.session invalidateAndCancel];
+    }
+
+    sessionConfiguration.timeoutIntervalForRequest = self.downloadTimeout;
+
+    /**
+     *  Create the session for this task
+     *  We send nil as delegate queue so that the session creates a serial operation queue for performing all delegate
+     *  method calls and completion handler calls.
+     */
     self.session = [NSURLSession sessionWithConfiguration:sessionConfiguration
                                                  delegate:self
                                             delegateQueue:nil];

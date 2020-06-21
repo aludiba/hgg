@@ -16,7 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - DGActivityIndicatorView (2.1.1)
   - GPUImage (0.1.7)
-  - IQKeyboardManager (6.5.5)
   - Masonry (1.1.0)
   - ReactiveObjC (3.1.0)
   - TOCropViewController (2.3.8)
@@ -29,7 +28,6 @@ DEPENDENCIES:
   - AFNetworking
   - DGActivityIndicatorView
   - GPUImage
-  - IQKeyboardManager
   - Masonry
   - ReactiveObjC
   - TOCropViewController
@@ -37,11 +35,10 @@ DEPENDENCIES:
   - YYModel
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - AFNetworking
     - DGActivityIndicatorView
     - GPUImage
-    - IQKeyboardManager
     - Masonry
     - ReactiveObjC
     - TOCropViewController
@@ -52,13 +49,12 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   TOCropViewController: 0a075f02c253e88095143bbac7b013fc6fba5090
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3418a0333fcbd078ae54a28af97e5d1367160e2c
+PODFILE CHECKSUM: f24aeeaf9b1dc958e19657c86bd1734efd869c0c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.9.2
