@@ -1,11 +1,3 @@
-//
-//  UITextField+RACSignalSupport.m
-//  ReactiveObjC
-//
-//  Created by Josh Abernathy on 4/17/12.
-//  Copyright (c) 2012 GitHub, Inc. All rights reserved.
-//
-
 #import "UITextField+RACSignalSupport.h"
 #import <ReactiveObjC/RACEXTKeyPathCoding.h>
 #import <ReactiveObjC/RACEXTScope.h>
@@ -14,9 +6,7 @@
 #import "RACSignal+Operations.h"
 #import "UIControl+RACSignalSupport.h"
 #import "UIControl+RACSignalSupportPrivate.h"
-
 @implementation UITextField (RACSignalSupport)
-
 - (RACSignal *)rac_textSignal {
 	@weakify(self);
 	return [[[[[RACSignal
@@ -31,9 +21,7 @@
 		takeUntil:self.rac_willDeallocSignal]
 		setNameWithFormat:@"%@ -rac_textSignal", RACDescription(self)];
 }
-
 - (RACChannelTerminal *)rac_newTextChannel {
 	return [self rac_channelForControlEvents:UIControlEventAllEditingEvents key:@keypath(self.text) nilValue:@""];
 }
-
 @end

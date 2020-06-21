@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorTwoDotsAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorTwoDotsAnimation: DGActivityIndicatorAnimation
+@end

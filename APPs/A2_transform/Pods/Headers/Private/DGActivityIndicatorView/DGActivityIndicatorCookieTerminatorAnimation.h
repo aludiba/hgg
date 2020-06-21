@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorCookieTerminatorAnimation: DGActivityIndicatorAnimation
+@end

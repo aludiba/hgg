@@ -1,1 +1,3 @@
-../../../IQKeyboardManager/IQKeyboardManager/Constants/IQKeyboardManagerConstantsInternal.h
+#ifndef IQKeyboardManagerConstantsInternal_h
+#define IQKeyboardManagerConstantsInternal_h
+#endif

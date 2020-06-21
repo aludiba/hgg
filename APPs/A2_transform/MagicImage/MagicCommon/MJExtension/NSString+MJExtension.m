@@ -1,13 +1,4 @@
-//
-//  NSString+MJExtension.m
-//  MJExtensionExample
-//
-//  Created by MJ Lee on 15/6/7.
-//  Copyright (c) 2015年 小码哥. All rights reserved.
-//
-
 #import "NSString+MJExtension.h"
-
 @implementation NSString (MJExtension)
 - (NSString *)mj_underlineFromCamel
 {
@@ -26,7 +17,6 @@
     }
     return string;
 }
-
 - (NSString *)mj_camelFromUnderline
 {
     if (self.length == 0) return self;
@@ -43,7 +33,6 @@
     }
     return string;
 }
-
 - (NSString *)mj_firstCharLower
 {
     if (self.length == 0) return self;
@@ -52,7 +41,6 @@
     if (self.length >= 2) [string appendString:[self substringFromIndex:1]];
     return string;
 }
-
 - (NSString *)mj_firstCharUpper
 {
     if (self.length == 0) return self;
@@ -61,50 +49,41 @@
     if (self.length >= 2) [string appendString:[self substringFromIndex:1]];
     return string;
 }
-
 - (BOOL)mj_isPureInt
 {
     NSScanner *scan = [NSScanner scannerWithString:self];
     int val;
     return [scan scanInt:&val] && [scan isAtEnd];
 }
-
 - (NSURL *)mj_url
 {
-//    [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"!$&'()*+,-./:;=?@_~%#[]"]];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"
     return [NSURL URLWithString:(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]", NULL,kCFStringEncodingUTF8))];
 #pragma clang diagnostic pop
 }
 @end
-
 @implementation NSString (MJExtensionDeprecated_v_2_5_16)
 - (NSString *)underlineFromCamel
 {
     return self.mj_underlineFromCamel;
 }
-
 - (NSString *)camelFromUnderline
 {
     return self.mj_camelFromUnderline;
 }
-
 - (NSString *)firstCharLower
 {
     return self.mj_firstCharLower;
 }
-
 - (NSString *)firstCharUpper
 {
     return self.mj_firstCharUpper;
 }
-
 - (BOOL)isPureInt
 {
     return self.mj_isPureInt;
 }
-
 - (NSURL *)url
 {
     return self.mj_url;

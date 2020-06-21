@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorLineScalePulseOutRapidAnimation: DGActivityIndicatorAnimation
+@end

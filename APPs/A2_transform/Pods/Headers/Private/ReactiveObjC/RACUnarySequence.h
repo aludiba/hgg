@@ -1,1 +1,4 @@
-../../../ReactiveObjC/ReactiveObjC/RACUnarySequence.h
+#import "RACSequence.h"
+@interface RACUnarySequence : RACSequence
++ (RACUnarySequence *)return:(id)value;
+@end

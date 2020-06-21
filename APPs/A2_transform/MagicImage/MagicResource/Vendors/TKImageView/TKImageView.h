@@ -1,11 +1,3 @@
-//
-//  TKImageView.h
-//  TKImageDemo
-//
-//  Created by yinyu on 16/7/10.
-//  Copyright © 2016年 yinyu. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, TKCropAreaCornerStyle) {
     TKCropAreaCornerStyleRightAngle,
@@ -32,7 +24,6 @@ typedef NS_ENUM(NSInteger, TKCropAreaCornerStyle) {
 @property (strong, nonatomic) UIColor *maskColor;
 @property (assign, nonatomic) BOOL cornerBorderInImage;
 @property (assign, nonatomic) CGFloat initialScaleFactor;
-
 - (void)rotate;
 - (UIImage *)currentCroppedImage;
 - (void)show;

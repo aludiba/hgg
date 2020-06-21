@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorBallClipRotateAnimation: DGActivityIndicatorAnimation
+@end

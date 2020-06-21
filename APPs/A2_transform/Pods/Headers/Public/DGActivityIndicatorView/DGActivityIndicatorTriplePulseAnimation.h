@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorTriplePulseAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorTriplePulseAnimation: DGActivityIndicatorAnimation
+@end

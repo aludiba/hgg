@@ -1,73 +1,43 @@
-/*
- * This file is part of the SDWebImage package.
- * (c) Olivier Poitrey <rs@dailymotion.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 #import "SDWebImageDownloaderOperation.h"
 #import "SDWebImageManager.h"
 #import "NSImage+WebCache.h"
 #import "SDWebImageCodersManager.h"
-
 #define LOCK(lock) dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
 #define UNLOCK(lock) dispatch_semaphore_signal(lock);
-
-// iOS 8 Foundation.framework extern these symbol but the define is in CFNetwork.framework. We just fix this without import CFNetwork.framework
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_9_0)
 const float NSURLSessionTaskPriorityHigh = 0.75;
 const float NSURLSessionTaskPriorityDefault = 0.5;
 const float NSURLSessionTaskPriorityLow = 0.25;
 #endif
-
 NSString *const SDWebImageDownloadStartNotification = @"SDWebImageDownloadStartNotification";
 NSString *const SDWebImageDownloadReceiveResponseNotification = @"SDWebImageDownloadReceiveResponseNotification";
 NSString *const SDWebImageDownloadStopNotification = @"SDWebImageDownloadStopNotification";
 NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinishNotification";
-
 static NSString *const kProgressCallbackKey = @"progress";
 static NSString *const kCompletedCallbackKey = @"completed";
-
 typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
-
 @interface SDWebImageDownloaderOperation ()
-
 @property (strong, nonatomic, nonnull) NSMutableArray<SDCallbacksDictionary *> *callbackBlocks;
-
 @property (assign, nonatomic, getter = isExecuting) BOOL executing;
 @property (assign, nonatomic, getter = isFinished) BOOL finished;
 @property (strong, nonatomic, nullable) NSMutableData *imageData;
-@property (copy, nonatomic, nullable) NSData *cachedData; // for `SDWebImageDownloaderIgnoreCachedResponse`
-
-// This is weak because it is injected by whoever manages this session. If this gets nil-ed out, we won't be able to run
-// the task associated with this operation
+@property (copy, nonatomic, nullable) NSData *cachedData; 
 @property (weak, nonatomic, nullable) NSURLSession *unownedSession;
-// This is set if we're using not using an injected NSURLSession. We're responsible of invalidating this one
 @property (strong, nonatomic, nullable) NSURLSession *ownedSession;
-
 @property (strong, nonatomic, readwrite, nullable) NSURLSessionTask *dataTask;
-
-@property (strong, nonatomic, nonnull) dispatch_semaphore_t callbacksLock; // a lock to keep the access to `callbackBlocks` thread-safe
-
-@property (strong, nonatomic, nonnull) dispatch_queue_t coderQueue; // the queue to do image decoding
+@property (strong, nonatomic, nonnull) dispatch_semaphore_t callbacksLock; 
+@property (strong, nonatomic, nonnull) dispatch_queue_t coderQueue; 
 #if SD_UIKIT
 @property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundTaskId;
 #endif
-
 @property (strong, nonatomic, nullable) id<SDWebImageProgressiveCoder> progressiveCoder;
-
 @end
-
 @implementation SDWebImageDownloaderOperation
-
 @synthesize executing = _executing;
 @synthesize finished = _finished;
-
 - (nonnull instancetype)init {
     return [self initWithRequest:nil inSession:nil options:0];
 }
-
 - (nonnull instancetype)initWithRequest:(nullable NSURLRequest *)request
                               inSession:(nullable NSURLSession *)session
                                 options:(SDWebImageDownloaderOptions)options {
@@ -85,7 +55,6 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
     }
     return self;
 }
-
 - (nullable id)addHandlersForProgress:(nullable SDWebImageDownloaderProgressBlock)progressBlock
                             completed:(nullable SDWebImageDownloaderCompletedBlock)completedBlock {
     SDCallbacksDictionary *callbacks = [NSMutableDictionary new];
@@ -96,16 +65,13 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
     UNLOCK(self.callbacksLock);
     return callbacks;
 }
-
 - (nullable NSArray<id> *)callbacksForKey:(NSString *)key {
     LOCK(self.callbacksLock);
     NSMutableArray<id> *callbacks = [[self.callbackBlocks valueForKey:key] mutableCopy];
     UNLOCK(self.callbacksLock);
-    // We need to remove [NSNull null] because there might not always be a progress block for each callback
     [callbacks removeObjectIdenticalTo:[NSNull null]];
-    return [callbacks copy]; // strip mutability here
+    return [callbacks copy]; 
 }
-
 - (BOOL)cancel:(nullable id)token {
     BOOL shouldCancel = NO;
     LOCK(self.callbacksLock);
@@ -119,7 +85,6 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
     }
     return shouldCancel;
 }
-
 - (void)start {
     @synchronized (self) {
         if (self.isCancelled) {
@@ -127,7 +92,6 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
             [self reset];
             return;
         }
-
 #if SD_UIKIT
         Class UIApplicationClass = NSClassFromString(@"UIApplication");
         BOOL hasApplication = UIApplicationClass && [UIApplicationClass respondsToSelector:@selector(sharedApplication)];
@@ -136,10 +100,8 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
             UIApplication * app = [UIApplicationClass performSelector:@selector(sharedApplication)];
             self.backgroundTaskId = [app beginBackgroundTaskWithExpirationHandler:^{
                 __strong __typeof (wself) sself = wself;
-
                 if (sself) {
                     [sself cancel];
-
                     [app endBackgroundTask:sself.backgroundTaskId];
                     sself.backgroundTaskId = UIBackgroundTaskInvalid;
                 }
@@ -150,26 +112,17 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
         if (!session) {
             NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
             sessionConfig.timeoutIntervalForRequest = 15;
-            
-            /**
-             *  Create the session for this task
-             *  We send nil as delegate queue so that the session creates a serial operation queue for performing all delegate
-             *  method calls and completion handler calls.
-             */
             session = [NSURLSession sessionWithConfiguration:sessionConfig
                                                     delegate:self
                                                delegateQueue:nil];
             self.ownedSession = session;
         }
-        
         if (self.options & SDWebImageDownloaderIgnoreCachedResponse) {
-            // Grab the cached data for later check
             NSURLCache *URLCache = session.configuration.URLCache;
             if (!URLCache) {
                 URLCache = [NSURLCache sharedURLCache];
             }
             NSCachedURLResponse *cachedResponse;
-            // NSURLCache's `cachedResponseForRequest:` is not thread-safe, see https://developer.apple.com/documentation/foundation/nsurlcache#2317483
             @synchronized (URLCache) {
                 cachedResponse = [URLCache cachedResponseForRequest:self.request];
             }
@@ -177,11 +130,9 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
                 self.cachedData = cachedResponse.data;
             }
         }
-        
         self.dataTask = [session dataTaskWithRequest:self.request];
         self.executing = YES;
     }
-
     if (self.dataTask) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunguarded-availability"
@@ -206,7 +157,6 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
         [self done];
         return;
     }
-
 #if SD_UIKIT
     Class UIApplicationClass = NSClassFromString(@"UIApplication");
     if(!UIApplicationClass || ![UIApplicationClass respondsToSelector:@selector(sharedApplication)]) {
@@ -219,69 +169,54 @@ typedef NSMutableDictionary<NSString *, id> SDCallbacksDictionary;
     }
 #endif
 }
-
 - (void)cancel {
     @synchronized (self) {
         [self cancelInternal];
     }
 }
-
 - (void)cancelInternal {
     if (self.isFinished) return;
     [super cancel];
-
     if (self.dataTask) {
         [self.dataTask cancel];
         __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:SDWebImageDownloadStopNotification object:weakSelf];
         });
-
-        // As we cancelled the task, its callback won't be called and thus won't
-        // maintain the isFinished and isExecuting flags.
         if (self.isExecuting) self.executing = NO;
         if (!self.isFinished) self.finished = YES;
     }
-
     [self reset];
 }
-
 - (void)done {
     self.finished = YES;
     self.executing = NO;
     [self reset];
 }
-
 - (void)reset {
     LOCK(self.callbacksLock);
     [self.callbackBlocks removeAllObjects];
     UNLOCK(self.callbacksLock);
     self.dataTask = nil;
-    
     if (self.ownedSession) {
         [self.ownedSession invalidateAndCancel];
         self.ownedSession = nil;
     }
 }
-
 - (void)setFinished:(BOOL)finished {
     [self willChangeValueForKey:@"isFinished"];
     _finished = finished;
     [self didChangeValueForKey:@"isFinished"];
 }
-
 - (void)setExecuting:(BOOL)executing {
     [self willChangeValueForKey:@"isExecuting"];
     _executing = executing;
     [self didChangeValueForKey:@"isExecuting"];
 }
-
 - (BOOL)isConcurrent {
     return YES;
 }
-
 #pragma mark NSURLSessionDataDelegate
-
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
@@ -293,47 +228,34 @@ didReceiveResponse:(NSURLResponse *)response
     self.response = response;
     NSInteger statusCode = [response respondsToSelector:@selector(statusCode)] ? ((NSHTTPURLResponse *)response).statusCode : 200;
     BOOL valid = statusCode < 400;
-    //'304 Not Modified' is an exceptional one. It should be treated as cancelled if no cache data
-    //URLSession current behavior will return 200 status code when the server respond 304 and URLCache hit. But this is not a standard behavior and we just add a check
     if (statusCode == 304 && !self.cachedData) {
         valid = NO;
     }
-    
     if (valid) {
         for (SDWebImageDownloaderProgressBlock progressBlock in [self callbacksForKey:kProgressCallbackKey]) {
             progressBlock(0, expected, self.request.URL);
         }
     } else {
-        // Status code invalid and marked as cancelled. Do not call `[self.dataTask cancel]` which may mass up URLSession life cycle
         disposition = NSURLSessionResponseCancel;
     }
-    
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:SDWebImageDownloadReceiveResponseNotification object:weakSelf];
     });
-    
     if (completionHandler) {
         completionHandler(disposition);
     }
 }
-
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     if (!self.imageData) {
         self.imageData = [[NSMutableData alloc] initWithCapacity:self.expectedSize];
     }
     [self.imageData appendData:data];
-
     if ((self.options & SDWebImageDownloaderProgressiveDownload) && self.expectedSize > 0) {
-        // Get the image data
         __block NSData *imageData = [self.imageData copy];
-        // Get the total bytes downloaded
         const NSInteger totalSize = imageData.length;
-        // Get the finish status
         BOOL finished = (totalSize >= self.expectedSize);
-        
         if (!self.progressiveCoder) {
-            // We need to create a new instance for progressive decoding to avoid conflicts
             for (id<SDWebImageCoder>coder in [SDWebImageCodersManager sharedInstance].coders) {
                 if ([coder conformsToProtocol:@protocol(SDWebImageProgressiveCoder)] &&
                     [((id<SDWebImageProgressiveCoder>)coder) canIncrementallyDecodeFromData:imageData]) {
@@ -342,8 +264,6 @@ didReceiveResponse:(NSURLResponse *)response
                 }
             }
         }
-        
-        // progressive decode the image in coder queue
         dispatch_async(self.coderQueue, ^{
             UIImage *image = [self.progressiveCoder incrementallyDecodedImageWithData:imageData finished:finished];
             if (image) {
@@ -352,37 +272,27 @@ didReceiveResponse:(NSURLResponse *)response
                 if (self.shouldDecompressImages) {
                     image = [[SDWebImageCodersManager sharedInstance] decompressedImageWithImage:image data:&imageData options:@{SDWebImageCoderScaleDownLargeImagesKey: @(NO)}];
                 }
-                
-                // We do not keep the progressive decoding image even when `finished`=YES. Because they are for view rendering but not take full function from downloader options. And some coders implementation may not keep consistent between progressive decoding and normal decoding.
-                
                 [self callCompletionBlocksWithImage:image imageData:nil error:nil finished:NO];
             }
         });
     }
-
     for (SDWebImageDownloaderProgressBlock progressBlock in [self callbacksForKey:kProgressCallbackKey]) {
         progressBlock(self.imageData.length, self.expectedSize, self.request.URL);
     }
 }
-
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
  willCacheResponse:(NSCachedURLResponse *)proposedResponse
  completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler {
-    
     NSCachedURLResponse *cachedResponse = proposedResponse;
-
     if (!(self.options & SDWebImageDownloaderUseNSURLCache)) {
-        // Prevents caching of responses
         cachedResponse = nil;
     }
     if (completionHandler) {
         completionHandler(cachedResponse);
     }
 }
-
 #pragma mark NSURLSessionTaskDelegate
-
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     @synchronized(self) {
         self.dataTask = nil;
@@ -394,34 +304,22 @@ didReceiveResponse:(NSURLResponse *)response
             }
         });
     }
-    
-    // make sure to call `[self done]` to mark operation as finished
     if (error) {
         [self callCompletionBlocksWithError:error];
         [self done];
     } else {
         if ([self callbacksForKey:kCompletedCallbackKey].count > 0) {
-            /**
-             *  If you specified to use `NSURLCache`, then the response you get here is what you need.
-             */
             __block NSData *imageData = [self.imageData copy];
             if (imageData) {
-                /**  if you specified to only use cached data via `SDWebImageDownloaderIgnoreCachedResponse`,
-                 *  then we should check if the cached data is equal to image data
-                 */
                 if (self.options & SDWebImageDownloaderIgnoreCachedResponse && [self.cachedData isEqualToData:imageData]) {
-                    // call completion block with nil
                     [self callCompletionBlocksWithImage:nil imageData:nil error:nil finished:YES];
                     [self done];
                 } else {
-                    // decode the image in coder queue
                     dispatch_async(self.coderQueue, ^{
                         UIImage *image = [[SDWebImageCodersManager sharedInstance] decodedImageWithData:imageData];
                         NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];
                         image = [self scaledImageForKey:key image:image];
-                        
                         BOOL shouldDecode = YES;
-                        // Do not force decoding animated GIFs and WebPs
                         if (image.images) {
                             shouldDecode = NO;
                         } else {
@@ -432,7 +330,6 @@ didReceiveResponse:(NSURLResponse *)response
                             }
 #endif
                         }
-                        
                         if (shouldDecode) {
                             if (self.shouldDecompressImages) {
                                 BOOL shouldScaleDown = self.options & SDWebImageDownloaderScaleDownLargeImages;
@@ -457,12 +354,9 @@ didReceiveResponse:(NSURLResponse *)response
         }
     }
 }
-
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
-    
     NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
     __block NSURLCredential *credential = nil;
-    
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         if (!(self.options & SDWebImageDownloaderAllowInvalidSSLCertificates)) {
             disposition = NSURLSessionAuthChallengePerformDefaultHandling;
@@ -482,25 +376,20 @@ didReceiveResponse:(NSURLResponse *)response
             disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
         }
     }
-    
     if (completionHandler) {
         completionHandler(disposition, credential);
     }
 }
-
 #pragma mark Helper methods
 - (nullable UIImage *)scaledImageForKey:(nullable NSString *)key image:(nullable UIImage *)image {
     return SDScaledImageForKey(key, image);
 }
-
 - (BOOL)shouldContinueWhenAppEntersBackground {
     return self.options & SDWebImageDownloaderContinueInBackground;
 }
-
 - (void)callCompletionBlocksWithError:(nullable NSError *)error {
     [self callCompletionBlocksWithImage:nil imageData:nil error:error finished:YES];
 }
-
 - (void)callCompletionBlocksWithImage:(nullable UIImage *)image
                             imageData:(nullable NSData *)imageData
                                 error:(nullable NSError *)error
@@ -512,5 +401,4 @@ didReceiveResponse:(NSURLResponse *)response
         }
     });
 }
-
 @end

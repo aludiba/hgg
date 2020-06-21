@@ -1,16 +1,6 @@
-//
-//  QMSettingModel.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/10/3.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMSettingModel.h"
 #import <YYModel.h>
-
 @implementation QMSettingModel
-
 + (NSDictionary<NSNumber *,NSArray<QMSettingModel *> *> *)buildSettingModels
 {
     NSMutableDictionary<NSNumber *, id> *settingModels = [NSMutableDictionary dictionary];
@@ -26,8 +16,6 @@
         settingModels[@(index)] = settingGroupModels;
         index++;
     }
-    
     return settingModels;
 }
-
 @end

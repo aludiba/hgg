@@ -1,19 +1,6 @@
-//
-//  ReactiveObjC.h
-//  ReactiveObjC
-//
-//  Created by Josh Abernathy on 3/5/12.
-//  Copyright (c) 2012 GitHub, Inc. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-
-//! Project version number for ReactiveObjC.
 FOUNDATION_EXPORT double ReactiveObjCVersionNumber;
-
-//! Project version string for ReactiveObjC.
 FOUNDATION_EXPORT const unsigned char ReactiveObjCVersionString[];
-
 #import <ReactiveObjC/RACEXTKeyPathCoding.h>
 #import <ReactiveObjC/RACEXTScope.h>
 #import <ReactiveObjC/NSArray+RACSequenceAdditions.h>
@@ -60,7 +47,6 @@ FOUNDATION_EXPORT const unsigned char ReactiveObjCVersionString[];
 #import <ReactiveObjC/RACTestScheduler.h>
 #import <ReactiveObjC/RACTuple.h>
 #import <ReactiveObjC/RACUnit.h>
-
 #if TARGET_OS_WATCH
 #elif TARGET_OS_IOS || TARGET_OS_TV
 	#import <ReactiveObjC/UIBarButtonItem+RACCommandSupport.h>
@@ -73,7 +59,6 @@ FOUNDATION_EXPORT const unsigned char ReactiveObjCVersionString[];
 	#import <ReactiveObjC/UITableViewHeaderFooterView+RACSignalSupport.h>
 	#import <ReactiveObjC/UITextField+RACSignalSupport.h>
 	#import <ReactiveObjC/UITextView+RACSignalSupport.h>
-
 	#if TARGET_OS_IOS
 		#import <ReactiveObjC/NSURLConnection+RACSupport.h>
 		#import <ReactiveObjC/UIStepper+RACSignalSupport.h>

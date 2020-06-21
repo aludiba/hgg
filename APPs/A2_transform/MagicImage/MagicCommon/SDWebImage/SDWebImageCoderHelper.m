@@ -1,28 +1,16 @@
-/*
- * This file is part of the SDWebImage package.
- * (c) Olivier Poitrey <rs@dailymotion.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 #import "SDWebImageCoderHelper.h"
 #import "SDWebImageFrame.h"
 #import "UIImage+MultiFormat.h"
 #import "NSImage+WebCache.h"
 #import <ImageIO/ImageIO.h>
 #import "SDAnimatedImageRep.h"
-
 @implementation SDWebImageCoderHelper
-
 + (UIImage *)animatedImageWithFrames:(NSArray<SDWebImageFrame *> *)frames {
     NSUInteger frameCount = frames.count;
     if (frameCount == 0) {
         return nil;
     }
-    
     UIImage *animatedImage;
-    
 #if SD_UIKIT || SD_WATCH
     NSUInteger durations[frameCount];
     for (size_t i = 0; i < frameCount; i++) {
@@ -45,20 +33,14 @@
             [animatedImages addObject:image];
         }
     }];
-    
     animatedImage = [UIImage animatedImageWithImages:animatedImages duration:totalDuration / 1000.f];
-    
 #else
-    
     NSMutableData *imageData = [NSMutableData data];
     CFStringRef imageUTType = [NSData sd_UTTypeFromSDImageFormat:SDImageFormatGIF];
-    // Create an image destination. GIF does not support EXIF image orientation
     CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData, imageUTType, frameCount, NULL);
     if (!imageDestination) {
-        // Handle failure.
         return nil;
     }
-    
     for (size_t i = 0; i < frameCount; i++) {
         @autoreleasepool {
             SDWebImageFrame *frame = frames[i];
@@ -68,9 +50,7 @@
             CGImageDestinationAddImage(imageDestination, frameImageRef, (__bridge CFDictionaryRef)frameProperties);
         }
     }
-    // Finalize the destination.
     if (CGImageDestinationFinalize(imageDestination) == NO) {
-        // Handle failure.
         CFRelease(imageDestination);
         return nil;
     }
@@ -79,35 +59,28 @@
     animatedImage = [[NSImage alloc] initWithSize:imageRep.size];
     [animatedImage addRepresentation:imageRep];
 #endif
-    
     return animatedImage;
 }
-
 + (NSArray<SDWebImageFrame *> *)framesFromAnimatedImage:(UIImage *)animatedImage {
     if (!animatedImage) {
         return nil;
     }
-    
     NSMutableArray<SDWebImageFrame *> *frames = [NSMutableArray array];
     NSUInteger frameCount = 0;
-    
 #if SD_UIKIT || SD_WATCH
     NSArray<UIImage *> *animatedImages = animatedImage.images;
     frameCount = animatedImages.count;
     if (frameCount == 0) {
         return nil;
     }
-    
     NSTimeInterval avgDuration = animatedImage.duration / frameCount;
     if (avgDuration == 0) {
-        avgDuration = 0.1; // if it's a animated image but no duration, set it to default 100ms (this do not have that 10ms limit like GIF or WebP to allow custom coder provide the limit)
+        avgDuration = 0.1; 
     }
-    
     __block NSUInteger index = 0;
     __block NSUInteger repeatCount = 1;
     __block UIImage *previousImage = animatedImages.firstObject;
     [animatedImages enumerateObjectsUsingBlock:^(UIImage * _Nonnull image, NSUInteger idx, BOOL * _Nonnull stop) {
-        // ignore first
         if (idx == 0) {
             return;
         }
@@ -120,15 +93,12 @@
             index++;
         }
         previousImage = image;
-        // last one
         if (idx == frameCount - 1) {
             SDWebImageFrame *frame = [SDWebImageFrame frameWithImage:previousImage duration:avgDuration * repeatCount];
             [frames addObject:frame];
         }
     }];
-    
 #else
-    
     NSBitmapImageRep *bitmapRep;
     for (NSImageRep *imageRep in animatedImage.representations) {
         if ([imageRep isKindOfClass:[NSBitmapImageRep class]]) {
@@ -139,14 +109,11 @@
     if (bitmapRep) {
         frameCount = [[bitmapRep valueForProperty:NSImageFrameCount] unsignedIntegerValue];
     }
-    
     if (frameCount == 0) {
         return nil;
     }
-    
     for (size_t i = 0; i < frameCount; i++) {
         @autoreleasepool {
-            // NSBitmapImageRep need to manually change frame. "Good taste" API
             [bitmapRep setProperty:NSImageCurrentFrame withValue:@(i)];
             float frameDuration = [[bitmapRep valueForProperty:NSImageCurrentFrameDuration] floatValue];
             NSImage *frameImage = [[NSImage alloc] initWithCGImage:bitmapRep.CGImage size:CGSizeZero];
@@ -155,14 +122,10 @@
         }
     }
 #endif
-    
     return frames;
 }
-
 #if SD_UIKIT || SD_WATCH
-// Convert an EXIF image orientation to an iOS one.
 + (UIImageOrientation)imageOrientationFromEXIFOrientation:(NSInteger)exifOrientation {
-    // CGImagePropertyOrientation is available on iOS 8 above. Currently kept for compatibility
     UIImageOrientation imageOrientation = UIImageOrientationUp;
     switch (exifOrientation) {
         case 1:
@@ -194,10 +157,7 @@
     }
     return imageOrientation;
 }
-
-// Convert an iOS orientation to an EXIF image orientation.
 + (NSInteger)exifOrientationFromImageOrientation:(UIImageOrientation)imageOrientation {
-    // CGImagePropertyOrientation is available on iOS 8 above. Currently kept for compatibility
     NSInteger exifOrientation = 1;
     switch (imageOrientation) {
         case UIImageOrientationUp:
@@ -230,7 +190,6 @@
     return exifOrientation;
 }
 #endif
-
 #pragma mark - Helper Fuction
 #if SD_UIKIT || SD_WATCH
 static NSUInteger gcd(NSUInteger a, NSUInteger b) {
@@ -242,7 +201,6 @@ static NSUInteger gcd(NSUInteger a, NSUInteger b) {
     }
     return b;
 }
-
 static NSUInteger gcdArray(size_t const count, NSUInteger const * const values) {
     if (count == 0) {
         return 0;
@@ -254,5 +212,4 @@ static NSUInteger gcdArray(size_t const count, NSUInteger const * const values) 
     return result;
 }
 #endif
-
 @end

@@ -1,20 +1,8 @@
-//
-//  RTImagePickerUnauthorizedView.m
-//  RTImagePicker
-//
-//  Created by 叔 陈 on 2/22/16.
-//  Copyright © 2016 叔 陈. All rights reserved.
-//
-
 #import "RTImagePickerUnauthorizedView.h"
 #import "UIView+Geometry.h"
-
 @interface RTImagePickerUnauthorizedView()
-
 @end
-
 @implementation RTImagePickerUnauthorizedView
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -25,9 +13,7 @@
         _permissionTitleLabel.textAlignment = NSTextAlignmentCenter;
         _permissionTitleLabel.numberOfLines = 0;
         _permissionTitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        
         [self addSubview:_permissionTitleLabel];
-        
         self.permissionButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0f, _permissionTitleLabel.bottom + 100.0f, self.width - 200.0f, 28.0f)];
         [_permissionButton setTitle:@"允许开启" forState:UIControlStateNormal];
         [_permissionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -39,7 +25,6 @@
     }
     return self;
 }
-
 - (void)permissionButtonPressed:(id)sender
 {
     if(self.onPermissionButton) {

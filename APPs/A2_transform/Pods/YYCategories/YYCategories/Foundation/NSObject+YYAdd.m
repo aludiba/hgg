@@ -1,29 +1,9 @@
-//
-//  NSObject+YYAdd.m
-//  YYCategories <https://github.com/ibireme/YYCategories>
-//
-//  Created by ibireme on 14/10/8.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
-
 #import "NSObject+YYAdd.h"
 #import "YYCategoriesMacro.h"
 #import <objc/objc.h>
 #import <objc/runtime.h>
-
 YYSYNTH_DUMMY_CLASS(NSObject_YYAdd)
-
-
 @implementation NSObject (YYAdd)
-
-/*
- NSInvocation is much slower than objc_msgSend()...
- Do not use it if you have performance issues.
- */
-
 #define INIT_INV(_last_arg_, _return_) \
 NSMethodSignature * sig = [self methodSignatureForSelector:sel]; \
 if (!sig) { [self doesNotRecognizeSelector:sel]; return _return_; } \
@@ -35,65 +15,55 @@ va_list args; \
 va_start(args, _last_arg_); \
 [NSObject setInv:inv withSig:sig andArgs:args]; \
 va_end(args);
-
 - (id)performSelectorWithArgs:(SEL)sel, ...{
     INIT_INV(sel, nil);
     [inv invoke];
     return [NSObject getReturnFromInv:inv withSig:sig];
 }
-
 - (void)performSelectorWithArgs:(SEL)sel afterDelay:(NSTimeInterval)delay, ...{
     INIT_INV(delay, );
     [inv retainArguments];
     [inv performSelector:@selector(invoke) withObject:nil afterDelay:delay];
 }
-
 - (id)performSelectorWithArgsOnMainThread:(SEL)sel waitUntilDone:(BOOL)wait, ...{
     INIT_INV(wait, nil);
     if (!wait) [inv retainArguments];
     [inv performSelectorOnMainThread:@selector(invoke) withObject:nil waitUntilDone:wait];
     return wait ? [NSObject getReturnFromInv:inv withSig:sig] : nil;
 }
-
 - (id)performSelectorWithArgs:(SEL)sel onThread:(NSThread *)thr waitUntilDone:(BOOL)wait, ...{
     INIT_INV(wait, nil);
     if (!wait) [inv retainArguments];
     [inv performSelector:@selector(invoke) onThread:thr withObject:nil waitUntilDone:wait];
     return wait ? [NSObject getReturnFromInv:inv withSig:sig] : nil;
 }
-
 - (void)performSelectorWithArgsInBackground:(SEL)sel, ...{
     INIT_INV(sel, );
     [inv retainArguments];
     [inv performSelectorInBackground:@selector(invoke) withObject:nil];
 }
-
 #undef INIT_INV
-
 + (id)getReturnFromInv:(NSInvocation *)inv withSig:(NSMethodSignature *)sig {
     NSUInteger length = [sig methodReturnLength];
     if (length == 0) return nil;
-    
     char *type = (char *)[sig methodReturnType];
-    while (*type == 'r' || // const
-           *type == 'n' || // in
-           *type == 'N' || // inout
-           *type == 'o' || // out
-           *type == 'O' || // bycopy
-           *type == 'R' || // byref
-           *type == 'V') { // oneway
-        type++; // cutoff useless prefix
+    while (*type == 'r' || 
+           *type == 'n' || 
+           *type == 'N' || 
+           *type == 'o' || 
+           *type == 'O' || 
+           *type == 'R' || 
+           *type == 'V') { 
+        type++; 
     }
-    
 #define return_with_number(_type_) \
 do { \
 _type_ ret; \
 [inv getReturnValue:&ret]; \
 return @(ret); \
 } while (0)
-    
     switch (*type) {
-        case 'v': return nil; // void
+        case 'v': return nil; 
         case 'B': return_with_number(bool);
         case 'c': return_with_number(char);
         case 'C': return_with_number(unsigned char);
@@ -107,25 +77,22 @@ return @(ret); \
         case 'Q': return_with_number(unsigned long long);
         case 'f': return_with_number(float);
         case 'd': return_with_number(double);
-        case 'D': { // long double
+        case 'D': { 
             long double ret;
             [inv getReturnValue:&ret];
             return [NSNumber numberWithDouble:ret];
         };
-            
-        case '@': { // id
+        case '@': { 
             id ret = nil;
             [inv getReturnValue:&ret];
             return ret;
         };
-            
-        case '#': { // Class
+        case '#': { 
             Class ret = nil;
             [inv getReturnValue:&ret];
             return ret;
         };
-            
-        default: { // struct / union / SEL / void* / unknown
+        default: { 
             const char *objCType = [sig methodReturnType];
             char *buf = calloc(1, length);
             if (!buf) return nil;
@@ -137,90 +104,79 @@ return @(ret); \
     }
 #undef return_with_number
 }
-
 + (void)setInv:(NSInvocation *)inv withSig:(NSMethodSignature *)sig andArgs:(va_list)args {
     NSUInteger count = [sig numberOfArguments];
     for (int index = 2; index < count; index++) {
         char *type = (char *)[sig getArgumentTypeAtIndex:index];
-        while (*type == 'r' || // const
-               *type == 'n' || // in
-               *type == 'N' || // inout
-               *type == 'o' || // out
-               *type == 'O' || // bycopy
-               *type == 'R' || // byref
-               *type == 'V') { // oneway
-            type++; // cutoff useless prefix
+        while (*type == 'r' || 
+               *type == 'n' || 
+               *type == 'N' || 
+               *type == 'o' || 
+               *type == 'O' || 
+               *type == 'R' || 
+               *type == 'V') { 
+            type++; 
         }
-        
         BOOL unsupportedType = NO;
         switch (*type) {
-            case 'v': // 1: void
-            case 'B': // 1: bool
-            case 'c': // 1: char / BOOL
-            case 'C': // 1: unsigned char
-            case 's': // 2: short
-            case 'S': // 2: unsigned short
-            case 'i': // 4: int / NSInteger(32bit)
-            case 'I': // 4: unsigned int / NSUInteger(32bit)
-            case 'l': // 4: long(32bit)
-            case 'L': // 4: unsigned long(32bit)
-            { // 'char' and 'short' will be promoted to 'int'.
+            case 'v': 
+            case 'B': 
+            case 'c': 
+            case 'C': 
+            case 's': 
+            case 'S': 
+            case 'i': 
+            case 'I': 
+            case 'l': 
+            case 'L': 
+            { 
                 int arg = va_arg(args, int);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case 'q': // 8: long long / long(64bit) / NSInteger(64bit)
-            case 'Q': // 8: unsigned long long / unsigned long(64bit) / NSUInteger(64bit)
+            case 'q': 
+            case 'Q': 
             {
                 long long arg = va_arg(args, long long);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case 'f': // 4: float / CGFloat(32bit)
-            { // 'float' will be promoted to 'double'.
+            case 'f': 
+            { 
                 double arg = va_arg(args, double);
                 float argf = arg;
                 [inv setArgument:&argf atIndex:index];
             } break;
-                
-            case 'd': // 8: double / CGFloat(64bit)
+            case 'd': 
             {
                 double arg = va_arg(args, double);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case 'D': // 16: long double
+            case 'D': 
             {
                 long double arg = va_arg(args, long double);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case '*': // char *
-            case '^': // pointer
+            case '*': 
+            case '^': 
             {
                 void *arg = va_arg(args, void *);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case ':': // SEL
+            case ':': 
             {
                 SEL arg = va_arg(args, SEL);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case '#': // Class
+            case '#': 
             {
                 Class arg = va_arg(args, Class);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case '@': // id
+            case '@': 
             {
                 id arg = va_arg(args, id);
                 [inv setArgument:&arg atIndex:index];
             } break;
-                
-            case '{': // struct
+            case '{': 
             {
                 if (strcmp(type, @encode(CGPoint)) == 0) {
                     CGPoint arg = va_arg(args, CGPoint);
@@ -253,29 +209,22 @@ return @(ret); \
                     unsupportedType = YES;
                 }
             } break;
-                
-            case '(': // union
+            case '(': 
             {
                 unsupportedType = YES;
             } break;
-                
-            case '[': // array
+            case '[': 
             {
                 unsupportedType = YES;
             } break;
-                
-            default: // what?!
+            default: 
             {
                 unsupportedType = YES;
             } break;
         }
-        
         if (unsupportedType) {
-            // Try with some dummy type...
-            
             NSUInteger size = 0;
             NSGetSizeAndAlignment(type, &size, NULL);
-            
 #define case_size(_size_) \
 else if (size <= 4 * _size_ ) { \
     struct dummy { char tmp[4 * _size_]; }; \
@@ -300,30 +249,22 @@ else if (size <= 4 * _size_ ) { \
             case_size(57) case_size(58) case_size(59) case_size(60)
             case_size(61) case_size(62) case_size(63) case_size(64)
             else {
-                /*
-                 Larger than 256 byte?! I don't want to deal with this stuff up...
-                 Ignore this argument.
-                 */
                 struct dummy {char tmp;};
                 for (int i = 0; i < size; i++) va_arg(args, struct dummy);
                 NSLog(@"YYCategories performSelectorWithArgs unsupported type:%s (%lu bytes)",
                       [sig getArgumentTypeAtIndex:index],(unsigned long)size);
             }
 #undef case_size
-
         }
     }
 }
-
 - (void)performSelector:(SEL)selector afterDelay:(NSTimeInterval)delay {
     [self performSelector:selector withObject:nil afterDelay:delay];
 }
-
 + (BOOL)swizzleInstanceMethod:(SEL)originalSel with:(SEL)newSel {
     Method originalMethod = class_getInstanceMethod(self, originalSel);
     Method newMethod = class_getInstanceMethod(self, newSel);
     if (!originalMethod || !newMethod) return NO;
-    
     class_addMethod(self,
                     originalSel,
                     class_getMethodImplementation(self, originalSel),
@@ -332,12 +273,10 @@ else if (size <= 4 * _size_ ) { \
                     newSel,
                     class_getMethodImplementation(self, newSel),
                     method_getTypeEncoding(newMethod));
-    
     method_exchangeImplementations(class_getInstanceMethod(self, originalSel),
                                    class_getInstanceMethod(self, newSel));
     return YES;
 }
-
 + (BOOL)swizzleClassMethod:(SEL)originalSel with:(SEL)newSel {
     Class class = object_getClass(self);
     Method originalMethod = class_getInstanceMethod(class, originalSel);
@@ -346,31 +285,24 @@ else if (size <= 4 * _size_ ) { \
     method_exchangeImplementations(originalMethod, newMethod);
     return YES;
 }
-
 - (void)setAssociateValue:(id)value withKey:(void *)key {
     objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
 - (void)setAssociateWeakValue:(id)value withKey:(void *)key {
     objc_setAssociatedObject(self, key, value, OBJC_ASSOCIATION_ASSIGN);
 }
-
 - (void)removeAssociatedValues {
     objc_removeAssociatedObjects(self);
 }
-
 - (id)getAssociatedValueForKey:(void *)key {
     return objc_getAssociatedObject(self, key);
 }
-
 + (NSString *)className {
     return NSStringFromClass(self);
 }
-
 - (NSString *)className {
     return [NSString stringWithUTF8String:class_getName([self class])];
 }
-
 - (id)deepCopy {
     id obj = nil;
     @try {
@@ -381,7 +313,6 @@ else if (size <= 4 * _size_ ) { \
     }
     return obj;
 }
-
 - (id)deepCopyWithArchiver:(Class)archiver unarchiver:(Class)unarchiver {
     id obj = nil;
     @try {
@@ -392,5 +323,4 @@ else if (size <= 4 * _size_ ) { \
     }
     return obj;
 }
-
 @end

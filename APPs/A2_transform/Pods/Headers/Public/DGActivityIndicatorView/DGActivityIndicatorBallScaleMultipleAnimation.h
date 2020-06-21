@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorBallScaleMultipleAnimation: DGActivityIndicatorAnimation
+@end

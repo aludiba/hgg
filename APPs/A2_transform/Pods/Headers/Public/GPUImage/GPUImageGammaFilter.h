@@ -1,1 +1,7 @@
-../../../GPUImage/framework/Source/GPUImageGammaFilter.h
+#import "GPUImageFilter.h"
+@interface GPUImageGammaFilter : GPUImageFilter
+{
+    GLint gammaUniform;
+}
+@property(readwrite, nonatomic) CGFloat gamma; 
+@end

@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorTriangleSkewSpinAnimation: DGActivityIndicatorAnimation
+@end

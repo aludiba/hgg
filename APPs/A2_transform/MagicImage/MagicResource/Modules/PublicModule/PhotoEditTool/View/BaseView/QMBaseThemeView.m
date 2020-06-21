@@ -1,22 +1,10 @@
-//
-//  QMFilterThemeBaseView.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/9/5.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMBaseThemeView.h"
 #import <Masonry.h>
-
 #define kQMBaseThemeCloseButtonTag      1
 #define kQMBaseThemeDoneButtonTag       2
-
 #define kFilterThemeViewDefaultHeight    180
 #define kSliderDefaultValue              0.6f
-
 @implementation QMBaseThemeView
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     float height = [UIScreen mainScreen].bounds.size.height;
@@ -30,7 +18,6 @@
     }
     return self;
 }
-
 - (void)buildContentView
 {
     float width = [UIScreen mainScreen].bounds.size.width;
@@ -38,10 +25,8 @@
     _contentView.backgroundColor = self.backgroundColor;
     [self addSubview:_contentView];
 }
-
 - (void)buildToolBar
 {
-    // topBar
     UIView *topBg = [[UIView alloc] initWithFrame:CGRectZero];
     topBg.backgroundColor = [UIColor colorWithRed:30/255.0f green:30/255.0f blue:30/255.0f alpha:1.0f];
     [self addSubview:topBg];
@@ -50,8 +35,6 @@
         make.width.mas_equalTo(self);
         make.top.left.mas_equalTo(0);
     }];
-    
-    // title
     UIView *slideView = [[UIView alloc] initWithFrame:CGRectZero];
     slideView.backgroundColor = [UIColor colorWithRed:8/255.0 green:157/255.0 blue:184/255.0 alpha:1.0];
     [self addSubview:slideView];
@@ -61,7 +44,6 @@
         make.top.mas_equalTo(40);
         make.centerX.mas_equalTo(0);
     }];
-    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor colorWithRed:8/255.0 green:157/255.0 blue:184/255.0 alpha:1.0];
@@ -73,7 +55,6 @@
         make.top.mas_equalTo(5);
         make.centerX.mas_equalTo(0);
     }];
-    
     UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectZero];
     [closeBtn setImage:[UIImage imageNamed:@"qmkit_bar_close_btn"] forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +65,6 @@
         make.left.mas_equalTo(15);
         make.top.mas_equalTo(5);
     }];
-    
     UIButton *okBtn = [[UIButton alloc] initWithFrame:CGRectZero];
     [okBtn setImage:[UIImage imageNamed:@"qmkit_bar_ok_btn"] forState:UIControlStateNormal];
     [okBtn addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -96,7 +76,6 @@
         make.top.mas_equalTo(5);
     }];
 }
-
 #pragma mark - Events
 - (void)buttonTapped:(UIButton *)sender
 {
@@ -117,7 +96,6 @@
             break;
     }
 }
-
 #pragma mark - PublicMethod
 - (void)show
 {
@@ -128,7 +106,6 @@
         self.frame = CGRectMake(0, height-kFilterThemeViewDefaultHeight, width, kFilterThemeViewDefaultHeight);
     } completion:NULL];
 }
-
 - (void)hide
 {
     [UIView animateWithDuration:0.4 animations:^{
@@ -139,10 +116,8 @@
         [self setHidden:YES];
     }];
 }
-
 - (void)setTitle:(NSString *)title
 {
     self.titleLabel.text = title;
 }
-
 @end

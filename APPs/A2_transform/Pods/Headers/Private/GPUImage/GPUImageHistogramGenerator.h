@@ -1,1 +1,6 @@
-../../../GPUImage/framework/Source/GPUImageHistogramGenerator.h
+#import "GPUImageFilter.h"
+@interface GPUImageHistogramGenerator : GPUImageFilter
+{
+    GLint backgroundColorUniform;
+}
+@end

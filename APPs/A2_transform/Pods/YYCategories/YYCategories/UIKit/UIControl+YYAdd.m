@@ -1,35 +1,15 @@
-//
-//  UIControl+YYAdd.m
-//  YYCategories <https://github.com/ibireme/YYCategories>
-//
-//  Created by ibireme on 13/4/5.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
-
 #import "UIControl+YYAdd.h"
 #import "YYCategoriesMacro.h"
 #import <objc/runtime.h>
-
 YYSYNTH_DUMMY_CLASS(UIControl_YYAdd)
-
-
 static const int block_key;
-
 @interface _YYUIControlBlockTarget : NSObject
-
 @property (nonatomic, copy) void (^block)(id sender);
 @property (nonatomic, assign) UIControlEvents events;
-
 - (id)initWithBlock:(void (^)(id sender))block events:(UIControlEvents)events;
 - (void)invoke:(id)sender;
-
 @end
-
 @implementation _YYUIControlBlockTarget
-
 - (id)initWithBlock:(void (^)(id sender))block events:(UIControlEvents)events {
     self = [super init];
     if (self) {
@@ -38,24 +18,17 @@ static const int block_key;
     }
     return self;
 }
-
 - (void)invoke:(id)sender {
     if (_block) _block(sender);
 }
-
 @end
-
-
-
 @implementation UIControl (YYAdd)
-
 - (void)removeAllTargets {
     [[self allTargets] enumerateObjectsUsingBlock: ^(id object, BOOL *stop) {
         [self removeTarget:object action:NULL forControlEvents:UIControlEventAllEvents];
     }];
     [[self _yy_allUIControlBlockTargets] removeAllObjects];
 }
-
 - (void)setTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents {
     if (!target || !action || !controlEvents) return;
     NSSet *targets = [self allTargets];
@@ -68,7 +41,6 @@ static const int block_key;
     }
     [self addTarget:target action:action forControlEvents:controlEvents];
 }
-
 - (void)addBlockForControlEvents:(UIControlEvents)controlEvents
                            block:(void (^)(id sender))block {
     if (!controlEvents) return;
@@ -78,16 +50,13 @@ static const int block_key;
     NSMutableArray *targets = [self _yy_allUIControlBlockTargets];
     [targets addObject:target];
 }
-
 - (void)setBlockForControlEvents:(UIControlEvents)controlEvents
                            block:(void (^)(id sender))block {
     [self removeAllBlocksForControlEvents:UIControlEventAllEvents];
     [self addBlockForControlEvents:controlEvents block:block];
 }
-
 - (void)removeAllBlocksForControlEvents:(UIControlEvents)controlEvents {
     if (!controlEvents) return;
-    
     NSMutableArray *targets = [self _yy_allUIControlBlockTargets];
     NSMutableArray *removes = [NSMutableArray array];
     for (_YYUIControlBlockTarget *target in targets) {
@@ -105,7 +74,6 @@ static const int block_key;
     }
     [targets removeObjectsInArray:removes];
 }
-
 - (NSMutableArray *)_yy_allUIControlBlockTargets {
     NSMutableArray *targets = objc_getAssociatedObject(self, &block_key);
     if (!targets) {
@@ -114,5 +82,4 @@ static const int block_key;
     }
     return targets;
 }
-
 @end

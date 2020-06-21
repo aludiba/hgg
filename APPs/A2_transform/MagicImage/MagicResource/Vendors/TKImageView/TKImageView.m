@@ -1,25 +1,14 @@
-//
-//  TKImageView.m
-//  TKImageDemo
-//
-//  Created by yinyu on 16/7/10.
-//  Copyright © 2016年 yinyu. All rights reserved.
-//
-
 #import "TKImageView.h"
 #import "UIImage+Rotate.h"
 #import "UIImage+SubImage.h"
-
 #define WIDTH(_view) CGRectGetWidth(_view.bounds)
 #define HEIGHT(_view) CGRectGetHeight(_view.bounds)
 #define MAXX(_view) CGRectGetMaxX(_view.frame)
 #define MAXY(_view) CGRectGetMaxY(_view.frame)
 #define MINX(_view) CGRectGetMinX(_view.frame)
 #define MINY(_view) CGRectGetMinY(_view.frame)
-
 #define MID_LINE_INTERACT_WIDTH 44
 #define MID_LINE_INTERACT_HEIGHT 44
-
 typedef NS_ENUM(NSInteger, TKCropAreaCornerPosition) {
     TKCropAreaCornerPositionTopLeft,
     TKCropAreaCornerPositionTopRight,
@@ -31,35 +20,25 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     TKMidLineTypeBottom,
     TKMidLineTypeLeft,
     TKMidLineTypeRight
-    
 };
-
 @interface UIImage(Handler)
-
 @end
-
 @implementation UIImage(Handler)
-//Fix image's rotation
 - (UIImage *)fixOrientation {
-    
     if (self.imageOrientation == UIImageOrientationUp)
         return self;
-    
     CGAffineTransform transform = CGAffineTransformIdentity;
-    
     switch (self.imageOrientation) {
         case UIImageOrientationDown:
         case UIImageOrientationDownMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
             transform = CGAffineTransformRotate(transform, M_PI);
             break;
-            
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformRotate(transform, M_PI_2);
             break;
-            
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
             transform = CGAffineTransformTranslate(transform, 0, self.size.height);
@@ -74,7 +53,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
             break;
-            
         case UIImageOrientationLeftMirrored:
         case UIImageOrientationRightMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.height, 0);
@@ -95,7 +73,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         case UIImageOrientationRightMirrored:
             CGContextDrawImage(ctx, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage);
             break;
-            
         default:
             CGContextDrawImage(ctx, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage);
             break;
@@ -105,22 +82,16 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     CGContextRelease(ctx);
     CGImageRelease(cgimg);
     return img;
-    
 }
 - (UIImage *)imageAtRect:(CGRect)rect
 {
-    
     UIImage *fixedImage = [self fixOrientation];
     CGImageRef imageRef = CGImageCreateWithImageInRect([fixedImage CGImage], rect);
     UIImage* subImage = [UIImage imageWithCGImage: imageRef];
     CGImageRelease(imageRef);
-    
     return subImage;
-    
 }
 @end
-
-
 @interface CornerView: UIView
 @property (assign, nonatomic) CGFloat lineWidth;
 @property (strong, nonatomic) UIColor *lineColor;
@@ -128,14 +99,10 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
 @property (assign, nonatomic) CornerView *relativeViewX;
 @property (assign, nonatomic) CornerView *relativeViewY;
 @property (strong, nonatomic) CAShapeLayer *cornerShapeLayer;
-
 - (void)updateSizeWithWidth: (CGFloat)width height: (CGFloat)height;
 @end
-
 @implementation CornerView
-
 - (instancetype)initWithFrame:(CGRect)frame lineColor: (UIColor *)lineColor lineWidth: (CGFloat)lineWidth {
-    
     self = [super initWithFrame: frame];
     if(self) {
         self.lineColor = lineColor;
@@ -144,19 +111,14 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     return self;
 }
 - (void)setCornerPosition:(TKCropAreaCornerPosition)cornerPosition {
-    
     _cornerPosition = cornerPosition;
     [self drawCornerLines];
-    
 }
 - (void)setLineWidth:(CGFloat)lineWidth {
-    
     _lineWidth = lineWidth;
     [self drawCornerLines];
-    
 }
 - (void)drawCornerLines {
-    
     if(_cornerShapeLayer && _cornerShapeLayer.superlayer) {
         [_cornerShapeLayer removeFromSuperlayer];
     }
@@ -164,7 +126,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _cornerShapeLayer.lineWidth = _lineWidth;
     _cornerShapeLayer.strokeColor = _lineColor.CGColor;
     _cornerShapeLayer.fillColor = [UIColor clearColor].CGColor;
-    
     UIBezierPath *cornerPath = [UIBezierPath bezierPath];
     CGFloat paddingX = _lineWidth / 2.0f;
     CGFloat paddingY = _lineWidth / 2.0f;
@@ -198,10 +159,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     }
     _cornerShapeLayer.path = cornerPath.CGPath;
     [self.layer addSublayer: _cornerShapeLayer];
-    
 }
 - (void)updateSizeWithWidth: (CGFloat)width height: (CGFloat)height {
-    
     switch (_cornerPosition) {
         case TKCropAreaCornerPositionTopLeft: {
             self.frame = CGRectMake(MINX(self), MINY(self), width, height);
@@ -223,16 +182,12 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
             break;
     }
     [self drawCornerLines];
-    
 }
 - (void)setLineColor:(UIColor *)lineColor {
-    
     _lineColor = lineColor;
     _cornerShapeLayer.strokeColor = lineColor.CGColor;
-    
 }
 @end
-
 @interface MidLineView : UIView
 @property (strong, nonatomic) CAShapeLayer *lineLayer;
 @property (assign, nonatomic) CGFloat lineWidth;
@@ -240,11 +195,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
 @property (strong, nonatomic) UIColor *lineColor;
 @property (assign, nonatomic) TKMidLineType type;
 @end
-
 @implementation MidLineView
-
 - (instancetype)initWithLineWidth: (CGFloat)lineWidth lineHeight: (CGFloat)lineHeight lineColor: (UIColor *)lineColor {
-    
     self = [super initWithFrame: CGRectMake(0, 0, MID_LINE_INTERACT_WIDTH, MID_LINE_INTERACT_HEIGHT)];
     if(self) {
         self.lineWidth = lineWidth;
@@ -252,34 +204,24 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         self.lineColor = lineColor;
     }
     return self;
-    
 }
 - (void)setType:(TKMidLineType)type {
-    
     _type = type;
     [self drawMidLine];
-    
 }
 - (void)setLineWidth:(CGFloat)lineWidth {
-    
     _lineWidth = lineWidth;
     [self drawMidLine];
-    
 }
 - (void)setLineColor:(UIColor *)lineColor {
-    
     _lineColor = lineColor;
     _lineLayer.strokeColor = lineColor.CGColor;
-    
 }
 - (void)setLineHeight:(CGFloat)lineHeight {
-    
     _lineHeight = lineHeight;
     _lineLayer.lineWidth = lineHeight;
-    
 }
 - (void)drawMidLine {
-    
     if(_lineLayer && _lineLayer.superlayer) {
         [_lineLayer removeFromSuperlayer];
     }
@@ -287,7 +229,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _lineLayer.strokeColor = _lineColor.CGColor;
     _lineLayer.lineWidth = _lineHeight;
     _lineLayer.fillColor = [UIColor clearColor].CGColor;
-    
     UIBezierPath *midLinePath = [UIBezierPath bezierPath];
     switch (_type) {
         case TKMidLineTypeTop:
@@ -307,10 +248,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     }
     _lineLayer.path = midLinePath.CGPath;
     [self.layer addSublayer: _lineLayer];
-    
 }
 @end
-
 @interface CropAreaView : UIView
 @property (strong, nonatomic) CAShapeLayer *crossLineLayer;
 @property (assign, nonatomic) CGFloat crossLineWidth;
@@ -320,11 +259,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
 @property (strong, nonatomic) CAShapeLayer *borderLayer;
 @property (assign, nonatomic) BOOL showCrossLines;
 @end
-
 @implementation CropAreaView
-
 - (instancetype)init {
-    
     self = [super init];
     if(self) {
         [self createBorderLayer];
@@ -332,25 +268,20 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     return self;
 }
 - (void)setFrame:(CGRect)frame {
-    
     [super setFrame: frame];
     if(_showCrossLines) {
         [self showCrossLineLayer];
     }
     [self resetBorderLayerPath];
-    
 }
 - (void)setBounds:(CGRect)bounds {
-    
     [super setBounds:bounds];
     if(_showCrossLines) {
         [self showCrossLineLayer];
     }
     [self resetBorderLayerPath];
-    
 }
 - (void)showCrossLineLayer {
-    
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(WIDTH(self) / 3.0, 0)];
     [path addLineToPoint: CGPointMake(WIDTH(self) / 3.0, HEIGHT(self))];
@@ -367,22 +298,16 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _crossLineLayer.lineWidth = _crossLineWidth;
     _crossLineLayer.strokeColor = _crossLineColor.CGColor;
     _crossLineLayer.path = path.CGPath;
-    
 }
 - (void)setCrossLineWidth:(CGFloat)crossLineWidth {
-    
     _crossLineWidth = crossLineWidth;
     _crossLineLayer.lineWidth = crossLineWidth;
-    
 }
 - (void)setCrossLineColor:(UIColor *)crossLineColor {
-    
     _crossLineColor = crossLineColor;
     _crossLineLayer.strokeColor = crossLineColor.CGColor;
-    
 }
 - (void)setShowCrossLines:(BOOL)showCrossLines {
-    
     if(_showCrossLines && !showCrossLines) {
         [_crossLineLayer removeFromSuperlayer];
         _crossLineLayer = nil;
@@ -391,39 +316,29 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         [self showCrossLineLayer];
     }
     _showCrossLines = showCrossLines;
-    
 }
 - (void)createBorderLayer {
-    
     if(_borderLayer && _borderLayer.superlayer) {
         [_borderLayer removeFromSuperlayer];
     }
     _borderLayer = [CAShapeLayer layer];
     [self.layer addSublayer: _borderLayer];
-    
 }
 - (void)resetBorderLayerPath {
-    
     UIBezierPath *layerPath = [UIBezierPath bezierPathWithRect: CGRectMake(_borderWidth / 2.0f, _borderWidth / 2.0f, WIDTH(self) - _borderWidth, HEIGHT(self) - _borderWidth)];
     _borderLayer.lineWidth = _borderWidth;
     _borderLayer.fillColor = nil;
     _borderLayer.path = layerPath.CGPath;
-    
 }
 - (void)setBorderWidth:(CGFloat)borderWidth {
-    
     _borderWidth = borderWidth;
     [self resetBorderLayerPath];
-    
 }
 - (void)setBorderColor:(UIColor *)borderColor {
-    
     _borderColor = borderColor;
     _borderLayer.strokeColor = borderColor.CGColor;
-    
 }
 - (UIView *) hitTest:(CGPoint) point withEvent:(UIEvent *)event {
-    
     for(UIView *subView in self.subviews) {
         if(CGRectContainsPoint(subView.frame, point)) {
             return subView;
@@ -433,11 +348,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         return self;
     }
     return nil;
-    
 }
 @end
-
-
 @interface TKImageView()
 {
     CGFloat currentMinSpace;
@@ -472,56 +384,43 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
 @property (assign, nonatomic) CGFloat imageAspectRatio;
 @property (assign, nonatomic, readonly) CGFloat cornerMargin;
 @end
-
 @implementation TKImageView
-
 - (instancetype)initWithFrame:(CGRect)frame {
-    
     self = [super initWithFrame: frame];
     if(self) {
         [self commonInit];
     }
     return self;
-    
 }
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    
     self = [super initWithCoder: aDecoder];
     if(self) {
         [self commonInit];
     }
     return self;
-    
 }
 - (void)commonInit {
-    
     [self setUp];
     [self createCorners];
     [self resetCropAreaOnCornersFrameChanged];
     [self bindPanGestures];
-    
 }
 - (void)dealloc {
-    
     [_cropAreaView removeObserver: self forKeyPath: @"frame"];
     [_cropAreaView removeObserver: self forKeyPath: @"center"];
     [_imageView removeObserver: self forKeyPath: @"frame"];
-    
 }
 - (void)setUp {
-    
     _rotation = 0;
     _imageView = [[UIImageView alloc]initWithFrame: self.bounds];
     _imageView.contentMode = UIViewContentModeScaleToFill;
     _imageView.userInteractionEnabled = YES;
     _imageAspectRatio = 0;
     [self addSubview: _imageView];
-    
     _cropMaskView = [[UIView alloc]initWithFrame: _imageView.bounds];
     _cropMaskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     _cropMaskView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_imageView addSubview: _cropMaskView];
-    
     UIColor *defaultColor = [UIColor colorWithWhite: 1 alpha: 0.8];
     _cropAreaBorderLineColor = defaultColor;
     _cropAreaCornerLineColor = [UIColor whiteColor];
@@ -537,7 +436,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _cropAreaMidLineWidth = 20;
     _cropAreaMidLineHeight = 4;
     _cropAreaMidLineColor = defaultColor;
-    
     _cropAreaView = [[CropAreaView alloc] init];
     _cropAreaView.borderWidth = _cropAreaBorderLineWidth;
     _cropAreaView.borderColor = _cropAreaBorderLineColor;
@@ -545,7 +443,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _cropAreaView.crossLineWidth = _cropAreaCrossLineWidth;
     _cropAreaView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_imageView addSubview: _cropAreaView];
-    
     [_cropAreaView addObserver: self
                     forKeyPath: @"frame"
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
@@ -558,27 +455,22 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
                     forKeyPath: @"frame"
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
                        context: NULL];
-    
 }
 #pragma mark - PanGesture Bind
 - (void)bindPanGestures {
-    
     _topLeftPan = [[UIPanGestureRecognizer alloc]initWithTarget: self action: @selector(handleCornerPan:)];
     _topRightPan = [[UIPanGestureRecognizer alloc]initWithTarget: self action: @selector(handleCornerPan:)];
     _bottomLeftPan = [[UIPanGestureRecognizer alloc]initWithTarget: self action: @selector(handleCornerPan:)];
     _bottomRightPan = [[UIPanGestureRecognizer alloc]initWithTarget: self action: @selector(handleCornerPan:)];
     _cropAreaPan = [[UIPanGestureRecognizer alloc]initWithTarget: self action: @selector(handleCropAreaPan:)];
-    
     [_topLeftCorner addGestureRecognizer: _topLeftPan];
     [_topRightCorner addGestureRecognizer: _topRightPan];
     [_bottomLeftCorner addGestureRecognizer: _bottomLeftPan];
     [_bottomRightCorner addGestureRecognizer: _bottomRightPan];
     [_cropAreaView addGestureRecognizer: _cropAreaPan];
-    
 }
 #pragma mark - PinchGesture CallBack
 - (void)handleCropAreaPinch: (UIPinchGestureRecognizer *)pinchGesture {
-    
     switch (pinchGesture.state) {
         case UIGestureRecognizerStateBegan: {
             _pinchOriSize = _cropAreaView.frame.size;
@@ -591,11 +483,9 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         default:
             break;
     }
-    
 }
 #pragma mark - PanGesture CallBack
 - (void)handleCropAreaPan: (UIPanGestureRecognizer *)panGesture {
-    
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan: {
             _cropAreaOriCenter = _cropAreaView.center;
@@ -615,10 +505,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         default:
             break;
     }
-    
 }
 - (void)handleMidPan: (UIPanGestureRecognizer *)panGesture {
-    
     MidLineView *midLineView = (MidLineView *)panGesture.view;
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan: {
@@ -667,10 +555,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         default:
             break;
     }
-    
 }
 - (void)handleCornerPan: (UIPanGestureRecognizer *)panGesture {
-    
     CornerView *panView = (CornerView *)panGesture.view;
     CornerView *relativeViewX = panView.relativeViewX;
     CornerView *relativeViewY = panView.relativeViewY;
@@ -690,11 +576,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     else if(panView == _bottomRightCorner) {
         approachAspectRatio = (WIDTH(_imageView) - MAXX(panView) + self.cornerMargin) /(HEIGHT(_imageView) - MAXY(panView) + self.cornerMargin);
     }
-    
     CGFloat spaceX = MIN(MAX((locationInImageView.x - relativeViewY.center.x) * xFactor + _cropAreaCornerWidth - self.cornerMargin * 2, currentMinSpace + _cropAreaCornerWidth * 2 - self.cornerMargin * 2), xFactor < 0 ? relativeViewY.center.x + _cropAreaCornerWidth / 2.0 - self.cornerMargin * 2 + self.cornerMargin * !_cornerBorderInImage : WIDTH(_imageView) - relativeViewY.center.x + _cropAreaCornerWidth / 2.0 - self.cornerMargin * 2 + self.cornerMargin * !_cornerBorderInImage);
-    
     CGFloat spaceY = MIN(MAX((locationInImageView.y - relativeViewX.center.y) * yFactor + _cropAreaCornerHeight - self.cornerMargin * 2, currentMinSpace + _cropAreaCornerHeight * 2 - self.cornerMargin * 2), yFactor < 0 ? relativeViewX.center.y + _cropAreaCornerHeight / 2.0 - self.cornerMargin * 2 + self.cornerMargin * !_cornerBorderInImage : HEIGHT(_imageView) - relativeViewX.center.y + _cropAreaCornerHeight / 2.0 - self.cornerMargin * 2 + self.cornerMargin * !_cornerBorderInImage);
-    
     if(_cropAspectRatio > 0) {
         if(_cropAspectRatio >= approachAspectRatio) {
             spaceY = MAX(spaceX / _cropAspectRatio, currentMinSpace + _cropAreaCornerHeight * 2 - self.cornerMargin * 2);
@@ -705,7 +588,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
             spaceY = spaceX / _cropAspectRatio;
         }
     }
-    
     CGFloat centerX = (spaceX - _cropAreaCornerWidth + self.cornerMargin * 2) * xFactor + relativeViewY.center.x;
     CGFloat centerY = (spaceY - _cropAreaCornerHeight + self.cornerMargin * 2) * yFactor + relativeViewX.center.y;
     panView.center = CGPointMake(centerX, centerY);
@@ -713,31 +595,22 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     relativeViewY.frame = CGRectMake(MINX(relativeViewY), MINY(panView), WIDTH(relativeViewY), HEIGHT(relativeViewY));
     [self resetCropAreaOnCornersFrameChanged];
     [self resetCropTransparentArea];
-    
 }
 #pragma mark - Position/Resize Corners&CropArea
 - (void)resetCornersOnCropAreaFrameChanged {
-    
     _topLeftCorner.frame = CGRectMake(MINX(_cropAreaView) - _cropAreaCornerLineWidth + _cropAreaBorderLineWidth, MINY(_cropAreaView) - _cropAreaCornerLineWidth + _cropAreaBorderLineWidth, _cropAreaCornerWidth, _cropAreaCornerHeight);
     _topRightCorner.frame = CGRectMake(MAXX(_cropAreaView) - _cropAreaCornerWidth + _cropAreaCornerLineWidth - _cropAreaBorderLineWidth, MINY(_cropAreaView) - _cropAreaCornerLineWidth + _cropAreaBorderLineWidth, _cropAreaCornerWidth, _cropAreaCornerHeight);
     _bottomLeftCorner.frame = CGRectMake(MINX(_cropAreaView) - _cropAreaCornerLineWidth + _cropAreaBorderLineWidth, MAXY(_cropAreaView) - _cropAreaCornerHeight + _cropAreaCornerLineWidth - _cropAreaBorderLineWidth, _cropAreaCornerWidth, _cropAreaCornerHeight);
     _bottomRightCorner.frame = CGRectMake(MAXX(_cropAreaView) - _cropAreaCornerWidth + _cropAreaCornerLineWidth - _cropAreaBorderLineWidth, MAXY(_cropAreaView) - _cropAreaCornerHeight + _cropAreaCornerLineWidth - _cropAreaBorderLineWidth, _cropAreaCornerWidth, _cropAreaCornerHeight);
-    
 }
-
 - (void)resetCropAreaOnCornersFrameChanged {
-    
     _cropAreaView.frame = CGRectMake(MINX(_topLeftCorner) + self.cornerMargin, MINY(_topLeftCorner) + self.cornerMargin, MAXX(_topRightCorner) - MINX(_topLeftCorner) - self.cornerMargin * 2, MAXY(_bottomLeftCorner) - MINY(_topLeftCorner) - self.cornerMargin * 2);
-    
 }
 - (void)resetMinSpaceIfNeeded {
-    
     CGFloat willMinSpace = MIN(WIDTH(_cropAreaView) - _cropAreaCornerWidth * 2 + self.cornerMargin * 2, HEIGHT(_cropAreaView) - _cropAreaCornerHeight * 2 + self.cornerMargin * 2);
     currentMinSpace = MIN(willMinSpace, _minSpace);
-    
 }
 - (void)resetCropTransparentArea {
-    
     UIBezierPath *path = [UIBezierPath bezierPathWithRect: _imageView.bounds];
     UIBezierPath *clearPath = [[UIBezierPath bezierPathWithRect: _cropAreaView.frame] bezierPathByReversingPath];
     [path appendPath: clearPath];
@@ -747,108 +620,80 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         [_cropMaskView.layer setMask: shapeLayer];
     }
     shapeLayer.path = path.CGPath;
-    
 }
 - (void)resetCornersOnSizeChanged {
-    
     [_topLeftCorner updateSizeWithWidth: _cropAreaCornerWidth height: _cropAreaCornerHeight];
     [_topRightCorner updateSizeWithWidth: _cropAreaCornerWidth height: _cropAreaCornerHeight];
     [_bottomLeftCorner updateSizeWithWidth: _cropAreaCornerWidth height: _cropAreaCornerHeight];
     [_bottomRightCorner updateSizeWithWidth: _cropAreaCornerWidth height: _cropAreaCornerHeight];
-    
 }
 - (void)createCorners {
     _topLeftCorner = [[CornerView alloc]initWithFrame: CGRectMake(0, 0, _cropAreaCornerWidth, _cropAreaCornerHeight) lineColor:_cropAreaCornerLineColor lineWidth: _cropAreaCornerLineWidth];
     _topLeftCorner.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
     _topLeftCorner.cornerPosition = TKCropAreaCornerPositionTopLeft;
-    
     _topRightCorner = [[CornerView alloc]initWithFrame: CGRectMake(WIDTH(_imageView) -  _cropAreaCornerWidth, 0, _cropAreaCornerWidth, _cropAreaCornerHeight) lineColor: _cropAreaCornerLineColor lineWidth: _cropAreaCornerLineWidth];
     _topRightCorner.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     _topRightCorner.cornerPosition = TKCropAreaCornerPositionTopRight;
-    
     _bottomLeftCorner = [[CornerView alloc]initWithFrame: CGRectMake(0, HEIGHT(_imageView) -  _cropAreaCornerHeight, _cropAreaCornerWidth, _cropAreaCornerHeight) lineColor: _cropAreaCornerLineColor lineWidth: _cropAreaCornerLineWidth];
     _bottomLeftCorner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     _bottomLeftCorner.cornerPosition = TKCropAreaCornerPositionBottomLeft;
-    
     _bottomRightCorner = [[CornerView alloc]initWithFrame: CGRectMake(WIDTH(_imageView) - _cropAreaCornerWidth, HEIGHT(_imageView) -  _cropAreaCornerHeight, _cropAreaCornerWidth, _cropAreaCornerHeight) lineColor: _cropAreaCornerLineColor lineWidth: _cropAreaCornerLineWidth];
     _bottomRightCorner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
     _bottomRightCorner.cornerPosition = TKCropAreaCornerPositionBottomRight;
-    
     _topLeftCorner.relativeViewX = _bottomLeftCorner;
     _topLeftCorner.relativeViewY = _topRightCorner;
-    
     _topRightCorner.relativeViewX = _bottomRightCorner;
     _topRightCorner.relativeViewY = _topLeftCorner;
-    
     _bottomLeftCorner.relativeViewX = _topLeftCorner;
     _bottomLeftCorner.relativeViewY = _bottomRightCorner;
-    
     _bottomRightCorner.relativeViewX = _topRightCorner;
     _bottomRightCorner.relativeViewY = _bottomLeftCorner;
-    
     [_imageView addSubview: _topLeftCorner];
     [_imageView addSubview: _topRightCorner];
     [_imageView addSubview: _bottomLeftCorner];
     [_imageView addSubview: _bottomRightCorner];
-    
 }
 - (void)createMidLines {
-    
     if(_topMidLine && _bottomMidLine && _leftMidLine && _rightMidLine) return;
     _topMidLine = [[MidLineView alloc]initWithLineWidth: _cropAreaMidLineWidth lineHeight: _cropAreaMidLineHeight lineColor: _cropAreaMidLineColor];
     _topMidLine.type = TKMidLineTypeTop;
-    
     _bottomMidLine = [[MidLineView alloc]initWithLineWidth: _cropAreaMidLineWidth lineHeight: _cropAreaMidLineHeight lineColor: _cropAreaMidLineColor];
     _bottomMidLine.type = TKMidLineTypeBottom;
-    
     _leftMidLine = [[MidLineView alloc]initWithLineWidth: _cropAreaMidLineWidth lineHeight: _cropAreaMidLineHeight lineColor: _cropAreaMidLineColor];
     _leftMidLine.type = TKMidLineTypeLeft;
-    
     _rightMidLine = [[MidLineView alloc]initWithLineWidth: _cropAreaMidLineWidth lineHeight: _cropAreaMidLineHeight lineColor: _cropAreaMidLineColor];
     _rightMidLine.type = TKMidLineTypeRight;
-    
     _topMidPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action: @selector(handleMidPan:)];
     [_topMidLine addGestureRecognizer: _topMidPan];
-    
     _bottomMidPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action: @selector(handleMidPan:)];
     [_bottomMidLine addGestureRecognizer: _bottomMidPan];
-    
     _leftMidPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action: @selector(handleMidPan:)];
     [_leftMidLine addGestureRecognizer: _leftMidPan];
-    
     _rightMidPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action: @selector(handleMidPan:)];
     [_rightMidLine addGestureRecognizer: _rightMidPan];
-    
     [_cropAreaView addSubview: _topMidLine];
     [_cropAreaView addSubview: _bottomMidLine];
     [_cropAreaView addSubview: _leftMidLine];
     [_cropAreaView addSubview: _rightMidLine];
-    
 }
 - (void)removeMidLines {
-    
     [_topMidLine removeFromSuperview];
     [_bottomMidLine removeFromSuperview];
     [_leftMidLine removeFromSuperview];
     [_rightMidLine removeFromSuperview];
-    
     _topMidLine = nil;
     _bottomMidLine = nil;
     _leftMidLine = nil;
     _rightMidLine = nil;
-    
 }
 - (void)resetMidLines {
-    
     CGFloat lineMargin = _cropAreaMidLineHeight / 2.0 - _cropAreaBorderLineWidth;
     _topMidLine.frame = CGRectMake((WIDTH(_cropAreaView) - MID_LINE_INTERACT_WIDTH) / 2.0, - MID_LINE_INTERACT_HEIGHT / 2.0 - lineMargin, MID_LINE_INTERACT_WIDTH, MID_LINE_INTERACT_HEIGHT);
     _bottomMidLine.frame = CGRectMake((WIDTH(_cropAreaView) - MID_LINE_INTERACT_WIDTH) / 2.0, HEIGHT(_cropAreaView) - MID_LINE_INTERACT_HEIGHT / 2.0 + lineMargin, MID_LINE_INTERACT_WIDTH, MID_LINE_INTERACT_HEIGHT);
     _leftMidLine.frame = CGRectMake(- MID_LINE_INTERACT_WIDTH / 2.0 - lineMargin, (HEIGHT(_cropAreaView) - MID_LINE_INTERACT_HEIGHT) / 2.0, MID_LINE_INTERACT_WIDTH, MID_LINE_INTERACT_HEIGHT);
     _rightMidLine.frame = CGRectMake(WIDTH(_cropAreaView) - MID_LINE_INTERACT_WIDTH / 2.0 + lineMargin, (HEIGHT(_cropAreaView) - MID_LINE_INTERACT_HEIGHT) / 2.0, MID_LINE_INTERACT_WIDTH, MID_LINE_INTERACT_HEIGHT);
-    
 }
 - (void)resetImageView {
-    
     CGFloat selfAspectRatio = WIDTH(self) / HEIGHT(self);
     if(_imageAspectRatio > selfAspectRatio) {
         _paddingLeftRight = 0;
@@ -860,10 +705,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         _paddingLeftRight = floor((WIDTH(self) - HEIGHT(self) * _imageAspectRatio) / 2.0);
         _imageView.frame = CGRectMake(_paddingLeftRight, 0, floor(HEIGHT(self) * _imageAspectRatio), HEIGHT(self));
     }
-    
 }
 - (void)resetCropAreaByAspectRatio {
-    
     if(_imageAspectRatio == 0) return;
     CGFloat tmpCornerMargin = self.cornerMargin * _cornerBorderInImage;
     CGFloat width, height;
@@ -892,7 +735,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     [self resetMinSpaceIfNeeded];
 }
 - (void)resetCropAreaByScaleFactor: (CGFloat)scaleFactor {
-    
     CGPoint center = _cropAreaView.center;
     CGFloat tmpCornerMargin = self.cornerMargin * _cornerBorderInImage;
     CGFloat width = _pinchOriSize.width * scaleFactor;
@@ -901,7 +743,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     CGFloat widthMin = currentMinSpace + _cropAreaCornerWidth * 2.0 - tmpCornerMargin * 2.0;
     CGFloat heightMax = MIN(HEIGHT(_imageView) - center.y - tmpCornerMargin, center.y - tmpCornerMargin) * 2;
     CGFloat heightMin = currentMinSpace + _cropAreaCornerWidth * 2.0 - tmpCornerMargin * 2;
-    
     BOOL isMinimum = NO;
     if(_cropAspectRatio > 1) {
         if(height <= heightMin) {
@@ -927,7 +768,6 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
                 height = MIN(height, HEIGHT(_imageView) - 2 * tmpCornerMargin);
                 center.y = center.y > HEIGHT(_imageView) / 2.0 ? HEIGHT(_imageView) - height / 2.0 - tmpCornerMargin : height / 2.0 + tmpCornerMargin;
             }
-            
         }
         else if(_imageAspectRatio > _cropAspectRatio) {
             if(height >= heightMax) {
@@ -953,42 +793,30 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _cropAreaView.bounds = CGRectMake(0, 0, width, height);
     _cropAreaView.center = center;
     [self resetCornersOnCropAreaFrameChanged];
-    
 }
 #pragma mark - Setter & Getters
 - (void)setInitialScaleFactor:(CGFloat)initialScaleFactor {
-    
     _initialScaleFactor = MIN(1.0f, initialScaleFactor);
-    
 }
 - (CGFloat)cornerMargin {
-    
     return _cropAreaCornerLineWidth - _cropAreaBorderLineWidth;
-    
 }
 - (void)setMaskColor:(UIColor *)maskColor {
-    
     _maskColor = maskColor;
     _cropMaskView.backgroundColor = maskColor;
-    
 }
 - (void)setMinSpace:(CGFloat)minSpace {
-    
     _minSpace = minSpace;
     currentMinSpace = minSpace;
-    
 }
 - (void)setToCropImage:(UIImage *)toCropImage {
-    
     _toCropImage = toCropImage;
     _imageAspectRatio = toCropImage.size.width / toCropImage.size.height;
     _imageView.image = toCropImage;
     [self resetImageView];
     [self resetCropAreaByAspectRatio];
-    
 }
 - (void)setNeedScaleCrop:(BOOL)needScaleCrop {
-    
     if(!_needScaleCrop && needScaleCrop) {
         _cropAreaPinch = [[UIPinchGestureRecognizer alloc]initWithTarget: self action:@selector(handleCropAreaPinch:)];
         [_cropAreaView addGestureRecognizer: _cropAreaPinch];
@@ -998,22 +826,16 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         _cropAreaPinch = nil;
     }
     _needScaleCrop = needScaleCrop;
-    
 }
 - (void)setCropAreaCrossLineWidth:(CGFloat)cropAreaCrossLineWidth {
-    
     _cropAreaCrossLineWidth = cropAreaCrossLineWidth;
     _cropAreaView.crossLineWidth = cropAreaCrossLineWidth;
-    
 }
 - (void)setCropAreaCrossLineColor:(UIColor *)cropAreaCrossLineColor {
-    
     _cropAreaCrossLineColor = cropAreaCrossLineColor;
     _cropAreaView.crossLineColor = cropAreaCrossLineColor;
-    
 }
 - (void)setCropAreaMidLineWidth:(CGFloat)cropAreaMidLineWidth {
-    
     _cropAreaMidLineWidth = cropAreaMidLineWidth;
     _topMidLine.lineWidth = cropAreaMidLineWidth;
     _bottomMidLine.lineWidth = cropAreaMidLineWidth;
@@ -1022,10 +844,8 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     if(_showMidLines) {
         [self resetMidLines];
     }
-    
 }
 - (void)setCropAreaMidLineHeight:(CGFloat)cropAreaMidLineHeight {
-    
     _cropAreaMidLineHeight = cropAreaMidLineHeight;
     _topMidLine.lineHeight = cropAreaMidLineHeight;
     _bottomMidLine.lineHeight = cropAreaMidLineHeight;
@@ -1034,69 +854,51 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     if(_showMidLines) {
         [self resetMidLines];
     }
-    
 }
 - (void)setCropAreaMidLineColor:(UIColor *)cropAreaMidLineColor {
-    
     _cropAreaMidLineColor = cropAreaMidLineColor;
     _topMidLine.lineColor = cropAreaMidLineColor;
     _bottomMidLine.lineColor = cropAreaMidLineColor;
     _leftMidLine.lineColor = cropAreaMidLineColor;
     _rightMidLine.lineColor = cropAreaMidLineColor;
-    
 }
 - (void)setCropAreaBorderLineWidth:(CGFloat)cropAreaBorderLineWidth {
-    
     _cropAreaBorderLineWidth = cropAreaBorderLineWidth;
     _cropAreaView.borderWidth = cropAreaBorderLineWidth;
     [self resetCropAreaOnCornersFrameChanged];
-    
 }
 - (void)setCropAreaBorderLineColor:(UIColor *)cropAreaBorderLineColor {
-    
     _cropAreaBorderLineColor = cropAreaBorderLineColor;
     _cropAreaView.borderColor = cropAreaBorderLineColor;
-    
 }
 - (void)setCropAreaCornerLineColor:(UIColor *)cropAreaCornerLineColor {
-    
     _cropAreaCrossLineColor = cropAreaCornerLineColor;
     _topLeftCorner.lineColor = cropAreaCornerLineColor;
     _topRightCorner.lineColor = cropAreaCornerLineColor;
     _bottomLeftCorner.lineColor = cropAreaCornerLineColor;
     _bottomRightCorner.lineColor = cropAreaCornerLineColor;
-    
 }
 - (void)setCropAreaCornerLineWidth:(CGFloat)cropAreaCornerLineWidth {
-    
     _cropAreaCornerLineWidth = cropAreaCornerLineWidth;
     _topLeftCorner.lineWidth = cropAreaCornerLineWidth;
     _topRightCorner.lineWidth = cropAreaCornerLineWidth;
     _bottomLeftCorner.lineWidth = cropAreaCornerLineWidth;
     _bottomRightCorner.lineWidth = cropAreaCornerLineWidth;
     [self resetCropAreaByAspectRatio];
-    
 }
 - (void)setCropAreaCornerWidth:(CGFloat)cropAreaCornerWidth {
-    
     _cropAreaCornerWidth = cropAreaCornerWidth;
     [self resetCornersOnSizeChanged];
-    
 }
 - (void)setCropAreaCornerHeight:(CGFloat)cropAreaCornerHeight {
-    
     _cropAreaCornerHeight = cropAreaCornerHeight;
     [self resetCornersOnSizeChanged];
-    
 }
 - (void)setCropAspectRatio:(CGFloat)cropAspectRatio {
-    
     _cropAspectRatio = MAX(cropAspectRatio, 0);
     [self resetCropAreaByAspectRatio];
-    
 }
 - (void)setShowMidLines:(BOOL)showMidLines {
-    
     if(_cropAspectRatio == 0) {
         if(!_showMidLines && showMidLines) {
             [self createMidLines];
@@ -1107,35 +909,25 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
         }
     }
     _showMidLines = showMidLines;
-    
 }
 - (void)setShowCrossLines:(BOOL)showCrossLines {
-    
     _showCrossLines = showCrossLines;
     _cropAreaView.showCrossLines = _showCrossLines;
-    
 }
 - (void)setCornerBorderInImage:(BOOL)cornerBorderInImage {
-    
     _cornerBorderInImage = cornerBorderInImage;
     [self resetCropAreaByAspectRatio];
-    
 }
 - (void)setFrame:(CGRect)frame {
-    
     [super setFrame: frame];
     [self resetImageView];
-    
 }
 - (void)setCenter:(CGPoint)center {
-    
     [super setCenter: center];
     [self resetImageView];
-    
 }
 #pragma mark - KVO CallBack
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    
     if([object isEqual: _cropAreaView]) {
         if(_showMidLines){
             [self resetMidLines];
@@ -1146,9 +938,7 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     if([object isEqual: _imageView]) {
         [self resetCropAreaByAspectRatio];
     }
-    
 }
-
 #pragma Instance Methods
 - (void)rotate
 {
@@ -1156,40 +946,30 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     _rotation = (_rotation >= 360 ? 0 : _rotation);
     self.transform = CGAffineTransformRotate(self.transform, M_PI_2);
 }
-
 - (void)show
 {
     self.rotation = 0;
     self.transform = CGAffineTransformIdentity;
     self.hidden = NO;
 }
-
 - (void)hide
 {
     self.hidden = YES;
 }
-
 - (UIImage *)currentCroppedImage
 {
-//    CGFloat scaleFactor = WIDTH(_imageView) / _toCropImage.size.width;
-//    return [_toCropImage imageAtRect: CGRectMake((MINX(_cropAreaView) + _cropAreaBorderLineWidth) / scaleFactor, (MINY(_cropAreaView) + _cropAreaBorderLineWidth) / scaleFactor, (WIDTH(_cropAreaView) - 2 * _cropAreaBorderLineWidth) / scaleFactor, (HEIGHT(_cropAreaView) - 2 * _cropAreaBorderLineWidth) / scaleFactor)];
-    
     __block UIImage *croppedImage = nil;
-    
     void (^block)(void) = ^{
         CGFloat scaleFactor = WIDTH(_imageView) / _toCropImage.size.width;
         int x = MINX(_cropAreaView) / scaleFactor + 0.5;
         int y = MINY(_cropAreaView) / scaleFactor + 0.5;
         int w = WIDTH(_cropAreaView) / scaleFactor + 0.5;
         int h = HEIGHT(_cropAreaView) / scaleFactor + 0.5;
-        
         croppedImage = [_toCropImage subImageWithRect:CGRectMake(x, y, w, h)];
-        
         if (self.rotation != 0) {
             croppedImage = [croppedImage imageRotatedByDegrees:self.rotation];
         }
     };
-    
     if ([NSThread isMainThread]) {
         block();
     }else {
@@ -1200,5 +980,3 @@ typedef NS_ENUM(NSInteger, TKMidLineType) {
     return croppedImage;
 }
 @end
-
-

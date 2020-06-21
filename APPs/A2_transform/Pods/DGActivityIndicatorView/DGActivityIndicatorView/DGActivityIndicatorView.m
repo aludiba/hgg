@@ -1,13 +1,4 @@
-//
-//  DGActivityIndicatorView.m
-//  DGActivityIndicatorExample
-//
-//  Created by Danil Gontovnik on 5/23/15.
-//  Copyright (c) 2015 Danil Gontovnik. All rights reserved.
-//
-
 #import "DGActivityIndicatorView.h"
-
 #import "DGActivityIndicatorNineDotsAnimation.h"
 #import "DGActivityIndicatorTriplePulseAnimation.h"
 #import "DGActivityIndicatorFiveDotsAnimation.h"
@@ -41,20 +32,14 @@
 #import "DGActivityIndicatorTripleRingsAnimation.h"
 #import "DGActivityIndicatorCookieTerminatorAnimation.h"
 #import "DGActivityIndicatorBallSpinFadeLoader.h"
-
 static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
-
 @interface DGActivityIndicatorView () {
     CALayer *_animationLayer;
 }
-
 @end
-
 @implementation DGActivityIndicatorView
-
 #pragma mark -
 #pragma mark Constructors
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -64,15 +49,12 @@ static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
     }
     return self;
 }
-
 - (id)initWithType:(DGActivityIndicatorAnimationType)type {
     return [self initWithType:type tintColor:[UIColor whiteColor] size:kDGActivityIndicatorDefaultSize];
 }
-
 - (id)initWithType:(DGActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor {
     return [self initWithType:type tintColor:tintColor size:kDGActivityIndicatorDefaultSize];
 }
-
 - (id)initWithType:(DGActivityIndicatorAnimationType)type tintColor:(UIColor *)tintColor size:(CGFloat)size {
     self = [super init];
     if (self) {
@@ -83,32 +65,24 @@ static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
     }
     return self;
 }
-
 #pragma mark -
 #pragma mark Methods
-
 - (void)commonInit {
     self.userInteractionEnabled = NO;
     self.hidden = YES;
-    
     _animationLayer = [[CALayer alloc] init];
     [self.layer addSublayer:_animationLayer];
-
     [self setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [self setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 }
-
 - (void)setupAnimation {
     _animationLayer.sublayers = nil;
-    
     id<DGActivityIndicatorAnimationProtocol> animation = [DGActivityIndicatorView activityIndicatorAnimationForAnimationType:_type];
-    
     if ([animation respondsToSelector:@selector(setupAnimationInLayer:withSize:tintColor:)]) {
         [animation setupAnimationInLayer:_animationLayer withSize:CGSizeMake(_size, _size) tintColor:_tintColor];
         _animationLayer.speed = 0.0f;
     }
 }
-
 - (void)startAnimating {
     if (!_animationLayer.sublayers) {
         [self setupAnimation];
@@ -117,41 +91,32 @@ static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
     _animationLayer.speed = 1.0f;
     _animating = YES;
 }
-
 - (void)stopAnimating {
     _animationLayer.speed = 0.0f;
     _animating = NO;
     self.hidden = YES;
 }
-
 #pragma mark -
 #pragma mark Setters
-
 - (void)setType:(DGActivityIndicatorAnimationType)type {
     if (_type != type) {
         _type = type;
-        
         [self setupAnimation];
     }
 }
-
 - (void)setSize:(CGFloat)size {
     if (_size != size) {
         _size = size;
-        
         [self setupAnimation];
         [self invalidateIntrinsicContentSize];
     }
 }
-
 - (void)setTintColor:(UIColor *)tintColor {
     if (![_tintColor isEqual:tintColor]) {
         _tintColor = tintColor;
-        
         CGColorRef tintColorRef = tintColor.CGColor;
         for (CALayer *sublayer in _animationLayer.sublayers) {
             sublayer.backgroundColor = tintColorRef;
-            
             if ([sublayer isKindOfClass:[CAShapeLayer class]]) {
                 CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
                 shapeLayer.strokeColor = tintColorRef;
@@ -160,10 +125,8 @@ static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
         }
     }
 }
-
 #pragma mark -
 #pragma mark Getters
-
 + (id<DGActivityIndicatorAnimationProtocol>)activityIndicatorAnimationForAnimationType:(DGActivityIndicatorAnimationType)type {
     switch (type) {
         case DGActivityIndicatorAnimationTypeNineDots:
@@ -235,28 +198,19 @@ static const CGFloat kDGActivityIndicatorDefaultSize = 40.0f;
     }
     return nil;
 }
-
 #pragma mark -
 #pragma mark Layout
-
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
     _animationLayer.frame = self.bounds;
-
     BOOL animating = _animating;
-
     if (animating)
         [self stopAnimating];
-
     [self setupAnimation];
-
     if (animating)
         [self startAnimating];
 }
-
 - (CGSize)intrinsicContentSize {
     return CGSizeMake(_size, _size);
 }
-
 @end

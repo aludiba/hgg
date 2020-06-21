@@ -1,24 +1,12 @@
-//
-//  SuspensionView.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/10/9.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMSuspensionView.h"
-
 #define kSuspensionCollectionViewCellID           @"SuspensionCollectionViewCellID"
 #define kSuspensionCollectionImageViewTag         123
 #define kCameraRatioSuspensionViewMargin          11
 #define kSuspensionIndicatorViewHeight            10
-
 @interface QMSuspensionView() <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end
-
 @implementation QMSuspensionView
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -27,7 +15,6 @@
     }
     return self;
 }
-
 - (UICollectionViewFlowLayout *)collectionViewForFlowLayout
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -36,12 +23,9 @@
     layout.minimumLineSpacing = 10;
     return layout;
 }
-
 - (void)buildCollectionView
 {
-    // collectionView
     UICollectionViewFlowLayout *layout = [self collectionViewForFlowLayout];
-    
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 0, self.frame.size.width-20,self.frame.size.height) collectionViewLayout:layout];
     collectionView.delegate = self;
     collectionView.dataSource = self;
@@ -53,13 +37,11 @@
     [self addSubview:collectionView];
     _collectionView = collectionView;
 }
-
 #pragma mark - PublicMethod
 - (void)reloadData
 {
     [_collectionView reloadData];
 }
-
 - (void)toggleBelowInView:(UIView *)view
 {
     if (!self.superview) {
@@ -68,13 +50,11 @@
         self.hidden = !self.hidden;
     }
 }
-
 - (void)showBelowInView:(UIView *)view
 {
     if (self.superview) {
         return;
     }
-    
     self.hidden = NO;
     CGFloat x = view.center.x;
     CGFloat y = view.frame.origin.y + view.frame.size.height + kCameraRatioSuspensionViewMargin;
@@ -82,12 +62,10 @@
     originRect.origin.y = y;
     self.frame = originRect;
     [view.superview addSubview:self];
-    
     UIView *indicatorView = [self indicatorViewWithPosition:CGPointMake(x, y)];
     [indicatorView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6f]];
     [self addSubview:indicatorView];
 }
-
 - (BOOL)hide
 {
     if (self.isHidden) {
@@ -97,14 +75,12 @@
         return YES;
     }
 }
-
 - (UIView *)indicatorViewWithPosition:(CGPoint)point
 {
     CGFloat x = point.x - self.frame.origin.x;
     UIView *indicator = [[UIView alloc] initWithFrame:CGRectMake(x-(kSuspensionIndicatorViewHeight+5)/2, -kSuspensionIndicatorViewHeight, kSuspensionIndicatorViewHeight+5, kSuspensionIndicatorViewHeight)];
     indicator.backgroundColor = [UIColor orangeColor];
     CGSize size = indicator.frame.size;
-    
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, size.width, size.height);
@@ -113,17 +89,13 @@
     CGPathCloseSubpath(path);
     [shapeLayer setPath:path];
     CFRelease(path);
-    
     indicator.layer.mask = shapeLayer;
-    
     return indicator;
 }
-
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return _suspensionModels.count;
 }
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kSuspensionCollectionViewCellID forIndexPath:indexPath];
@@ -140,7 +112,6 @@
     imageView.image = [UIImage imageNamed:model.icon];
     return cell;
 }
-
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -149,10 +120,7 @@
         _suspensionItemClickBlock(model);
     }
 }
-
 @end
-
-///////////// QMSuspensionModel //////////////
 @implementation QMSuspensionModel
 + (NSArray<QMSuspensionModel *> *)buildSuspensionModelsWithJson:(NSString *)jsonStr
 {
@@ -161,7 +129,6 @@
     if (!array) {
         return nil;
     }
-    
     NSMutableArray *cropsArr = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         QMSuspensionModel *model = [QMSuspensionModel yy_modelWithDictionary:dict];
@@ -171,7 +138,6 @@
     }
     return cropsArr;
 }
-
 + (NSArray<QMSuspensionModel *> *)buildSuspensionModelsWithConfig:(NSString *)path
 {
     NSData *jsonConfig = [NSData dataWithContentsOfFile:path];
@@ -179,7 +145,6 @@
     if (!array) {
         return nil;
     }
-    
     NSMutableArray *cropsArr = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         QMSuspensionModel *model = [QMSuspensionModel yy_modelWithDictionary:dict];
@@ -190,4 +155,3 @@
     return cropsArr;
 }
 @end
-

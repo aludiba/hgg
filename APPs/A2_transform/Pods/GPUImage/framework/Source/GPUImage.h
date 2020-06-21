@@ -1,6 +1,4 @@
 #import "GLProgram.h"
-
-// Base classes
 #import "GPUImageContext.h"
 #import "GPUImageOutput.h"
 #import "GPUImageView.h"
@@ -19,8 +17,6 @@
 #import "GPUImageBuffer.h"
 #import "GPUImageFramebuffer.h"
 #import "GPUImageFramebufferCache.h"
-
-// Filters
 #import "GPUImageFilter.h"
 #import "GPUImageTwoInputFilter.h"
 #import "GPUImagePixellateFilter.h"
@@ -161,4 +157,3 @@
 #import "GPUImageSingleComponentGaussianBlurFilter.h"
 #import "GPUImageThreeInputFilter.h"
 #import "GPUImageWeakPixelInclusionFilter.h"
-

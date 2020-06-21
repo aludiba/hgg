@@ -1,24 +1,12 @@
-//
-//  QMShakeButton.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/10/9.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMShakeButton.h"
 #import <ReactiveObjC.h>
-
 #define kShakeButtonAnimationDuration 0.08f
 #define kShakeButtonMaxScale          1.1f
 #define kShakeButtonMinScale          0.9f
-
 @interface QMShakeButton ()
 @property (nonatomic, assign, getter=isAnimationFinished) BOOL animationFinished;
 @end
-
 @implementation QMShakeButton
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -31,14 +19,12 @@
     }
     return self;
 }
-
 - (void)runShakeAnimation
 {
     if (![self isAnimationFinished]) {
         return;
     }
     self.animationFinished = NO;
-    
     [UIView animateWithDuration:kShakeButtonAnimationDuration animations:^{
         self.transform = CGAffineTransformMakeScale(kShakeButtonMaxScale, kShakeButtonMaxScale);
     } completion:^(BOOL finished) {
@@ -73,5 +59,4 @@
         }];
     }];
 }
-
 @end

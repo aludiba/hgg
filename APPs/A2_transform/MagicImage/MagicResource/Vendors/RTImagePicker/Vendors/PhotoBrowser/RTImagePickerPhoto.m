@@ -1,80 +1,53 @@
-//
-//  RTImagePickerPhoto.m
-//  RTImagePicker
-//
-//  Created by 叔 陈 on 2/23/16.
-//  Copyright © 2016 叔 陈. All rights reserved.
-//
-
-//#import "SDWebImageDecoder.h"
 #import "SDWebImageManager.h"
 #import "SDWebImageOperation.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RTImagePickerPhoto.h"
 #import "RTImagePickerPhotoBrowser.h"
-
 @interface RTImagePickerPhoto () {
-    
     BOOL _loadingInProgress;
     id <SDWebImageOperation> _webImageOperation;
     PHImageRequestID _assetRequestID;
-    
 }
-
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL *photoURL;
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic) CGSize assetTargetSize;
-
 - (void)imageLoadingComplete;
-
 @end
-
 @implementation RTImagePickerPhoto
-
-@synthesize underlyingImage = _underlyingImage; // synth property from protocol
-
+@synthesize underlyingImage = _underlyingImage; 
 #pragma mark - Class Methods
-
 + (RTImagePickerPhoto *)photoWithImage:(UIImage *)image {
     return [[RTImagePickerPhoto alloc] initWithImage:image];
 }
-
 + (RTImagePickerPhoto *)photoWithURL:(NSURL *)url {
     return [[RTImagePickerPhoto alloc] initWithURL:url];
 }
-
 + (RTImagePickerPhoto *)photoWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize {
     return [[RTImagePickerPhoto alloc] initWithAsset:asset targetSize:targetSize];
 }
-
 + (RTImagePickerPhoto *)videoWithURL:(NSURL *)url {
     return [[RTImagePickerPhoto alloc] initWithVideoURL:url];
 }
-
 #pragma mark - Init
-
 - (id)init {
     if ((self = [super init])) {
         self.emptyImage = YES;
     }
     return self;
 }
-
 - (id)initWithImage:(UIImage *)image {
     if ((self = [super init])) {
         self.image = image;
     }
     return self;
 }
-
 - (id)initWithURL:(NSURL *)url {
     if ((self = [super init])) {
         self.photoURL = url;
     }
     return self;
 }
-
 - (id)initWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize {
     if ((self = [super init])) {
         self.asset = asset;
@@ -83,7 +56,6 @@
     }
     return self;
 }
-
 - (id)initWithVideoURL:(NSURL *)url {
     if ((self = [super init])) {
         self.videoURL = url;
@@ -92,14 +64,11 @@
     }
     return self;
 }
-
 #pragma mark - Video
-
 - (void)setVideoURL:(NSURL *)videoURL {
     _videoURL = videoURL;
     self.isVideo = YES;
 }
-
 - (void)getVideoURL:(void (^)(NSURL *url))completion {
     if (_videoURL) {
         completion(_videoURL);
@@ -116,13 +85,10 @@
     }
     return completion(nil);
 }
-
 #pragma mark - MWPhoto Protocol Methods
-
 - (UIImage *)underlyingImage {
     return _underlyingImage;
 }
-
 - (void)loadUnderlyingImageAndNotify {
     NSAssert([[NSThread currentThread] isMainThread], @"This method must be called on the main thread.");
     if (_loadingInProgress) return;
@@ -142,51 +108,24 @@
     @finally {
     }
 }
-
-// Set the underlyingImage
 - (void)performLoadUnderlyingImageAndNotify {
-    
-    // Get underlying image
     if (_image) {
-        
-        // We have UIImage!
         self.underlyingImage = _image;
         [self imageLoadingComplete];
-        
     } else if (_photoURL) {
-        
-        // Check what type of url it is
         if ([[[_photoURL scheme] lowercaseString] isEqualToString:@"assets-library"]) {
-            
-            // Load from assets library
             [self _performLoadUnderlyingImageAndNotifyWithAssetsLibraryURL: _photoURL];
-            
         } else if ([_photoURL isFileReferenceURL]) {
-            
-            // Load from local file async
             [self _performLoadUnderlyingImageAndNotifyWithLocalFileURL: _photoURL];
-            
         } else {
-            
-            // Load async from web (using SDWebImage)
             [self _performLoadUnderlyingImageAndNotifyWithWebURL: _photoURL];
-            
         }
-        
     } else if (_asset) {
-        
-        // Load from photos asset
         [self _performLoadUnderlyingImageAndNotifyWithAsset: _asset targetSize:_assetTargetSize];
-        
     } else {
-        
-        // Image is empty
         [self imageLoadingComplete];
-        
     }
 }
-
-// Load from local file
 - (void)_performLoadUnderlyingImageAndNotifyWithWebURL:(NSURL *)url {
     @try {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -214,8 +153,6 @@
         [self imageLoadingComplete];
     }
 }
-
-// Load from local file
 - (void)_performLoadUnderlyingImageAndNotifyWithLocalFileURL:(NSURL *)url {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         @autoreleasepool {
@@ -230,8 +167,6 @@
         }
     });
 }
-
-// Load from asset library async
 - (void)_performLoadUnderlyingImageAndNotifyWithAssetsLibraryURL:(NSURL *)url {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         @autoreleasepool {
@@ -258,12 +193,8 @@
         }
     });
 }
-
-// Load from photos library
 - (void)_performLoadUnderlyingImageAndNotifyWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize {
-    
     PHImageManager *imageManager = [PHImageManager defaultManager];
-    
     PHImageRequestOptions *options = [PHImageRequestOptions new];
     options.networkAccessAllowed = YES;
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
@@ -275,35 +206,26 @@
                               self, @"photo", nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:RTImagePickerPhoto_PROGRESS_NOTIFICATION object:dict];
     };
-    
     _assetRequestID = [imageManager requestImageForAsset:asset targetSize:targetSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage *result, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.underlyingImage = result;
             [self imageLoadingComplete];
         });
     }];
-    
 }
-
-// Release if we can get it again from path or url
 - (void)unloadUnderlyingImage {
     _loadingInProgress = NO;
     self.underlyingImage = nil;
 }
-
 - (void)imageLoadingComplete {
     NSAssert([[NSThread currentThread] isMainThread], @"This method must be called on the main thread.");
-    // Complete so notify
     _loadingInProgress = NO;
-    // Notify on next run loop
     [self performSelector:@selector(postCompleteNotification) withObject:nil afterDelay:0];
 }
-
 - (void)postCompleteNotification {
     [[NSNotificationCenter defaultCenter] postNotificationName:RTImagePickerPhoto_LOADING_DID_END_NOTIFICATION
                                                         object:self];
 }
-
 - (void)cancelAnyLoading {
     if (_webImageOperation != nil) {
         [_webImageOperation cancel];

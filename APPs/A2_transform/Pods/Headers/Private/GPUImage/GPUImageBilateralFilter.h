@@ -1,1 +1,8 @@
-../../../GPUImage/framework/Source/GPUImageBilateralFilter.h
+#import "GPUImageGaussianBlurFilter.h"
+@interface GPUImageBilateralFilter : GPUImageGaussianBlurFilter
+{
+    CGFloat firstDistanceNormalizationFactorUniform;
+    CGFloat secondDistanceNormalizationFactorUniform;
+}
+@property(nonatomic, readwrite) CGFloat distanceNormalizationFactor;
+@end

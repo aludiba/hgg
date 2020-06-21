@@ -1,11 +1,3 @@
-//
-//  MITagsDetailVC.m
-//  MagicImage
-//
-//  Created by woqingke on 2019/5/2.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMITagsDetailVC.h"
 #import "BKMITagsModel.h"
 #import "BKMITagsDetailCell.h"
@@ -13,7 +5,6 @@
 @property (nonatomic, strong) UITableView *BKtableView;
 @property (nonatomic, strong) NSMutableArray *BKdataArray;
 @end
-
 @implementation BKMITagsDetailVC
 - (UITableView *)BKtableView{
     if (!_BKtableView) {
@@ -24,7 +15,6 @@
     }
     return _BKtableView;
 }
-
 - (NSMutableArray *)BKdataArray{
     if (!_BKdataArray) {
         _BKdataArray = @[].mutableCopy;
@@ -42,10 +32,7 @@
     .bottomSpaceToView(self.view, 0);
     [self BKloadTagDetail];
 }
-
 - (void)BKloadTagDetail{
-    
-    
     [MIHttpTool Post:TagsList parameters:@{@"parent_id":@(self.BKtagId),@"type":@"1"} success:^(id BKresponseObject) {
         if ([BKresponseObject[@"status"] integerValue] == 1) {
             for (NSDictionary *BKdict in BKresponseObject[@"data"]) {
@@ -55,18 +42,11 @@
         }
         [self.BKtableView reloadData];
     } failure:^(NSError *error) {
-        
     }];
-    
-    
 }
-
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.BKdataArray.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)BKtableView cellForRowAtIndexPath:(NSIndexPath *)BKindexPath{
     BKMITagsDetailCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!BKcell) {
@@ -78,7 +58,7 @@
         if (tag == 0) {
             [MBProgressHUD showTipMessageInWindow:@"Successful copy"];
             UIPasteboard *BKpasteboard = [UIPasteboard generalPasteboard];
-            BKpasteboard.string = BKmodel.BKcontent;
+            BKpasteboard.string = BKmodel.content;
         }else{
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"Instagram://"]];
         }

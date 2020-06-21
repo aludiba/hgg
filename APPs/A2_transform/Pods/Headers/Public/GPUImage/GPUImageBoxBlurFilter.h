@@ -1,1 +1,3 @@
-../../../GPUImage/framework/Source/GPUImageBoxBlurFilter.h
+#import "GPUImageGaussianBlurFilter.h"
+@interface GPUImageBoxBlurFilter : GPUImageGaussianBlurFilter
+@end

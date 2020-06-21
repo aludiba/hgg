@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSandglassAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorRotatingSandglassAnimation: DGActivityIndicatorAnimation
+@end

@@ -1,17 +1,6 @@
-//
-//  MBProgressHUD+JDragon.m
-//  JDragonHUD
-//
-//  Created by JDragon on 2017/1/17.
-//  Copyright © 2017年 JDragon. All rights reserved.
-//
-
 #import "MBProgressHUD+JDragon.h"
-
 @implementation MBProgressHUD (JDragon)
-
 + (MBProgressHUD*)createMBProgressHUDviewWithMessage:(NSString*)message withView:(UIView *)view{
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     if ([message isEqualToString:@"Loading....."]) {
         hud.backgroundColor = [UIColor colorWithRed:153 green:153 blue:153 alpha:0.6];
@@ -24,8 +13,6 @@
     hud.dimBackground = NO;
     return hud;
 }
-
-
 + (MBProgressHUD*)createMBProgressHUDviewWithMessage:(NSString*)message isWindiw:(BOOL)isWindow
 {
     UIView  *view = isWindow? (UIView*)[UIApplication sharedApplication].delegate.window:[self getCurrentUIVC].view;
@@ -42,7 +29,6 @@
     return hud;
 }
 #pragma mark-------------------- show Tip----------------------------
-
 + (void)showTipMessageInWindow:(NSString*)message
 {
     [self showTipMessage:message isWindow:true timer:1.5];
@@ -66,17 +52,13 @@
     [hud hide:YES afterDelay:aTimer];
 }
 #pragma mark-------------------- show Activity----------------------------
-
 + (void)showActivityMessageInWindow:(NSString*)message
 {
     [self showActivityMessage:message isWindow:true timer:0];
 }
 + (void)showActivityMessageInView:(UIView *)view withMessage:(NSString *)message{
-    //    [self showActivityMessage:message isWindow:false timer:0];
     [self showActivityMessage:message inview:view timer:0];
-    
 }
-
 + (void)showActivityMessageInView:(NSString*)message
 {
     [self showActivityMessage:message isWindow:false timer:0];
@@ -89,17 +71,13 @@
 {
     [self showActivityMessage:message isWindow:false timer:aTimer];
 }
-
 + (void)showActivityMessage:(NSString*)message inview:(UIView *)view timer:(int)aTimer{
-    
     MBProgressHUD *hud  =  [self createMBProgressHUDviewWithMessage:message withView:view];
     hud.mode = MBProgressHUDModeIndeterminate;
     if (aTimer>0) {
         [hud hide:YES afterDelay:aTimer];
     }
-    
 }
-
 + (void)showActivityMessage:(NSString*)message isWindow:(BOOL)isWindow timer:(int)aTimer
 {
     MBProgressHUD *hud  =  [self createMBProgressHUDviewWithMessage:message isWindiw:isWindow];
@@ -109,7 +87,6 @@
     }
 }
 #pragma mark-------------------- show Image----------------------------
-
 + (void)showSuccessMessage:(NSString *)Message
 {
     NSString *name =@"MBProgressHUD+JDragon.bundle/MBProgressHUD/MBHUD_Success";
@@ -133,7 +110,6 @@
 + (void)showCustomIconInWindow:(NSString *)iconName message:(NSString *)message
 {
     [self showCustomIcon:iconName message:message isWindow:true];
-    
 }
 + (void)showCustomIconInView:(NSString *)iconName message:(NSString *)message
 {
@@ -145,7 +121,6 @@
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
     hud.mode = MBProgressHUDModeCustomView;
     [hud hide:YES afterDelay:1];
-    
 }
 + (void)hideHUD
 {
@@ -153,7 +128,6 @@
     [self hideAllHUDsForView:winView animated:YES];
     [self hideAllHUDsForView:[self getCurrentUIVC].view animated:YES];
 }
-//获取当前屏幕显示的viewcontroller
 +(UIViewController *)getCurrentWindowVC
 {
     UIViewController *result = nil;
@@ -185,22 +159,16 @@
 +(UIViewController *)getCurrentUIVC
 {
     UIViewController  *superVC = [[self class]  getCurrentWindowVC ];
-    
     if ([superVC isKindOfClass:[UITabBarController class]]) {
-        
         UIViewController  *tabSelectVC = ((UITabBarController*)superVC).selectedViewController;
-        
         if ([tabSelectVC isKindOfClass:[UINavigationController class]]) {
-            
             return ((UINavigationController*)tabSelectVC).viewControllers.lastObject;
         }
         return tabSelectVC;
     }else
         if ([superVC isKindOfClass:[UINavigationController class]]) {
-            
             return ((UINavigationController*)superVC).viewControllers.lastObject;
         }
     return superVC;
 }
-
 @end

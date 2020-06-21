@@ -1,15 +1,5 @@
-//
-//  QMCropModel.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/9/5.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMCropModel.h"
-
 @implementation QMCropModel
-
 + (NSArray<QMCropModel *> *)buildCropModels
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"croper" ofType:@"geojson"];
@@ -18,7 +8,6 @@
     if (!array) {
         return nil;
     }
-    
     NSMutableArray *cropsArr = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         QMCropModel *model = [QMCropModel yy_modelWithDictionary:dict];
@@ -28,5 +17,4 @@
     }
     return cropsArr;
 }
-
 @end

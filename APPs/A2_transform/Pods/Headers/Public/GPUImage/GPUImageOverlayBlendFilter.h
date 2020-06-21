@@ -1,1 +1,3 @@
-../../../GPUImage/framework/Source/GPUImageOverlayBlendFilter.h
+#import "GPUImageTwoInputFilter.h"
+@interface GPUImageOverlayBlendFilter : GPUImageTwoInputFilter
+@end

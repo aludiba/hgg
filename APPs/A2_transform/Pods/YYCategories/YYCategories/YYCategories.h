@@ -1,16 +1,4 @@
-//
-//  YYCategories.h
-//  YYCategories <https://github.com/ibireme/YYCategories>
-//
-//  Created by ibireme on 13/3/29.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
-
 #import <UIKit/UIKit.h>
-
 #if __has_include(<YYCategories/YYCategories.h>)
 FOUNDATION_EXPORT double YYCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char YYCategoriesVersionString[];
@@ -78,4 +66,3 @@ FOUNDATION_EXPORT const unsigned char YYCategoriesVersionString[];
 #import "CALayer+YYAdd.h"
 #import "YYCGUtilities.h"
 #endif
-

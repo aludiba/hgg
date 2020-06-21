@@ -1,11 +1,3 @@
-//
-//  MITagsVC.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/5/1.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMITagsVC.h"
 #import "BKMITagsCell.h"
 #import "BKMITagsModel.h"
@@ -14,7 +6,6 @@
 @property (nonatomic, strong) UITableView *BKtableView;
 @property (nonatomic, strong) NSMutableArray *BKdataArray;
 @end
-
 @implementation BKMITagsVC
 - (UITableView *)BKtableView{
     if (!_BKtableView) {
@@ -25,7 +16,6 @@
     }
     return _BKtableView;
 }
-
 - (NSMutableArray *)BKdataArray{
     if (!_BKdataArray) {
         _BKdataArray = @[].mutableCopy;
@@ -57,15 +47,11 @@
         }
         [self.BKtableView reloadData];
     } failure:^(NSError *error) {
-        
     }];
 }
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.BKdataArray.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)BKtableView cellForRowAtIndexPath:(NSIndexPath *)BKindexPath{
     BKMITagsCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!BKcell) {
@@ -77,10 +63,9 @@
 - (void)tableView:(UITableView *)BKtableView didSelectRowAtIndexPath:(NSIndexPath *)BKindexPath{
     BKMITagsModel *BKmodel = self.BKdataArray[BKindexPath.row];
     BKMITagsDetailVC *BKdetailVC = [[BKMITagsDetailVC alloc] init];
-    BKdetailVC.BKtagId = BKmodel.BKid.integerValue;
-    BKdetailVC.title = BKmodel.BKtitle;
+    BKdetailVC.BKtagId = BKmodel.id.integerValue;
+    BKdetailVC.title = BKmodel.title;
     [self.navigationController pushViewController:BKdetailVC animated:YES];
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
@@ -94,7 +79,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [UIView new];
 }
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     return [UIView new];
 }

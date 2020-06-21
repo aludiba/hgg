@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorBallSpinFadeLoader : DGActivityIndicatorAnimation
+@end

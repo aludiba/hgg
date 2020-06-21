@@ -1,1 +1,3 @@
-../../../GPUImage/framework/Source/GPUImageXYDerivativeFilter.h
+#import "GPUImageSobelEdgeDetectionFilter.h"
+@interface GPUImageXYDerivativeFilter : GPUImageSobelEdgeDetectionFilter
+@end

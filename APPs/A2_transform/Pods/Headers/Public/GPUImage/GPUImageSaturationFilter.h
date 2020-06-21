@@ -1,1 +1,7 @@
-../../../GPUImage/framework/Source/GPUImageSaturationFilter.h
+#import "GPUImageFilter.h"
+@interface GPUImageSaturationFilter : GPUImageFilter
+{
+    GLint saturationUniform;
+}
+@property(readwrite, nonatomic) CGFloat saturation; 
+@end

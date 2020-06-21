@@ -1,15 +1,5 @@
-//
-//  QMFilterThemeViewCell.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/8/22.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMFilterThemeViewCell.h"
-
 @implementation QMFilterThemeViewCell
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -19,10 +9,8 @@
     self.maskView.hidden = YES;
     self.imageView.alpha = 0.8f;
 }
-
 - (void)setSelected:(BOOL)selected
 {
     self.maskView.hidden = !selected;
 }
-
 @end

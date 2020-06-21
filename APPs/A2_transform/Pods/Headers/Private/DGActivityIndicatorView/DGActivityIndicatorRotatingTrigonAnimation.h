@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingTrigonAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorRotatingTrigonAnimation: DGActivityIndicatorAnimation
+@end

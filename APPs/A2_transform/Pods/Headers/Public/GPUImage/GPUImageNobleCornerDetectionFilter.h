@@ -1,1 +1,3 @@
-../../../GPUImage/framework/Source/GPUImageNobleCornerDetectionFilter.h
+#import "GPUImageHarrisCornerDetectionFilter.h"
+@interface GPUImageNobleCornerDetectionFilter : GPUImageHarrisCornerDetectionFilter
+@end

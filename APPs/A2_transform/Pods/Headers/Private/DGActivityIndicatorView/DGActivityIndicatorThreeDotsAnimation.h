@@ -1,1 +1,3 @@
-../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.h
+#import "DGActivityIndicatorAnimation.h"
+@interface DGActivityIndicatorThreeDotsAnimation : DGActivityIndicatorAnimation
+@end

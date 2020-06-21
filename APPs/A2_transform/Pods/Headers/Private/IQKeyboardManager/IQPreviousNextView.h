@@ -1,1 +1,3 @@
-../../../IQKeyboardManager/IQKeyboardManager/IQToolbar/IQPreviousNextView.h
+#import <UIKit/UIView.h>
+@interface IQPreviousNextView : UIView
+@end

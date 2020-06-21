@@ -1,14 +1,7 @@
 #import <UIKit/UIKit.h>
-
-//! Project version number for GPUImageFramework.
 FOUNDATION_EXPORT double GPUImageFrameworkVersionNumber;
-
-//! Project version string for GPUImageFramework.
 FOUNDATION_EXPORT const unsigned char GPUImageFrameworkVersionString[];
-
 #import <GPUImage/GLProgram.h>
-
-// Base classes
 #import <GPUImage/GPUImageContext.h>
 #import <GPUImage/GPUImageOutput.h>
 #import <GPUImage/GPUImageView.h>
@@ -27,8 +20,6 @@ FOUNDATION_EXPORT const unsigned char GPUImageFrameworkVersionString[];
 #import <GPUImage/GPUImageBuffer.h>
 #import <GPUImage/GPUImageFramebuffer.h>
 #import <GPUImage/GPUImageFramebufferCache.h>
-
-// Filters
 #import <GPUImage/GPUImageFilter.h>
 #import <GPUImage/GPUImageTwoInputFilter.h>
 #import <GPUImage/GPUImagePixellateFilter.h>

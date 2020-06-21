@@ -1,1 +1,7 @@
-../../../GPUImage/framework/Source/GPUImageAmatorkaFilter.h
+#import "GPUImageFilterGroup.h"
+@class GPUImagePicture;
+@interface GPUImageAmatorkaFilter : GPUImageFilterGroup
+{
+    GPUImagePicture *lookupImageSource;
+}
+@end

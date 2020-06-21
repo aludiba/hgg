@@ -1,1 +1,5 @@
-../../../GPUImage/framework/Source/GPUImageColorInvertFilter.h
+#import "GPUImageFilter.h"
+@interface GPUImageColorInvertFilter : GPUImageFilter
+{
+}
+@end

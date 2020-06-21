@@ -1,1 +1,5 @@
-../../../GPUImage/framework/Source/GPUImageSketchFilter.h
+#import "GPUImageSobelEdgeDetectionFilter.h"
+@interface GPUImageSketchFilter : GPUImageSobelEdgeDetectionFilter
+{
+}
+@end

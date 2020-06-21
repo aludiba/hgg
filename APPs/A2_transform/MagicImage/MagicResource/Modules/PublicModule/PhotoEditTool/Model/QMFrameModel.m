@@ -1,16 +1,6 @@
-//
-//  QMFrameModel.m
-//  EnjoyCamera
-//
-//  Created by qinmin on 2017/9/19.
-//  Copyright © 2017年 qinmin. All rights reserved.
-//
-
 #import "QMFrameModel.h"
 #import <YYModel.h>
-
 @implementation QMFrameModel
-
 + (NSArray<QMFrameModel *> *)buildFrameModels
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"frame" ofType:@"geojson"];
@@ -19,7 +9,6 @@
     if (!array) {
         return nil;
     }
-    
     NSMutableArray *framesArr = [NSMutableArray array];
     for (NSDictionary *dict in array) {
         QMFrameModel *model = [QMFrameModel yy_modelWithDictionary:dict];
@@ -29,6 +18,4 @@
     }
     return framesArr;
 }
-
-
 @end

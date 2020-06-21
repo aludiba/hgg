@@ -1,23 +1,12 @@
-//
-//  MICoinsCell.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/5/1.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMICoinsCell.h"
 #import "BKMICoinsModel.h"
 @interface BKMICoinsCell ()
 @property (nonatomic, strong) UILabel * BKcoinsLabel;
 @property (nonatomic, strong) UILabel * BKnumberLabel;
 @end
-
 @implementation BKMICoinsCell
-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
         UIView * BKbgView = [[UIView alloc] init];
         BKbgView.layer.cornerRadius = 10;
         BKbgView.layer.masksToBounds = YES;
@@ -28,7 +17,6 @@
         .rightSpaceToView(self.contentView, 10)
         .topSpaceToView(self.contentView, 5)
         .bottomSpaceToView(self.contentView, 5);
-        
         UIImageView * BKimageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"yb"]];
         [BKbgView addSubview:BKimageView];
         BKimageView.sd_layout
@@ -36,7 +24,6 @@
         .centerYEqualToView(BKbgView)
         .heightIs(25)
         .widthIs(25);
-        
         self.BKcoinsLabel = [[UILabel alloc] init];
         self.BKcoinsLabel.font = [UIFont systemFontOfSize:14];
         self.BKcoinsLabel.textColor = [UIColor blackColor];
@@ -46,7 +33,6 @@
         .centerYEqualToView(BKimageView)
         .autoHeightRatio(0);
         [self.BKcoinsLabel setSingleLineAutoResizeWithMaxWidth:180];
-        
         self.BKnumberLabel = [[UILabel alloc] init];
         self.BKnumberLabel.textColor = [UIColor orangeColor];
         self.BKnumberLabel.font = [UIFont systemFontOfSize:14];
@@ -56,17 +42,12 @@
         .centerYEqualToView(BKbgView)
         .autoHeightRatio(0);
         [self.BKnumberLabel setSingleLineAutoResizeWithMaxWidth:180];
-        
-        
     }
     return self;
 }
-
 - (void)setBKmodel:(BKMICoinsModel *)BKmodel{
     BKmodel = BKmodel;
-    
-    self.BKnumberLabel.text = [NSString stringWithFormat:@"$%@",BKmodel.BKgoods_price];
-    self.BKcoinsLabel.text = [NSString stringWithFormat:@"X %ld",BKmodel.BKgoods_num];
+    self.BKnumberLabel.text = [NSString stringWithFormat:@"$%@",BKmodel.goods_price];
+    self.BKcoinsLabel.text = [NSString stringWithFormat:@"X %ld",BKmodel.goods_num];
 }
-
 @end

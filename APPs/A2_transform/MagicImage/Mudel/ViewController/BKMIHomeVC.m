@@ -1,16 +1,7 @@
-//
-//  MIHomeVC.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/4/29.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMIHomeVC.h"
 #import "BKMIHomeView.h"
 #import "QMBaseNavigationController.h"
 #import "QMCameraViewController.h"
-
 #import "BKMIHomeSectionOneCell.h"
 #import "BKMIHomeSectionTowCell.h"
 #import "SDCycleScrollView.h"
@@ -31,7 +22,6 @@
 @property (nonatomic, assign) NSInteger BKtype;
 @property (nonatomic, strong) NSMutableArray *BKbannaerArray;
 @end
-
 @implementation BKMIHomeVC
 - (UITableView *)BKtableView{
     if (!_BKtableView) {
@@ -49,43 +39,34 @@
     }
     return _BKdataArray;
 }
-
 - (NSMutableArray *)BKbannaerArray{
     if (!_BKbannaerArray) {
         _BKbannaerArray = @[].mutableCopy;
     }
     return _BKbannaerArray;
 }
-
-
 - (void)viewWillAppear:(BOOL)BKanimated{
     [super viewWillAppear:BKanimated];
     [self.navigationController setNavigationBarHidden:YES];
 }
-
 - (void)viewWillDisappear:(BOOL)BKanimated{
     [super viewWillDisappear:BKanimated];
     [self.navigationController setNavigationBarHidden:NO];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = RGB(242, 242, 242);
-    
     [self.view addSubview:self.BKtableView];
     self.BKtableView.sd_layout
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .topEqualToView(self.view).offset(-StatusBarHeight)
     .bottomEqualToView(self.view);
-     self.BKbannerImageArr = @[@"http://api.zhewo.top/static/pic/sticker/1/0.png",@"http://api.zhewo.top/static/pic/filter/Cult.png"];
-    
+     self.BKbannerImageArr = @[@"http://api.zhewo.top/static/pic/sticker/1/17.png",@"http://api.zhewo.top/static/pic/filter/Sweet/1.png"];
     [self BKloadData];
-    
     [self BKcreateHeaderView];
     [NotifiCenter addObserver:self selector:@selector(BKloadData) name:@"loginSuccess" object:nil];
     [NotifiCenter addObserver:self selector:@selector(BKloginOut) name:@"loginOut" object:nil];
-    
 }
 - (void)BKloginOut{
     [self BKloadData];
@@ -95,17 +76,14 @@
     BKbgView.backgroundColor = UIColor.whiteColor;
     [self.view addSubview:BKbgView];
     self.BKtableView.tableHeaderView = BKbgView;
-
     UIView *BKcolorView = [[UIView alloc] init];
     BKcolorView.backgroundColor = RGB(242, 242, 242);
     [BKbgView addSubview:BKcolorView];
-    
     BKcolorView.sd_layout
     .leftEqualToView(BKbgView)
     .rightEqualToView(BKbgView)
     .topEqualToView(BKbgView)
     .bottomSpaceToView(BKbgView, 5);
-    
     CGFloat BKh = 0;
     if (iphone_X || ScreenWidth == 414) {
         BKh = StatusBarHeight;
@@ -122,7 +100,6 @@
     .topSpaceToView(BKbgView, BKh)
     .autoHeightRatio(0);
     [BKcontentLabel setSingleLineAutoResizeWithMaxWidth:ScreenWidth];
-    
     UIButton *BKshopBtn = [[UIButton alloc] init];
     [BKshopBtn setTitle:@"SHOP" forState:UIControlStateNormal];
     [BKshopBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
@@ -135,14 +112,12 @@
     BKshopBtn.layer.cornerRadius = 4;
     BKshopBtn.layer.masksToBounds = YES;
     [BKshopBtn addTarget:self action:@selector(BKshopBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
     [BKbgView addSubview:BKshopBtn];
     BKshopBtn.sd_layout
     .rightSpaceToView(BKbgView, 15)
     .centerYEqualToView(BKcontentLabel)
     .widthIs(50)
     .heightIs(25);
-    
     _BKbannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 55, ScreenWidth, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     _BKbannerView.backgroundColor = UIColor.clearColor;
     _BKbannerView.localizationImageNamesGroup = self.BKbannerImageArr;
@@ -152,9 +127,7 @@
     .rightEqualToView(BKbgView)
     .bottomSpaceToView(BKbgView, 10)
     .heightIs(ScreenHeight/2-150);
-
 }
-
 - (void)BKloadData{
     NSDictionary *BKdict;
     if (UserId) {
@@ -162,40 +135,33 @@
     }else{
         BKdict = @{@"type":@(1),@"is_hot":@(1)};
     }
-    
-    [MIHttpTool Post:PicList parameters:BKdict success:^(id responseObject) {
-        if ([responseObject[@"status"] integerValue] == 1) {
+    [MIHttpTool Post:PicList parameters:BKdict success:^(id BKresponseObject) {
+        NSLog(@"BKresponseObject:%@",BKresponseObject);
+        if ([BKresponseObject[@"status"] integerValue] == 1) {
             [self.BKdataArray removeAllObjects];
-            for (NSDictionary *BKdict in responseObject[@"data"]) {
+            for (NSDictionary *BKdict in BKresponseObject[@"data"]) {
                 BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];
                 [self.BKdataArray addObject:BKmodel];
             }
         }
-        
         [self.BKtableView reloadData];
     } failure:^(NSError *error) {
         MyLog(@"%@",error);
     }];
 }
-
-
-
 - (void)BKshopBtnClicked:(UIButton *)sender{
     BKMIBaseTypeVC *BKbaseType = [[BKMIBaseTypeVC alloc] init];
     [self.navigationController pushViewController:BKbaseType animated:YES];
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
     }
     return self.BKdataArray.count;
 }
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)BKtableView cellForRowAtIndexPath:(NSIndexPath *)BKindexPath{
     if (BKindexPath.section == 0) {
         BKMIHomeSectionOneCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"BKcell"];
@@ -238,10 +204,8 @@
                 default:
                     break;
             }
-            
         };
         return BKcell;
-        
     }else{
         BKMIHomeSectionTowCell *BKcell = [BKtableView dequeueReusableCellWithIdentifier:@"cell1"];
         if (!BKcell) {
@@ -252,36 +216,29 @@
         return BKcell;
     }
 }
-
 - (void)tableView:(UITableView *)BKtableView didSelectRowAtIndexPath:(NSIndexPath *)BKindexPath{
     BKMIHomeModel *BKmodel = self.BKdataArray[BKindexPath.row];
     BKMIStickerDetailVC *BKdetailVC = [[BKMIStickerDetailVC alloc] init];
     BKdetailVC.BKmodel = BKmodel;
-    BKdetailVC.BKpId = BKmodel.BKid;
+    BKdetailVC.BKpId = BKmodel.id;
     [self.navigationController pushViewController:BKdetailVC animated:YES];
 }
-
 - (void)BKcanUsePhoto{
     PHAuthorizationStatus BKstatus = [PHPhotoLibrary authorizationStatus];
-    if (BKstatus == PHAuthorizationStatusRestricted) { // 此应用程序没有被授权访问的照片数据。可能是家长控制权限。
+    if (BKstatus == PHAuthorizationStatusRestricted) { 
         NSLog(@"因为系统原因, 无法访问相册");
-        
-    } else if (BKstatus == PHAuthorizationStatusDenied) { // 用户拒绝访问相册
+    } else if (BKstatus == PHAuthorizationStatusDenied) { 
         UIAlertView *BKalertView = [[UIAlertView alloc] initWithTitle:@"Caveat" message:@"Please go to -> [Settings - Privacy - Camera - Project Name] Open the access switch" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Setting", nil];
         [BKalertView show];
-        
-    } else if (BKstatus == PHAuthorizationStatusAuthorized) { // 用户允许访问相册
-        // 放一些使用相册的代码
+    } else if (BKstatus == PHAuthorizationStatusAuthorized) { 
         UIImagePickerController *BKvc = [[UIImagePickerController alloc] init];
         BKvc.delegate = self;
         BKvc.allowsEditing = YES;
         BKvc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:BKvc animated:YES completion:nil];
-    } else if (BKstatus == PHAuthorizationStatusNotDetermined) { // 用户还没有做出选择
-        // 弹框请求用户授权
+    } else if (BKstatus == PHAuthorizationStatusNotDetermined) { 
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus BKstatus) {
-            if (BKstatus == PHAuthorizationStatusAuthorized) { // 用户点击了好
-                // 放一些使用相册的代码
+            if (BKstatus == PHAuthorizationStatusAuthorized) { 
                 UIImagePickerController *BKvc = [[UIImagePickerController alloc] init];
                 BKvc.delegate = self;
                 BKvc.allowsEditing = YES;
@@ -294,7 +251,6 @@
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)BKalertView clickedButtonAtIndex:(NSInteger)BKbuttonIndex{
     if (BKbuttonIndex == 1) {
-        // 系统是否大于10
         NSURL *BKurl = nil;
         BKurl = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         [[UIApplication sharedApplication] openURL:BKurl];
@@ -305,40 +261,24 @@
 }
 -(void)imagePickerController:(UIImagePickerController *)BKpicker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)BKinfo{
     NSURL *BKurl = [BKinfo objectForKey:UIImagePickerControllerReferenceURL];
-    //导入 #import <AssetsLibrary/AssetsLibrary.h> 库
-    //创建 ALAssetsLibrary 对象
     ALAssetsLibrary *BKlibrary = [[ALAssetsLibrary alloc]init];
     [BKlibrary assetForURL:BKurl resultBlock:^(ALAsset *BKasset){
-        //获取图片
         UIImage *BKimage = BKinfo[UIImagePickerControllerOriginalImage];
-        //获取照片名称
         QMPhotoEffectViewController *BKcmVC = [[QMPhotoEffectViewController alloc] initWithImage:BKimage];
         BKcmVC.type = self.BKtype;
-//        QMBaseNavigationController * navi = [[QMBaseNavigationController alloc] initWithRootViewController:cmVC];
         [self presentViewController:BKcmVC animated:YES completion:nil];
-        
     }failureBlock:^(NSError *error){
-        
-        //        [NSObject alertShowWithSingleTipWithtarget:self title:@"获取相册失败" makeSureClick:nil];
-        
     }];
     [BKpicker dismissViewControllerAnimated:YES completion:nil];
-    
 }
-
-
 - (CGFloat)tableView:(UITableView *)BKtableView heightForRowAtIndexPath:(NSIndexPath *)BKindexPath{
     if (BKindexPath.section == 0) {
         return (ScreenWidth - 20)*3/5 + 80;
     }
     return ScreenHeight/2-110;
-    
 }
-
 - (UIView *)tableView:(UITableView *)BKtableView viewForHeaderInSection:(NSInteger)BKsection{
-    
     NSArray *BKtitleArray = @[@"TOOLS",@"STICKER"];
-    
     UIView *BKview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
     BKview.backgroundColor = RGB(242, 242, 242);
     UILabel *BKtitileLabel = [[UILabel alloc] init];
@@ -353,14 +293,12 @@
     [BKtitileLabel setSingleLineAutoResizeWithMaxWidth:180];
     if (BKsection == 1) {
         UIImageView *BKimageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PEArrow"]];
-        //    imageView.backgroundColor = UIColor.redColor;
         [BKview addSubview:BKimageView];
         BKimageView.sd_layout
         .rightSpaceToView(BKview, 10)
         .centerYEqualToView(BKview)
         .heightIs(15)
         .widthIs(15);
-        
         UIButton *BKsender = [[UIButton alloc] init];
         BKsender.tag = 150 + BKsection;
         BKsender.titleLabel.textAlignment = NSTextAlignmentRight;
@@ -388,12 +326,9 @@
 - (CGFloat)tableView:(UITableView *)BKtableView heightForHeaderInSection:(NSInteger)BKsection{
     return 30;
 }
-
 - (CGFloat)tableView:(UITableView *)BKtableView heightForFooterInSection:(NSInteger)BKsection{
     return 10;
 }
-
-
 - (Class)customCollectionViewCellClassForCycleScrollView:(SDCycleScrollView *)BKview{
     return [BKMIHomeHeaderView class];
 }
@@ -401,13 +336,12 @@
     BKMIHomeHeaderView *BKhomeCell = (BKMIHomeHeaderView*)BKcell;
     [BKhomeCell.BKpicImageView sd_setImageWithURL:[NSURL URLWithString:self.BKbannerImageArr[BKindex]]];
 }
-
 - (void)cycleScrollView:(SDCycleScrollView *)BKcycleScrollView didSelectItemAtIndex:(NSInteger)BKindex{
     if (BKindex == 0) {
         BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
         BKstickerVC.BKpId = @"3";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
-    }else if (index == 1){
+    }else if (BKindex == 1){
         BKMIFilterDetailVC *BKfilterVC = [[BKMIFilterDetailVC alloc] init];
         BKfilterVC.BKpid = @"21";
         [self.navigationController pushViewController:BKfilterVC animated:YES];
@@ -416,7 +350,5 @@
         BKstickerVC.BKpId = @"7";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }
-    
 }
-
 @end

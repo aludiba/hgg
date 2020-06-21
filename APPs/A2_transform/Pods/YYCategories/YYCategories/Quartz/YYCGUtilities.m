@@ -1,24 +1,10 @@
-//
-//  YYCGUtilities.m
-//  YYCategories <https://github.com/ibireme/YYCategories>
-//
-//  Created by ibireme on 15/2/28.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
-
 #import "YYCGUtilities.h"
 #import <Accelerate/Accelerate.h>
 #import "UIView+YYAdd.h"
-
 CGContextRef YYCGContextCreateARGBBitmapContext(CGSize size, BOOL opaque, CGFloat scale) {
     size_t width = ceil(size.width * scale);
     size_t height = ceil(size.height * scale);
     if (width < 1 || height < 1) return NULL;
-    
-    //pre-multiplied ARGB, 8-bits per component
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
     CGImageAlphaInfo alphaInfo = (opaque ? kCGImageAlphaNoneSkipFirst : kCGImageAlphaPremultipliedFirst);
     CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, 0, space, kCGBitmapByteOrderDefault | alphaInfo);
@@ -29,13 +15,10 @@ CGContextRef YYCGContextCreateARGBBitmapContext(CGSize size, BOOL opaque, CGFloa
     }
     return context;
 }
-
 CGContextRef YYCGContextCreateGrayBitmapContext(CGSize size, CGFloat scale) {
     size_t width = ceil(size.width * scale);
     size_t height = ceil(size.height * scale);
     if (width < 1 || height < 1) return NULL;
-    
-    //DeviceGray, 8-bits per component
     CGColorSpaceRef space = CGColorSpaceCreateDeviceGray();
     CGImageAlphaInfo alphaInfo = kCGImageAlphaNone;
     CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, 0, space, kCGBitmapByteOrderDefault | alphaInfo);
@@ -46,7 +29,6 @@ CGContextRef YYCGContextCreateGrayBitmapContext(CGSize size, CGFloat scale) {
     }
     return context;
 }
-
 CGFloat YYScreenScale() {
     static CGFloat scale;
     static dispatch_once_t onceToken;
@@ -55,7 +37,6 @@ CGFloat YYScreenScale() {
     });
     return scale;
 }
-
 CGSize YYScreenSize() {
     static CGSize size;
     static dispatch_once_t onceToken;
@@ -69,8 +50,6 @@ CGSize YYScreenSize() {
     });
     return size;
 }
-
-// return 0 when succeed
 static int matrix_invert(__CLPK_integer N, double *matrix) {
     __CLPK_integer error = 0;
     __CLPK_integer pivot_tmp[6 * 6];
@@ -78,7 +57,6 @@ static int matrix_invert(__CLPK_integer N, double *matrix) {
     double workspace_tmp[6 * 6];
     double *workspace = workspace_tmp;
     bool need_free = false;
-    
     if (N > 6) {
         need_free = true;
         pivot = malloc(N * N * sizeof(__CLPK_integer));
@@ -89,27 +67,21 @@ static int matrix_invert(__CLPK_integer N, double *matrix) {
             return -1;
         }
     }
-    
     dgetrf_(&N, &N, matrix, &N, pivot, &error);
-    
     if (error == 0) {
         dgetri_(&N, matrix, &N, pivot, workspace, &N, &error);
     }
-    
     if (need_free) {
         free(pivot);
         free(workspace);
     }
     return error;
 }
-
 CGAffineTransform YYCGAffineTransformGetFromPoints(CGPoint before[3], CGPoint after[3]) {
     if (before == NULL || after == NULL) return CGAffineTransformIdentity;
-    
     CGPoint p1, p2, p3, q1, q2, q3;
     p1 = before[0]; p2 = before[1]; p3 = before[2];
     q1 =  after[0]; q2 =  after[1]; q3 =  after[2];
-    
     double A[36];
     A[ 0] = p1.x; A[ 1] = p1.y; A[ 2] = 0; A[ 3] = 0; A[ 4] = 1; A[ 5] = 0;
     A[ 6] = 0; A[ 7] = 0; A[ 8] = p1.x; A[ 9] = p1.y; A[10] = 0; A[11] = 1;
@@ -117,13 +89,10 @@ CGAffineTransform YYCGAffineTransformGetFromPoints(CGPoint before[3], CGPoint af
     A[18] = 0; A[19] = 0; A[20] = p2.x; A[21] = p2.y; A[22] = 0; A[23] = 1;
     A[24] = p3.x; A[25] = p3.y; A[26] = 0; A[27] = 0; A[28] = 1; A[29] = 0;
     A[30] = 0; A[31] = 0; A[32] = p3.x; A[33] = p3.y; A[34] = 0; A[35] = 1;
-    
     int error = matrix_invert(6, A);
     if (error) return CGAffineTransformIdentity;
-    
     double B[6];
     B[0] = q1.x; B[1] = q1.y; B[2] = q2.x; B[3] = q2.y; B[4] = q3.x; B[5] = q3.y;
-    
     double M[6];
     M[0] = A[ 0] * B[0] + A[ 1] * B[1] + A[ 2] * B[2] + A[ 3] * B[3] + A[ 4] * B[4] + A[ 5] * B[5];
     M[1] = A[ 6] * B[0] + A[ 7] * B[1] + A[ 8] * B[2] + A[ 9] * B[3] + A[10] * B[4] + A[11] * B[5];
@@ -131,14 +100,11 @@ CGAffineTransform YYCGAffineTransformGetFromPoints(CGPoint before[3], CGPoint af
     M[3] = A[18] * B[0] + A[19] * B[1] + A[20] * B[2] + A[21] * B[3] + A[22] * B[4] + A[23] * B[5];
     M[4] = A[24] * B[0] + A[25] * B[1] + A[26] * B[2] + A[27] * B[3] + A[28] * B[4] + A[29] * B[5];
     M[5] = A[30] * B[0] + A[31] * B[1] + A[32] * B[2] + A[33] * B[3] + A[34] * B[4] + A[35] * B[5];
-    
     CGAffineTransform transform = CGAffineTransformMake(M[0], M[2], M[1], M[3], M[4], M[5]);
     return transform;
 }
-
 CGAffineTransform YYCGAffineTransformGetFromViews(UIView *from, UIView *to) {
     if (!from || !to) return CGAffineTransformIdentity;
-    
     CGPoint before[3], after[3];
     before[0] = CGPointMake(0, 0);
     before[1] = CGPointMake(0, 1);
@@ -146,10 +112,8 @@ CGAffineTransform YYCGAffineTransformGetFromViews(UIView *from, UIView *to) {
     after[0] = [from convertPoint:before[0] toViewOrWindow:to];
     after[1] = [from convertPoint:before[1] toViewOrWindow:to];
     after[2] = [from convertPoint:before[2] toViewOrWindow:to];
-    
     return YYCGAffineTransformGetFromPoints(before, after);
 }
-
 UIViewContentMode YYCAGravityToUIViewContentMode(NSString *gravity) {
     static NSDictionary *dic;
     static dispatch_once_t onceToken;
@@ -170,7 +134,6 @@ UIViewContentMode YYCAGravityToUIViewContentMode(NSString *gravity) {
     if (!gravity) return UIViewContentModeScaleToFill;
     return (UIViewContentMode)((NSNumber *)dic[gravity]).integerValue;
 }
-
 NSString *YYUIViewContentModeToCAGravity(UIViewContentMode contentMode) {
     switch (contentMode) {
         case UIViewContentModeScaleToFill: return kCAGravityResize;
@@ -189,7 +152,6 @@ NSString *YYUIViewContentModeToCAGravity(UIViewContentMode contentMode) {
         default: return kCAGravityResize;
     }
 }
-
 CGRect YYCGRectFitWithContentMode(CGRect rect, CGSize size, UIViewContentMode mode) {
     rect = CGRectStandardize(rect);
     size.width = size.width < 0 ? -size.width : size.width;

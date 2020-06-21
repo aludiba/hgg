@@ -1,14 +1,11 @@
 #import "GPUImageDifferenceBlendFilter.h"
-
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImageDifferenceBlendFragmentShaderString = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
  varying highp vec2 textureCoordinate2;
-
  uniform sampler2D inputImageTexture;
  uniform sampler2D inputImageTexture2;
- 
  void main()
  {
      mediump vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
@@ -21,10 +18,8 @@ NSString *const kGPUImageDifferenceBlendFragmentShaderString = SHADER_STRING
 (
  varying vec2 textureCoordinate;
  varying vec2 textureCoordinate2;
- 
  uniform sampler2D inputImageTexture;
  uniform sampler2D inputImageTexture2;
- 
  void main()
  {
      vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
@@ -33,18 +28,13 @@ NSString *const kGPUImageDifferenceBlendFragmentShaderString = SHADER_STRING
  }
 );
 #endif
-
 @implementation GPUImageDifferenceBlendFilter
-
 - (id)init;
 {
     if (!(self = [super initWithFragmentShaderFromString:kGPUImageDifferenceBlendFragmentShaderString]))
     {
 		return nil;
     }
-    
     return self;
 }
-
 @end
-

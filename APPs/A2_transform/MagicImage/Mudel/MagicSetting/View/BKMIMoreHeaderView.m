@@ -1,21 +1,10 @@
-//
-//  MIMoreHeaderView.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/4/30.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMIMoreHeaderView.h"
-
 @interface BKMIMoreHeaderView ()
 @property (nonatomic, strong) UIImageView * BKiconImageView;
 @property (nonatomic, strong) UILabel * BKnickLabel;
 @property (nonatomic, strong) UIImageView * BKarrowImageView;
 @end
-
 @implementation BKMIMoreHeaderView
-
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.BKiconImageView = [[UIImageView alloc] initWithImage:PEImage(@"")];
@@ -30,7 +19,6 @@
         self.BKiconImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *BKtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BKtap:)];
         [self.BKiconImageView addGestureRecognizer:BKtap];
-        
         self.BKnickLabel = [[UILabel alloc] init];
         self.BKnickLabel.text = @"No login";
         self.BKnickLabel.hidden = YES;
@@ -44,7 +32,6 @@
         .centerYEqualToView(self.BKiconImageView)
         .autoHeightRatio(0)
         .rightSpaceToView(self, 50);
-
         self.BKarrowImageView = [[UIImageView alloc] initWithImage:PEImage(@"PEArrow")];
         self.BKarrowImageView.hidden = YES;
         [self addSubview:self.BKarrowImageView];
@@ -56,13 +43,11 @@
     }
     return self;
 }
-
 - (void)BKtap:(UITapGestureRecognizer *)BKtap{
     if (self.block) {
         self.block();
     }
 }
-
 - (void)BKupdateViews{
     if (UserId) {
         self.BKnickLabel.text = [UserDefaults objectForKey:@"nickName"];
@@ -70,11 +55,8 @@
         self.BKarrowImageView.hidden = YES;
     }else{
         self.BKnickLabel.text = @"No Login";
-//        self.iconImageView.image = PEImage(@"Header");
         self.BKiconImageView.image = PEImage(@"logo");
         self.BKarrowImageView.hidden = YES;
     }
-    
 }
-
 @end

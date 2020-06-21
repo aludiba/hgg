@@ -1,1 +1,3 @@
-../../../GPUImage/framework/Source/GPUImageSaturationBlendFilter.h
+#import "GPUImageTwoInputFilter.h"
+@interface GPUImageSaturationBlendFilter : GPUImageTwoInputFilter
+@end

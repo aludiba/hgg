@@ -1,1 +1,3 @@
-../../../ReactiveObjC/ReactiveObjC/RACEagerSequence.h
+#import "RACArraySequence.h"
+@interface RACEagerSequence : RACArraySequence
+@end

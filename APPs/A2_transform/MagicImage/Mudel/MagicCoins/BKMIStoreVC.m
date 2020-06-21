@@ -1,23 +1,13 @@
-//
-//  MIStoreVC.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/4/30.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMIStoreVC.h"
 #import "BKMIUserModel.h"
 #import "BKMICoinsModel.h"
 #import "BKMICoinsCell.h"
 #import "MIIPAPurchase.h"
-//#import ""
 @interface BKMIStoreVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView * BKtableView;
 @property (nonatomic, strong) NSMutableArray * BKdataArray;
 @property (nonatomic, strong) UILabel * BKcoinsLabel;
 @end
-
 @implementation BKMIStoreVC
 - (UITableView *)BKtableView{
     if (!_BKtableView) {
@@ -28,7 +18,6 @@
     }
     return _BKtableView;
 }
-
 - (NSMutableArray *)BKdataArray{
     if (!_BKdataArray) {
         _BKdataArray = @[].mutableCopy;
@@ -47,12 +36,8 @@
     .topEqualToView(self.view)
     .bottomEqualToView(self.view);
     [self BKloadData];
-    
-    
-    
     UIView *BKheaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
     BKheaderView.backgroundColor = UIColor.whiteColor;
-    
     UILabel *BKtextLabel = [[UILabel alloc] init];
     BKtextLabel.text = @"Current account:";
     BKtextLabel.font = [UIFont systemFontOfSize:15];
@@ -63,7 +48,6 @@
     .centerYEqualToView(BKheaderView)
     .autoHeightRatio(0);
     [BKtextLabel setSingleLineAutoResizeWithMaxWidth:180];
-    
     UILabel *BKcoinsLabel = [[UILabel alloc] init];
     self.BKcoinsLabel = BKcoinsLabel;
     BKcoinsLabel.textColor = UIColor.orangeColor;
@@ -74,16 +58,11 @@
     .centerYEqualToView(BKtextLabel)
     .autoHeightRatio(0);
     [BKcoinsLabel setSingleLineAutoResizeWithMaxWidth:180];
-    
     self.BKtableView.tableHeaderView = BKheaderView;
-    
-    
     UIView *BKfooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
     BKfooterView.userInteractionEnabled = YES;
-    
     UILabel *BKTermsOfServiceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 25)];
     BKTermsOfServiceLabel.userInteractionEnabled = YES;
-    
     UITapGestureRecognizer *BKtap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BKcontactUs:)];
     BKTermsOfServiceLabel.textAlignment = NSTextAlignmentCenter;
     BKTermsOfServiceLabel.textColor = UIColor.orangeColor;
@@ -92,7 +71,6 @@
     BKTermsOfServiceLabel.tag = 102;
     [BKTermsOfServiceLabel addGestureRecognizer:BKtap2];
     [BKfooterView addSubview:BKTermsOfServiceLabel];
-    
     UILabel *BKprivacyPolicyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, ScreenWidth, 25)];
     UITapGestureRecognizer *BKtap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BKcontactUs:)];
     BKprivacyPolicyLabel.userInteractionEnabled = YES;
@@ -103,22 +81,17 @@
     BKprivacyPolicyLabel.tag = 103;
     [BKprivacyPolicyLabel addGestureRecognizer:BKtap3];
     [BKfooterView addSubview:BKprivacyPolicyLabel];
-    
-    
     self.BKtableView.tableFooterView = BKfooterView;
-    
     [self BKloadUserData];
 }
 - (void)BKcontactUs:(UITapGestureRecognizer *)BKtap{
     if (BKtap.view.tag == 101) {
-        
     }else if (BKtap.view.tag == 102){
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/index/newp.picphotopicda2a/termsDetail",LSBaseUrl]]];
             }else{
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/index/newp.picphotopicda2a/privacyDetail",LSBaseUrl]]];
     }
 }
-
 - (void)BKloadData{
     NSArray *BKarray = @[
                         @{@"goods_id":@"1",@"goods_price":@"0.99",@"goods_num":@"100",@"is_hot":@(1),@"remark":@"65% off",@"product_id":@"com.picphotopicda2a.ua099"},
@@ -134,19 +107,14 @@
     }
     [self.BKtableView reloadData];
 }
-
 - (void)BKloadUserData{
-    
     [MIHttpTool Post:SHUserDetail parameters:@{@"user_id":UserId} success:^(id responseObject) {
         if ([responseObject[@"status"] integerValue] == 1) {
             BKMIUserModel *BKmodel = [BKMIUserModel mj_objectWithKeyValues:responseObject[@"data"]];
-            self.BKcoinsLabel.text = BKmodel.BKpeanut_num;
+            self.BKcoinsLabel.text = BKmodel.peanut_num;
         }
     } failure:^(NSError *error) {
-        
     }];
-    
-    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.BKdataArray.count;
@@ -160,59 +128,36 @@
     BKcell.BKmodel = self.BKdataArray[indexPath.row];
     return BKcell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-//    if (![SHUserDefaults objectForKey:@"user_id"]) {
-//        ScLoginViewController * scLoginVc = [[ScLoginViewController alloc] init];
-//        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:scLoginVc];
-//        [self presentViewController:nav animated:YES completion:nil];
-//        return;
-//    }
-    
     [MBProgressHUD showActivityMessageInWindow:@"Loading....."];
     BKMICoinsModel *BKmodel = self.BKdataArray[indexPath.row];
-    
     MIIPAPurchase *BKmaneger =  [MIIPAPurchase manager];
-    //                maneger.order_sn = responseObject[@"order_sn"];
     [BKmaneger startManager];
-    [BKmaneger buyProductWithProductID:BKmodel.BKproduct_id payResult:^(BOOL isSuccess, NSString *certificate, NSString *errorMsg) {
+    [BKmaneger buyProductWithProductID:BKmodel.product_id payResult:^(BOOL isSuccess, NSString *certificate, NSString *errorMsg) {
         MyLog(@"%@",errorMsg);
         if (isSuccess) {
-            
-            [MIHttpTool Post:AddUserPeanut parameters:@{@"peanut_num":[NSString stringWithFormat:@"%ld",BKmodel.BKgoods_num],@"type":@"3",@"object_id":BKmodel.BKproduct_id,@"user_id":UserId} success:^(id responseObject) {
+            [MIHttpTool Post:AddUserPeanut parameters:@{@"peanut_num":[NSString stringWithFormat:@"%ld",BKmodel.goods_num],@"type":@"3",@"object_id":BKmodel.product_id,@"user_id":UserId} success:^(id responseObject) {
                 [MBProgressHUD showTipMessageInWindow:responseObject[@"msg"]];
                 if ([responseObject[@"status"] integerValue] == 1) {
-                    //购买成功
                     [self BKloadUserData];
                     [NotifiCenter postNotificationName:@"loginSuccess" object:nil];
                     [self.navigationController popViewControllerAnimated:YES];
-                    
                 }else if ([responseObject[@"status"] integerValue] == -200){
-                    //金币不足
-                    
                 }else{
-                    
-                    
                 }
             } failure:^(NSError *error) {
-                
             }];
         }
         [MBProgressHUD hideHUD];
     }];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     return 70;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
 }
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [UIView new];
 }
-
 @end

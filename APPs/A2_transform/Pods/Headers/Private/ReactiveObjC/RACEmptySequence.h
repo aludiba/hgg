@@ -1,1 +1,4 @@
-../../../ReactiveObjC/ReactiveObjC/RACEmptySequence.h
+#import "RACSequence.h"
+@interface RACEmptySequence : RACSequence
++ (RACEmptySequence *)empty;
+@end

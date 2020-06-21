@@ -1,24 +1,9 @@
-//
-//  NSData+YYAdd.m
-//  YYCategories <https://github.com/ibireme/YYCategories>
-//
-//  Created by ibireme on 13/4/4.
-//  Copyright (c) 2015 ibireme.
-//
-//  This source code is licensed under the MIT-style license found in the
-//  LICENSE file in the root directory of this source tree.
-//
-
 #import "NSData+YYAdd.h"
 #import "YYCategoriesMacro.h"
 #include <CommonCrypto/CommonCrypto.h>
 #include <zlib.h>
-
 YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
-
-
 @implementation NSData (YYAdd)
-
 - (NSString *)md2String {
     unsigned char result[CC_MD2_DIGEST_LENGTH];
     CC_MD2(self.bytes, (CC_LONG)self.length, result);
@@ -30,13 +15,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
             result[12], result[13], result[14], result[15]
             ];
 }
-
 - (NSData *)md2Data {
     unsigned char result[CC_MD2_DIGEST_LENGTH];
     CC_MD2(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD2_DIGEST_LENGTH];
 }
-
 - (NSString *)md4String {
     unsigned char result[CC_MD4_DIGEST_LENGTH];
     CC_MD4(self.bytes, (CC_LONG)self.length, result);
@@ -48,13 +31,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
             result[12], result[13], result[14], result[15]
             ];
 }
-
 - (NSData *)md4Data {
     unsigned char result[CC_MD4_DIGEST_LENGTH];
     CC_MD4(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD4_DIGEST_LENGTH];
 }
-
 - (NSString *)md5String {
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, result);
@@ -66,13 +47,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
             result[12], result[13], result[14], result[15]
             ];
 }
-
 - (NSData *)md5Data {
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_MD5_DIGEST_LENGTH];
 }
-
 - (NSString *)sha1String {
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(self.bytes, (CC_LONG)self.length, result);
@@ -83,13 +62,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)sha1Data {
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA1_DIGEST_LENGTH];
 }
-
 - (NSString *)sha224String {
     unsigned char result[CC_SHA224_DIGEST_LENGTH];
     CC_SHA224(self.bytes, (CC_LONG)self.length, result);
@@ -100,13 +77,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)sha224Data {
     unsigned char result[CC_SHA224_DIGEST_LENGTH];
     CC_SHA224(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA224_DIGEST_LENGTH];
 }
-
 - (NSString *)sha256String {
     unsigned char result[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(self.bytes, (CC_LONG)self.length, result);
@@ -117,13 +92,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)sha256Data {
     unsigned char result[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA256_DIGEST_LENGTH];
 }
-
 - (NSString *)sha384String {
     unsigned char result[CC_SHA384_DIGEST_LENGTH];
     CC_SHA384(self.bytes, (CC_LONG)self.length, result);
@@ -134,13 +107,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)sha384Data {
     unsigned char result[CC_SHA384_DIGEST_LENGTH];
     CC_SHA384(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA384_DIGEST_LENGTH];
 }
-
 - (NSString *)sha512String {
     unsigned char result[CC_SHA512_DIGEST_LENGTH];
     CC_SHA512(self.bytes, (CC_LONG)self.length, result);
@@ -151,13 +122,11 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)sha512Data {
     unsigned char result[CC_SHA512_DIGEST_LENGTH];
     CC_SHA512(self.bytes, (CC_LONG)self.length, result);
     return [NSData dataWithBytes:result length:CC_SHA512_DIGEST_LENGTH];
 }
-
 - (NSString *)hmacStringUsingAlg:(CCHmacAlgorithm)alg withKey:(NSString *)key {
     size_t size;
     switch (alg) {
@@ -178,7 +147,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return hash;
 }
-
 - (NSData *)hmacDataUsingAlg:(CCHmacAlgorithm)alg withKey:(NSData *)key {
     size_t size;
     switch (alg) {
@@ -194,65 +162,50 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     CCHmac(alg, [key bytes], key.length, self.bytes, self.length, result);
     return [NSData dataWithBytes:result length:size];
 }
-
 - (NSString *)hmacMD5StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
-
 - (NSData *)hmacMD5DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgMD5 withKey:key];
 }
-
 - (NSString *)hmacSHA1StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
-
 - (NSData *)hmacSHA1DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA1 withKey:key];
 }
-
 - (NSString *)hmacSHA224StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
-
 - (NSData *)hmacSHA224DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA224 withKey:key];
 }
-
 - (NSString *)hmacSHA256StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
-
 - (NSData *)hmacSHA256DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA256 withKey:key];
 }
-
 - (NSString *)hmacSHA384StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
-
 - (NSData *)hmacSHA384DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA384 withKey:key];
 }
-
 - (NSString *)hmacSHA512StringWithKey:(NSString *)key {
     return [self hmacStringUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
-
 - (NSData *)hmacSHA512DataWithKey:(NSData *)key {
     return [self hmacDataUsingAlg:kCCHmacAlgSHA512 withKey:key];
 }
-
 - (NSString *)crc32String {
     uLong result = crc32(0, self.bytes, (uInt)self.length);
     return [NSString stringWithFormat:@"%08x", (uint32_t)result];
 }
-
 - (uint32_t)crc32 {
     uLong result = crc32(0, self.bytes, (uInt)self.length);
     return (uint32_t)result;
 }
-
 - (NSData *)aes256EncryptWithKey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
@@ -260,7 +213,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     if (iv.length != 16 && iv.length != 0) {
         return nil;
     }
-    
     NSData *result = nil;
     size_t bufferSize = self.length + kCCBlockSizeAES128;
     void *buffer = malloc(bufferSize);
@@ -286,7 +238,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
         return nil;
     }
 }
-
 - (NSData *)aes256DecryptWithkey:(NSData *)key iv:(NSData *)iv {
     if (key.length != 16 && key.length != 24 && key.length != 32) {
         return nil;
@@ -294,7 +245,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     if (iv.length != 16 && iv.length != 0) {
         return nil;
     }
-    
     NSData *result = nil;
     size_t bufferSize = self.length + kCCBlockSizeAES128;
     void *buffer = malloc(bufferSize);
@@ -320,14 +270,12 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
         return nil;
     }
 }
-
 - (NSString *)utf8String {
     if (self.length > 0) {
         return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
     }
     return @"";
 }
-
 - (NSString *)hexString {
     NSUInteger length = self.length;
     NSMutableString *result = [NSMutableString stringWithCapacity:length * 2];
@@ -337,7 +285,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     }
     return result;
 }
-
 + (NSData *)dataWithHexString:(NSString *)hexStr {
     hexStr = [hexStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     hexStr = [hexStr lowercaseString];
@@ -346,7 +293,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     unichar *buf = malloc(sizeof(unichar) * len);
     if (!buf) return nil;
     [hexStr getCharacters:buf range:NSMakeRange(0, len)];
-    
     NSMutableData *result = [NSMutableData data];
     unsigned char bytes;
     char str[3] = { '\0', '\0', '\0' };
@@ -360,7 +306,6 @@ YYSYNTH_DUMMY_CLASS(NSData_YYAdd)
     free(buf);
     return result;
 }
-
 static const char base64EncodingTable[64]
 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 static const short base64DecodingTable[256] = {
@@ -381,17 +326,14 @@ static const short base64DecodingTable[256] = {
     -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2,
     -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,  -2,  -2, -2, -2
 };
-
 - (NSString *)base64EncodedString {
     NSUInteger length = self.length;
     if (length == 0)
         return @"";
-    
     NSUInteger out_length = ((length + 2) / 3) * 4;
     uint8_t *output = malloc(((out_length + 2) / 3) * 4);
     if (output == NULL)
         return nil;
-    
     const char *input = self.bytes;
     NSInteger i, value;
     for (i = 0; i < length; i += 3) {
@@ -412,30 +354,25 @@ static const short base64DecodingTable[256] = {
         ? base64EncodingTable[(value >> 0) & 0x3F]
         : '=';
     }
-    
     NSString *base64 = [[NSString alloc] initWithBytes:output
                                                 length:out_length
                                               encoding:NSASCIIStringEncoding];
     free(output);
     return base64;
 }
-
 + (NSData *)dataWithBase64EncodedString:(NSString *)base64EncodedString {
     NSInteger length = base64EncodedString.length;
     const char *string = [base64EncodedString cStringUsingEncoding:NSASCIIStringEncoding];
     if (string  == NULL)
         return nil;
-    
     while (length > 0 && string[length - 1] == '=')
         length--;
-    
     NSInteger outputLength = length * 3 / 4;
     NSMutableData *data = [NSMutableData dataWithLength:outputLength];
     if (data == nil)
         return nil;
     if (length == 0)
         return data;
-    
     uint8_t *output = data.mutableBytes;
     NSInteger inputPoint = 0;
     NSInteger outputPoint = 0;
@@ -444,7 +381,6 @@ static const short base64DecodingTable[256] = {
         char i1 = string[inputPoint++];
         char i2 = inputPoint < length ? string[inputPoint++] : 'A';
         char i3 = inputPoint < length ? string[inputPoint++] : 'A';
-        
         output[outputPoint++] = (base64DecodingTable[i0] << 2)
         | (base64DecodingTable[i1] >> 4);
         if (outputPoint < outputLength) {
@@ -456,10 +392,8 @@ static const short base64DecodingTable[256] = {
             | base64DecodingTable[i3];
         }
     }
-    
     return data;
 }
-
 - (id)jsonValueDecoded {
     NSError *error = nil;
     id value = [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:&error];
@@ -468,175 +402,118 @@ static const short base64DecodingTable[256] = {
     }
     return value;
 }
-
 - (NSData *)gzipInflate {
     if ([self length] == 0) return self;
-    
     unsigned full_length = (unsigned)[self length];
     unsigned half_length = (unsigned)[self length] / 2;
-    
     NSMutableData *decompressed = [NSMutableData
                                    dataWithLength:full_length + half_length];
     BOOL done = NO;
     int status;
-    
     z_stream strm;
     strm.next_in = (Bytef *)[self bytes];
     strm.avail_in = (unsigned)[self length];
     strm.total_out = 0;
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
-    
     if (inflateInit2(&strm, (15 + 32)) != Z_OK) return nil;
     while (!done) {
-        // Make sure we have enough room and reset the lengths.
         if (strm.total_out >= [decompressed length])
             [decompressed increaseLengthBy:half_length];
         strm.next_out = [decompressed mutableBytes] + strm.total_out;
         strm.avail_out = (uInt)([decompressed length] - strm.total_out);
-        
-        // Inflate another chunk.
         status = inflate(&strm, Z_SYNC_FLUSH);
         if (status == Z_STREAM_END) done = YES;
         else if (status != Z_OK) break;
     }
     if (inflateEnd(&strm) != Z_OK) return nil;
-    
-    // Set real length.
     if (done) {
         [decompressed setLength:strm.total_out];
         return [NSData dataWithData:decompressed];
     } else return nil;
 }
-
 - (NSData *)gzipDeflate {
     if ([self length] == 0) return self;
-    
     z_stream strm;
-    
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
     strm.opaque = Z_NULL;
     strm.total_out = 0;
     strm.next_in = (Bytef *)[self bytes];
     strm.avail_in = (uInt)[self length];
-    
-    // Compresssion Levels:
-    //   Z_NO_COMPRESSION
-    //   Z_BEST_SPEED
-    //   Z_BEST_COMPRESSION
-    //   Z_DEFAULT_COMPRESSION
-    
     if (deflateInit2(&strm, Z_DEFAULT_COMPRESSION, Z_DEFLATED, (15 + 16),
                      8, Z_DEFAULT_STRATEGY) != Z_OK)
         return nil;
-    
-    // 16K chunks for expansion
     NSMutableData *compressed = [NSMutableData dataWithLength:16384];
-    
     do {
         if (strm.total_out >= [compressed length])
             [compressed increaseLengthBy:16384];
-        
         strm.next_out = [compressed mutableBytes] + strm.total_out;
         strm.avail_out = (uInt)([compressed length] - strm.total_out);
-        
         deflate(&strm, Z_FINISH);
     }
     while (strm.avail_out == 0);
-    
     deflateEnd(&strm);
-    
     [compressed setLength:strm.total_out];
     return [NSData dataWithData:compressed];
 }
-
 - (NSData *)zlibInflate {
     if ([self length] == 0) return self;
-    
     NSUInteger full_length = [self length];
     NSUInteger half_length = [self length] / 2;
-    
     NSMutableData *decompressed = [NSMutableData
                                    dataWithLength:full_length + half_length];
     BOOL done = NO;
     int status;
-    
     z_stream strm;
     strm.next_in = (Bytef *)[self bytes];
     strm.avail_in = (uInt)full_length;
     strm.total_out = 0;
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
-    
     if (inflateInit(&strm) != Z_OK) return nil;
-    
     while (!done) {
-        // Make sure we have enough room and reset the lengths.
         if (strm.total_out >= [decompressed length])
             [decompressed increaseLengthBy:half_length];
         strm.next_out = [decompressed mutableBytes] + strm.total_out;
         strm.avail_out = (uInt)([decompressed length] - strm.total_out);
-        
-        // Inflate another chunk.
         status = inflate(&strm, Z_SYNC_FLUSH);
         if (status == Z_STREAM_END) done = YES;
         else if (status != Z_OK) break;
     }
     if (inflateEnd(&strm) != Z_OK) return nil;
-    
-    // Set real length.
     if (done) {
         [decompressed setLength:strm.total_out];
         return [NSData dataWithData:decompressed];
     } else return nil;
 }
-
 - (NSData *)zlibDeflate {
     if ([self length] == 0) return self;
-    
     z_stream strm;
-    
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
     strm.opaque = Z_NULL;
     strm.total_out = 0;
     strm.next_in = (Bytef *)[self bytes];
     strm.avail_in = (uInt)[self length];
-    
-    // Compresssion Levels:
-    //   Z_NO_COMPRESSION
-    //   Z_BEST_SPEED
-    //   Z_BEST_COMPRESSION
-    //   Z_DEFAULT_COMPRESSION
-    
     if (deflateInit(&strm, Z_DEFAULT_COMPRESSION) != Z_OK) return nil;
-    
-    // 16K chuncks for expansion
     NSMutableData *compressed = [NSMutableData dataWithLength:16384];
-    
     do {
         if (strm.total_out >= [compressed length])
             [compressed increaseLengthBy:16384];
-        
         strm.next_out = [compressed mutableBytes] + strm.total_out;
         strm.avail_out = (uInt)([compressed length] - strm.total_out);
-        
         deflate(&strm, Z_FINISH);
     }
     while (strm.avail_out == 0);
-    
     deflateEnd(&strm);
-    
     [compressed setLength:strm.total_out];
     return [NSData dataWithData:compressed];
 }
-
 + (NSData *)dataNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     if (!path) return nil;
     NSData *data = [NSData dataWithContentsOfFile:path];
     return data;
 }
-
 @end

@@ -1,38 +1,20 @@
-//
-//  MISlideVC.m
-//  MISlideVC
-//
-//  Created by nicecheo on 2018/3/26.
-//  Copyright © 2018年 nicecheo. All rights reserved.
-//
-
 #import "MISlideVC.h"
 #import <objc/runtime.h>
-
 #define Rect(x,y,w,h) CGRectMake(x, y, w, h)
 #define ScreenWidth CGRectGetWidth(self.view.frame)
 #define ScreenHeight CGRectGetHeight(self.view.frame)
-
 typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     LYSScrollViewType_menu                = 10000,
     LYSScrollViewType_content             = 10001
 };
-
 @interface MISlideVC ()<UIScrollViewDelegate>
-
 @property (nonatomic,strong,readwrite)UIScrollView *menuScrollView;
 @property (nonatomic,strong,readwrite)UIScrollView *contentScrollView;
-
 @property (nonatomic,strong)NSMutableArray *labelArys;
-
 @property (nonatomic,assign)NSInteger lastIndex;
-
 @property (nonatomic,strong)UIView *bottomLine;
-
 @end
-
 @implementation MISlideVC
-
 - (BOOL)superExistNav
 {
     UIViewController *parentVC = self;
@@ -41,7 +23,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return [parentVC isKindOfClass:[UINavigationController class]];
 }
-
 - (BOOL)superExistTab
 {
     UIViewController *parentVC = self;
@@ -50,7 +31,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return [parentVC isKindOfClass:[UITabBarController class]];
 }
-
 - (UIView *)bottomLine
 {
     if (!_bottomLine) {
@@ -59,7 +39,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return _bottomLine;
 }
-
 - (CGFloat)menuHeight
 {
     if (_menuHeight == 0) {
@@ -67,7 +46,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return _menuHeight;
 }
-
 - (NSInteger)pageNumberOfItem
 {
     if (_pageNumberOfItem == 0) {
@@ -75,7 +53,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return _pageNumberOfItem;
 }
-
 - (CGFloat)bottomLineWidth
 {
     if (_bottomLineWidth == 0 || _bottomLineWidth > ScreenWidth / self.pageNumberOfItem) {
@@ -83,7 +60,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return _bottomLineWidth;
 }
-
 - (NSMutableArray *)labelArys
 {
     if (!_labelArys) {
@@ -91,7 +67,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return _labelArys;
 }
-
 - (instancetype)init
 {
     self = [super init];
@@ -99,7 +74,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
         self.showBottomLine = YES;
         self.bottomLineHeight = 2;
         self.bottomLineColor = [UIColor redColor];
-        
         self.titleColor = [UIColor blackColor];
         self.titleFont = [UIFont boldSystemFontOfSize:15];
         self.titleSelectColor = [UIColor redColor];
@@ -107,18 +81,13 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
     [self customBaseView];
     [self customTopView];
     [self customBottomView];
-    
-    // 默认选中第一个
     [self menuUpdateStyle:self.currentItem];
     [self menuScrollToCenter:self.currentItem];
     [self menuUpdateBottomLine:self.currentItem];
@@ -126,7 +95,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     [self contentScrollToCenter:self.currentItem];
     self.lastIndex = self.currentItem;
 }
-
 #pragma mark - 加载基本视图 -
 - (void)customBaseView
 {
@@ -138,12 +106,10 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     self.menuScrollView.tag = LYSScrollViewType_menu;
     [self.view addSubview:self.menuScrollView];
     self.menuScrollView.frame = Rect(0, navHeight, ScreenWidth, self.menuHeight);
-    
     UIView *line = [[UIView alloc] init];
     line.frame = Rect(0, CGRectGetMaxY(self.menuScrollView.frame), ScreenWidth, 0.5);
     line.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:line];
-    
     self.contentScrollView = [[UIScrollView alloc] init];
     self.contentScrollView.showsHorizontalScrollIndicator = NO;
     self.contentScrollView.pagingEnabled = YES;
@@ -153,7 +119,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     [self.view addSubview:self.contentScrollView];
     self.contentScrollView.frame = Rect(0, CGRectGetMaxY(line.frame), ScreenWidth, ScreenHeight - navHeight - tabHeight - CGRectGetMaxY(line.frame) + CGRectGetMinY(self.menuScrollView.frame));
 }
-
 #pragma mark - 加载顶部视图数据 -
 - (void)customTopView
 {
@@ -178,8 +143,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
         [self.menuScrollView addSubview:self.bottomLine];
     }
 }
-
-// 加载视图
 - (void)customBottomView
 {
     for (int i = 0; i < self.controllers.count; i++) {
@@ -191,7 +154,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
     self.contentScrollView.contentSize = CGSizeMake(ScreenWidth * self.controllers.count, CGRectGetHeight(self.contentScrollView.frame));
 }
-
 #pragma mark - scrollView代理方法 -
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if (scrollView.tag == LYSScrollViewType_content) {
@@ -205,7 +167,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
         }
     }
 }
-
 #pragma mark - 菜单点击回调 -
 - (void)itemClickTap:(UIGestureRecognizer *)sender{
     NSInteger index = sender.view.tag - 10000;
@@ -218,7 +179,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
         self.lastIndex = index;
     }
 }
-
 #pragma mark - 页面切换回调 -
 - (void)motionChangePage:(NSInteger)index {
     if (self.lastIndex != index) {
@@ -257,14 +217,10 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
         }
     }
 }
-
-// 内容滚动
 - (void)contentScrollToCenter:(NSInteger)index {
     CGFloat left = ScreenWidth * index;
     [self.contentScrollView setContentOffset:CGPointMake(left, 0) animated:YES];
 }
-
-// 顶部菜单滚动
 - (void)menuScrollToCenter:(NSInteger)index{
     CGFloat itemWidth = ScreenWidth / self.pageNumberOfItem;
     UILabel *label = self.labelArys[index];
@@ -274,8 +230,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     left = left >= maxLeft ? maxLeft : left;
     [self.menuScrollView setContentOffset:CGPointMake(left, 0) animated:YES];
 }
-
-// 顶部菜单切换样式
 - (void)menuUpdateStyle:(NSInteger)index{
     UILabel *lastLabel = self.labelArys[self.lastIndex];
     lastLabel.font = self.titleFont;
@@ -284,8 +238,6 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     label.textColor = self.titleSelectColor;
     label.font = self.titleSelectFont;
 }
-
-// 顶部菜单底部细线滚动
 - (void)menuUpdateBottomLine:(NSInteger)index{
     if (self.showBottomLine == YES) {
         CGFloat itemWidth = ScreenWidth / self.pageNumberOfItem;
@@ -295,4 +247,3 @@ typedef NS_ENUM(NSUInteger, LYSScrollViewType) {
     }
 }
 @end
-

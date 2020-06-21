@@ -1,26 +1,15 @@
-//
-//  MIFeedbackVC.m
-//  MagicImage
-//
-//  Created by MagicImage on 2019/4/30.
-//  Copyright © 2019 April. All rights reserved.
-//
-
 #import "BKMIFeedbackVC.h"
 #import "FSTextView.h"
 @interface BKMIFeedbackVC ()
 @property (nonatomic, strong) FSTextView *BKtextView;
 @end
-
 @implementation BKMIFeedbackVC
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"FeedBack";
     self.view.backgroundColor = UIColor.whiteColor;
     [self BKcreatUI];
 }
-
 -(void)BKcreatUI{
     self.BKtextView=[FSTextView new];
     self.BKtextView.backgroundColor = RGB(242, 242, 242);
@@ -33,7 +22,6 @@
     .rightSpaceToView(self.view, 15)
     .topSpaceToView(self.view, 20)
     .heightIs(200);
-    
     UIButton *BKsendBtn = [[UIButton alloc] init];
     [BKsendBtn setTitle:@"Submit" forState:UIControlStateNormal];
     [BKsendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -48,10 +36,8 @@
     .topSpaceToView(self.BKtextView, 30)
     .heightIs(45);
 }
-
 -(void)BKsendrFeedBackClicked{
     if (self.BKtextView.text.length==0) {
-        
         [MBProgressHUD showTipMessageInWindow:@"Please enter your feedback"];
         return ;
     }
@@ -59,7 +45,5 @@
         [MBProgressHUD showTipMessageInWindow:@"Feedback success"];
         [self.navigationController popViewControllerAnimated:YES];
     });
-    
 }
-
 @end
