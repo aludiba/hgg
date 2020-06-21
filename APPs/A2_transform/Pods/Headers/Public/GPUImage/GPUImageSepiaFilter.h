@@ -1,3 +1,1 @@
-#import "GPUImageColorMatrixFilter.h"
-@interface GPUImageSepiaFilter : GPUImageColorMatrixFilter
-@end
+../../../GPUImage/framework/Source/GPUImageSepiaFilter.h

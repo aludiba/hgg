@@ -1,7 +1,1 @@
-#import "GPUImageFilterGroup.h"
-@class GPUImagePicture;
-@interface GPUImageMissEtikateFilter : GPUImageFilterGroup
-{
-    GPUImagePicture *lookupImageSource;
-}
-@end
+../../../GPUImage/framework/Source/GPUImageMissEtikateFilter.h

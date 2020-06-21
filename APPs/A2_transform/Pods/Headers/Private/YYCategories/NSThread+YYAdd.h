@@ -1,4 +1,1 @@
-#import <Foundation/Foundation.h>
-@interface NSThread (YYAdd)
-+ (void)addAutoreleasePoolToCurrentRunloop;
-@end
+../../../YYCategories/YYCategories/Foundation/NSThread+YYAdd.h

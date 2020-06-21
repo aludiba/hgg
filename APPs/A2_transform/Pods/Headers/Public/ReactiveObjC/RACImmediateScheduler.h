@@ -1,3 +1,1 @@
-#import "RACScheduler.h"
-@interface RACImmediateScheduler : RACScheduler
-@end
+../../../ReactiveObjC/ReactiveObjC/RACImmediateScheduler.h

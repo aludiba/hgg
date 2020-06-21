@@ -1,3 +1,1 @@
-#import "GPUImageFilter.h"
-@interface GPUImageKuwaharaRadius3Filter : GPUImageFilter
-@end
+../../../GPUImage/framework/Source/GPUImageKuwaharaRadius3Filter.h

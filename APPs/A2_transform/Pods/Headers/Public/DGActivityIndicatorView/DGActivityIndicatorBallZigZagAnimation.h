@@ -1,3 +1,1 @@
-#import "DGActivityIndicatorAnimation.h"
-@interface DGActivityIndicatorBallZigZagAnimation: DGActivityIndicatorAnimation
-@end
+../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.h

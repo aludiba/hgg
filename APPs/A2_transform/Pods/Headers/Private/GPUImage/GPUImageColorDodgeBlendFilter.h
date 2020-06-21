@@ -1,5 +1,1 @@
-#import "GPUImageTwoInputFilter.h"
-@interface GPUImageColorDodgeBlendFilter : GPUImageTwoInputFilter
-{
-}
-@end
+../../../GPUImage/framework/Source/GPUImageColorDodgeBlendFilter.h

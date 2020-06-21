@@ -1,3 +1,1 @@
-#import "DGActivityIndicatorAnimation.h"
-@interface DGActivityIndicatorBallPulseSyncAnimation: DGActivityIndicatorAnimation
-@end
+../../../DGActivityIndicatorView/DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.h

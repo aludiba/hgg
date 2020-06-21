@@ -1,3 +1,1 @@
-#import "MASUtilities.h"
-@interface NSLayoutConstraint (MASDebugAdditions)
-@end
+../../../Masonry/Masonry/NSLayoutConstraint+MASDebugAdditions.h

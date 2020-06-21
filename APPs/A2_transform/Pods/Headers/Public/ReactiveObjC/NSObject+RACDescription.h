@@ -1,2 +1,1 @@
-#import <Foundation/Foundation.h>
-NSString *RACDescription(id object);
+../../../ReactiveObjC/ReactiveObjC/NSObject+RACDescription.h

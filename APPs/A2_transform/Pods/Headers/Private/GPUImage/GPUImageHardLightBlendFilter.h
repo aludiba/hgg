@@ -1,5 +1,1 @@
-#import "GPUImageTwoInputFilter.h"
-@interface GPUImageHardLightBlendFilter : GPUImageTwoInputFilter
-{
-}
-@end
+../../../GPUImage/framework/Source/GPUImageHardLightBlendFilter.h

@@ -1,3 +1,1 @@
-#import "GPUImageTwoInputFilter.h"
-@interface GPUImageLuminosityBlendFilter : GPUImageTwoInputFilter
-@end
+../../../GPUImage/framework/Source/GPUImageLuminosityBlendFilter.h
