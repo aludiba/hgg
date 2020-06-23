@@ -1,0 +1,106 @@
+
+App Thinning Size Report for All Variants of MagicImage
+
+Variant: MagicImage-16D987C0-BB3A-455A-9648-38FDF2010A0B.ipa
+Supported variant descriptors: [device: iPhone10,2, os-version: 11.0], [device: iPhone9,2, os-version: 10.0], [device: iPhone10,6, os-version: 11.0], [device: iPhone9,4, os-version: 10.0], [device: iPhone10,3, os-version: 11.0], [device: iPhone10,5, os-version: 11.0], [device: iPhone7,1, os-version: 9.0], and [device: iPhone8,2, os-version: 9.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.6 MB uncompressed
+App size: 15.9 MB compressed, 20.6 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-2471BEAB-F58C-49F4-BB72-DFED84EC2FFE.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 12.2] and [device: iPhone11,8, os-version: 12.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-32E16FF1-5AF3-4493-BE49-D17F63C28E8C.ipa
+Supported variant descriptors: [device: iPad3,1, os-version: 9.0], [device: iPad3,6, os-version: 9.0], [device: iPad3,3, os-version: 9.0], [device: iPad3,5, os-version: 9.0], [device: iPad3,2, os-version: 9.0], and [device: iPad3,4, os-version: 9.0]
+App + On Demand Resources size: 16 MB compressed, 20.1 MB uncompressed
+App size: 16 MB compressed, 20.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-3CD00FA7-4B5B-4B4A-AB52-A8853E1EED07.ipa
+Supported variant descriptors: [device: iPad2,4, os-version: 9.0], [device: iPad2,2, os-version: 9.0], [device: iPad2,5, os-version: 9.0], [device: iPad2,7, os-version: 9.0], [device: iPad2,3, os-version: 9.0], [device: iPad2,6, os-version: 9.0], and [device: iPad2,1, os-version: 9.0]
+App + On Demand Resources size: 16 MB compressed, 20.1 MB uncompressed
+App size: 16 MB compressed, 20.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-48AFF261-F54B-4F97-8808-2624A7412FFE.ipa
+Supported variant descriptors: [device: iPhone8,1, os-version: 13.0], [device: iPhone8,4, os-version: 13.0], [device: iPhone10,1, os-version: 13.0], [device: iPhone9,1, os-version: 13.0], [device: iPhone12,8, os-version: 13.0], [device: iPhone10,4, os-version: 13.0], [device: iPhone9,3, os-version: 13.0], and [device: iPod9,1, os-version: 13.0]
+App + On Demand Resources size: 15.8 MB compressed, 20.5 MB uncompressed
+App size: 15.8 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-4B2993A7-853F-40CF-8512-5EE390C8B1D2.ipa
+Supported variant descriptors: [device: iPhone9,4, os-version: 12.0], [device: iPhone10,5, os-version: 12.0], [device: iPhone9,2, os-version: 12.2], [device: iPhone10,5, os-version: 12.2], [device: iPhone11,4, os-version: 12.2], [device: iPhone7,1, os-version: 12.2], [device: iPhone9,4, os-version: 12.2], [device: iPhone10,6, os-version: 12.0], [device: iPhone11,4, os-version: 12.0], [device: iPhone10,2, os-version: 12.0], [device: iPhone7,1, os-version: 12.0], [device: iPhone11,2, os-version: 12.2], [device: iPhone8,2, os-version: 12.0], [device: iPhone10,3, os-version: 12.2], [device: iPhone10,2, os-version: 12.2], [device: iPhone11,2, os-version: 12.0], [device: iPhone11,6, os-version: 12.0], [device: iPhone10,3, os-version: 12.0], [device: iPhone9,2, os-version: 12.0], [device: iPhone11,6, os-version: 12.2], [device: iPhone8,2, os-version: 12.2], and [device: iPhone10,6, os-version: 12.2]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-63815A3B-6E73-42BC-B28B-5DC846461C07.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 13.0] and [device: iPhone12,1, os-version: 13.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-655F434F-90A4-4114-B71C-117D6602687D.ipa
+Supported variant descriptors: [device: iPad7,4, os-version: 12.2], [device: iPad8,7, os-version: 12.0], [device: iPad7,1, os-version: 12.0], [device: iPad5,3, os-version: 12.0], [device: iPad8,4, os-version: 12.0], [device: iPad7,6, os-version: 12.0], [device: iPad8,1, os-version: 12.2], [device: iPad8,5, os-version: 12.0], [device: iPad8,3, os-version: 12.0], [device: iPad6,12, os-version: 12.0], [device: iPad5,2, os-version: 12.0], [device: iPad11,3, os-version: 12.2], [device: iPad7,2, os-version: 12.2], [device: iPad11,2, os-version: 12.2], [device: iPad5,1, os-version: 12.2], [device: iPad4,4, os-version: 12.2], [device: iPad4,7, os-version: 12.0], [device: iPad4,6, os-version: 12.0], [device: iPad8,8, os-version: 12.2], [device: iPad8,8, os-version: 12.0], [device: iPad4,2, os-version: 12.2], [device: iPad4,6, os-version: 12.2], [device: iPad8,2, os-version: 12.0], [device: iPad7,6, os-version: 12.2], [device: iPad4,8, os-version: 12.0], [device: iPad6,12, os-version: 12.2], [device: iPad7,1, os-version: 12.2], [device: iPad6,8, os-version: 12.0], [device: iPad6,11, os-version: 12.0], [device: iPad8,7, os-version: 12.2], [device: iPad4,1, os-version: 12.0], [device: iPad7,4, os-version: 12.0], [device: iPad8,6, os-version: 12.2], [device: iPad8,2, os-version: 12.2], [device: iPad4,9, os-version: 12.0], [device: iPad6,3, os-version: 12.2], [device: iPad4,1, os-version: 12.2], [device: iPad4,7, os-version: 12.2], [device: iPad4,4, os-version: 12.0], [device: iPad4,3, os-version: 12.2], [device: iPad5,3, os-version: 12.2], [device: iPad7,5, os-version: 12.2], [device: iPad4,5, os-version: 12.0], [device: iPad6,11, os-version: 12.2], [device: iPad5,4, os-version: 12.2], [device: iPad4,2, os-version: 12.0], [device: iPad4,8, os-version: 12.2], [device: iPad8,5, os-version: 12.2], [device: iPad4,3, os-version: 12.0], [device: iPad11,4, os-version: 12.2], [device: iPad6,4, os-version: 12.0], [device: iPad8,3, os-version: 12.2], [device: iPad8,4, os-version: 12.2], [device: iPad11,1, os-version: 12.2], [device: iPad6,7, os-version: 12.2], [device: iPad6,8, os-version: 12.2], [device: iPad4,9, os-version: 12.2], [device: iPad5,2, os-version: 12.2], [device: iPad6,3, os-version: 12.0], [device: iPad7,3, os-version: 12.0], [device: iPad7,3, os-version: 12.2], [device: iPad5,1, os-version: 12.0], [device: iPad6,4, os-version: 12.2], [device: iPad6,7, os-version: 12.0], [device: iPad7,5, os-version: 12.0], [device: iPad7,2, os-version: 12.0], [device: iPad8,1, os-version: 12.0], [device: iPad5,4, os-version: 12.0], [device: iPad8,6, os-version: 12.0], and [device: iPad4,5, os-version: 12.2]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-77A4A25B-7410-42CD-9D6E-FDC6C2EDCC8F.ipa
+Supported variant descriptors: [device: iPhone9,3, os-version: 10.0], [device: iPhone8,4, os-version: 9.0], [device: iPhone7,2, os-version: 9.0], [device: iPhone10,4, os-version: 11.0], [device: iPhone6,1, os-version: 9.0], [device: iPhone9,1, os-version: 10.0], [device: iPhone10,1, os-version: 11.0], [device: iPhone6,2, os-version: 9.0], [device: iPod7,1, os-version: 9.0], and [device: iPhone8,1, os-version: 9.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.6 MB uncompressed
+App size: 15.9 MB compressed, 20.6 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-822A7909-A6D8-43C4-A87C-94910544CB94.ipa
+Supported variant descriptors: [device: iPad7,2, os-version: 13.0], [device: iPad5,2, os-version: 13.0], [device: iPad8,10, os-version: 13.0], [device: iPad7,11, os-version: 13.0], [device: iPad8,1, os-version: 13.0], [device: iPad7,1, os-version: 13.0], [device: iPad5,3, os-version: 13.0], [device: iPad8,2, os-version: 13.0], [device: iPad6,8, os-version: 13.0], [device: iPad8,12, os-version: 13.0], [device: iPad11,1, os-version: 13.0], [device: iPad6,11, os-version: 13.0], [device: iPad7,12, os-version: 13.0], [device: iPad5,1, os-version: 13.0], [device: iPad6,7, os-version: 13.0], [device: iPad8,7, os-version: 13.0], [device: iPad8,9, os-version: 13.0], [device: iPad8,11, os-version: 13.0], [device: iPad5,4, os-version: 13.0], [device: iPad6,3, os-version: 13.0], [device: iPad6,12, os-version: 13.0], [device: iPad8,5, os-version: 13.0], [device: iPad7,6, os-version: 13.0], [device: iPad8,6, os-version: 13.0], [device: iPad7,3, os-version: 13.0], [device: iPad11,3, os-version: 13.0], [device: iPad8,3, os-version: 13.0], [device: iPad11,2, os-version: 13.0], [device: iPad8,4, os-version: 13.0], [device: iPad11,4, os-version: 13.0], [device: iPad7,4, os-version: 13.0], [device: iPad8,8, os-version: 13.0], [device: iPad7,5, os-version: 13.0], and [device: iPad6,4, os-version: 13.0]
+App + On Demand Resources size: 15.8 MB compressed, 20.5 MB uncompressed
+App size: 15.8 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-B6E4D7AC-F5F5-44A3-A3BE-E8022A5C6AC9.ipa
+Supported variant descriptors: [device: iPod5,1, os-version: 9.0], [device: iPhone5,2, os-version: 9.0], [device: iPhone5,4, os-version: 9.0], [device: iPhone5,3, os-version: 9.0], [device: iPhone5,1, os-version: 9.0], and [device: iPhone4,1, os-version: 9.0]
+App + On Demand Resources size: 16 MB compressed, 20.1 MB uncompressed
+App size: 16 MB compressed, 20.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-CC4C1A2F-FF9A-4510-813A-4DBA9E1BD608.ipa
+Supported variant descriptors: [device: iPhone10,1, os-version: 12.2], [device: iPhone7,2, os-version: 12.2], [device: iPhone7,2, os-version: 12.0], [device: iPhone10,4, os-version: 12.0], [device: iPhone8,1, os-version: 12.0], [device: iPod7,1, os-version: 12.0], [device: iPod9,1, os-version: 12.2], [device: iPhone6,2, os-version: 12.2], [device: iPhone9,1, os-version: 12.2], [device: iPhone9,3, os-version: 12.0], [device: iPhone9,1, os-version: 12.0], [device: iPhone6,1, os-version: 12.0], [device: iPhone10,4, os-version: 12.2], [device: iPhone9,3, os-version: 12.2], [device: iPhone10,1, os-version: 12.0], [device: iPhone6,2, os-version: 12.0], [device: iPhone8,4, os-version: 12.0], [device: iPhone6,1, os-version: 12.2], [device: iPhone8,1, os-version: 12.2], [device: iPhone8,4, os-version: 12.2], and [device: iPod7,1, os-version: 12.2]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-CE69EFB2-C6D7-4696-A7A4-C519A59756AF.ipa
+Supported variant descriptors: [device: iPhone9,2, os-version: 13.0], [device: iPhone10,2, os-version: 13.0], [device: iPhone10,6, os-version: 13.0], [device: iPhone11,4, os-version: 13.0], [device: iPhone12,5, os-version: 13.0], [device: iPhone11,2, os-version: 13.0], [device: iPhone11,6, os-version: 13.0], [device: iPhone9,4, os-version: 13.0], [device: iPhone12,3, os-version: 13.0], [device: iPhone8,2, os-version: 13.0], [device: iPhone10,5, os-version: 13.0], and [device: iPhone10,3, os-version: 13.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.5 MB uncompressed
+App size: 15.9 MB compressed, 20.5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage-F0D814C9-E300-4FA5-9864-027D4EAE4788.ipa
+Supported variant descriptors: [device: iPad4,4, os-version: 9.0], [device: iPad4,5, os-version: 9.0], [device: iPad7,6, os-version: 11.0], [device: iPad6,7, os-version: 9.0], [device: iPad4,7, os-version: 9.0], [device: iPad5,1, os-version: 9.0], [device: iPad7,3, os-version: 10.0], [device: iPad7,2, os-version: 10.0], [device: iPad7,5, os-version: 11.0], [device: iPad4,3, os-version: 9.0], [device: iPad6,3, os-version: 9.0], [device: iPad4,8, os-version: 9.0], [device: iPad5,4, os-version: 9.0], [device: iPad6,12, os-version: 10.0], [device: iPad7,1, os-version: 10.0], [device: iPad6,8, os-version: 9.0], [device: iPad4,2, os-version: 9.0], [device: iPad4,6, os-version: 9.0], [device: iPad4,9, os-version: 9.0], [device: iPad5,2, os-version: 9.0], [device: iPad7,4, os-version: 10.0], [device: iPad6,11, os-version: 10.0], [device: iPad4,1, os-version: 9.0], [device: iPad6,4, os-version: 9.0], and [device: iPad5,3, os-version: 9.0]
+App + On Demand Resources size: 15.9 MB compressed, 20.6 MB uncompressed
+App size: 15.9 MB compressed, 20.6 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: MagicImage.ipa
+Supported variant descriptors: Universal
+App + On Demand Resources size: 18 MB compressed, 24.4 MB uncompressed
+App size: 18 MB compressed, 24.4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
