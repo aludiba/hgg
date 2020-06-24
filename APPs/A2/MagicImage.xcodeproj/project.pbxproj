@@ -3254,10 +3254,10 @@
 			baseConfigurationReference = B2AD854E65F1B6E6299B1FB1 /* Pods-MagicImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XZ984ASHCF;
+				DEVELOPMENT_TEAM = YRFVZ8D4PD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MagicImage/Class/PECommon/Three/Tapjoy.embeddedframework",
@@ -3286,10 +3286,10 @@
 			baseConfigurationReference = 7076D15E15E31C52589D9758 /* Pods-MagicImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XZ984ASHCF;
+				DEVELOPMENT_TEAM = YRFVZ8D4PD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MagicImage/Class/PECommon/Three/Tapjoy.embeddedframework",

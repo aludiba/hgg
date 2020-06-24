@@ -4,7 +4,8 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "GSKeyChainDataManager.h"
 static const NSUInteger REQUEST_TIME = 30;
-#define BoundID @"com.photoeditai.myphoto"
+//#define BoundID @"com.photoeditai.myphoto"
+#define BoundID @"com.getpiccollages1s.cc"
 @implementation MIHttpTool
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     AFHTTPSessionManager *Manager = [self createManager];

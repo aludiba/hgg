@@ -22,7 +22,7 @@
         self.BKiconImageView = [[UIImageView alloc] init];
         [self.contentView addSubview:self.BKiconImageView];
         self.BKiconImageView.sd_layout
-        .leftSpaceToView(BKbgImageView, 5)
+        .leftSpaceToView(BKbgImageView.mas_left, 15)
         .centerYEqualToView(BKbgImageView)
         .widthIs(30)
         .heightEqualToWidth();
@@ -31,8 +31,8 @@
         self.BKtitleLabel.textColor = UIColor.blackColor;
         [BKbgImageView addSubview:self.BKtitleLabel];
         self.BKtitleLabel.sd_layout
-        .leftSpaceToView(self.BKiconImageView, 10)
-        .centerYEqualToView(self.BKiconImageView)
+        .leftSpaceToView(self.BKiconImageView.mas_right, 40)
+        .centerYEqualToView(BKbgImageView)
         .autoHeightRatio(0);
         [self.BKtitleLabel setSingleLineAutoResizeWithMaxWidth:ScreenWidth];
         UIImageView * BKarrowImageView = [[UIImageView alloc] initWithImage:PEImage(@"PEArrow")];

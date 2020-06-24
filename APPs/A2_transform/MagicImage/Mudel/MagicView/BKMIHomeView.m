@@ -1,5 +1,6 @@
 #import "BKMIHomeView.h"
 #import "UIImage+GradientColor.h"
+#import "UIColor+Hex.h"
 @implementation BKMIHomeView
 - (instancetype)initWithFrame:(CGRect)BKframe{
     if (self = [super initWithFrame:BKframe]) {
@@ -12,6 +13,7 @@
         for (NSInteger BKi = 0; BKi < 4; BKi++) {
             UIView * BKbgView = [[UIView alloc] initWithFrame:CGRectMake((BKi%2) * BKw, (BKi / 2) * BKh, BKw, BKh)];
             [self addSubview:BKbgView];
+            
             UIImageView *BKiconImageView = [[UIImageView alloc] initWithImage:PEImage(@"")];
             BKiconImageView.backgroundColor = BKcolorArray[BKi];
             BKiconImageView.layer.cornerRadius = 6;
@@ -25,6 +27,22 @@
             .rightSpaceToView(BKbgView, 5)
             .bottomSpaceToView(BKbgView, 0)
             .topSpaceToView(BKbgView, 18);
+            
+            UIColor *BKColor = [UIColor colorWithHexString:@"#FEB692"];
+            UIColor *BKColor1 = [UIColor colorWithHexString:@"#EA5455"];
+            UIColor *BKColor2 = [UIColor colorWithHexString:@"#CE9FFC"];
+            UIColor *BKColor3 = [UIColor colorWithHexString:@"#7367F0"];
+            UIColor *BKColor4 = [UIColor colorWithHexString:@"#CE9FFC"];
+            UIColor *BKColor5 = [UIColor colorWithHexString:@"#7367F0"];
+            UIColor *BKColor6 = [UIColor colorWithHexString:@"#43CBFF"];
+            UIColor *BKColor7 = [UIColor colorWithHexString:@"#9708CC"];
+            UIColor *BKColor8 = [UIColor colorWithHexString:@"#FCCF31"];
+            UIColor *BKColor9 = [UIColor colorWithHexString:@"#F55555"];
+            UIColor *BKColor10 = [UIColor colorWithHexString:@"#65FDF0"];
+            UIColor *BKColor11 = [UIColor colorWithHexString:@"#1D6FA3"];
+            UIImage *bgImg = [UIImage gradientColorImageFromColors:@[BKColor,BKColor1,BKColor2,BKColor3,BKColor4,BKColor5,BKColor6,BKColor7,BKColor8,BKColor9,BKColor10,BKColor11,] gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
+            [BKiconImageView setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
+            
             UILabel *BKtitleLabel = [[UILabel alloc] init];
             BKtitleLabel.font = FontBoldSize(18, ScreenWidth);
             BKtitleLabel.textColor = UIColor.whiteColor;

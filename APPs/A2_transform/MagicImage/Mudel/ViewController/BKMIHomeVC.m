@@ -14,6 +14,9 @@
 #import "BKMIStickerDetailVC.h"
 #import "BKMITagsVC.h"
 #import "BKMIFilterDetailVC.h"
+#import "UIImage+GradientColor.h"
+#import "UIColor+Hex.h"
+
 @interface BKMIHomeVC ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UITableView *BKtableView;
 @property (nonatomic, strong) NSMutableArray *BKdataArray;
@@ -62,7 +65,7 @@
     .rightEqualToView(self.view)
     .topEqualToView(self.view).offset(-StatusBarHeight)
     .bottomEqualToView(self.view);
-     self.BKbannerImageArr = @[@"http://api.zhewo.top/static/pic/sticker/1/17.png",@"http://api.zhewo.top/static/pic/filter/Sweet/1.png"];
+     self.BKbannerImageArr = @[@"http://api.zhewo.top/static/new/pic/type_6/1.png",@"http://api.zhewo.top/static/new/pic/type_6/2.png",@"http://api.zhewo.top/static/new/pic/type_6/3.png"];
     [self BKloadData];
     [self BKcreateHeaderView];
     [NotifiCenter addObserver:self selector:@selector(BKloadData) name:@"loginSuccess" object:nil];
@@ -102,13 +105,9 @@
     [BKcontentLabel setSingleLineAutoResizeWithMaxWidth:ScreenWidth];
     UIButton *BKshopBtn = [[UIButton alloc] init];
     [BKshopBtn setTitle:@"SHOP" forState:UIControlStateNormal];
-    [BKshopBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    if (@available(iOS 9.0, *)) {
-        [BKshopBtn setBackgroundColor:[UIColor systemPurpleColor]];
-    } else {
-        [BKshopBtn setBackgroundColor:[UIColor purpleColor]];
-    }
-    BKshopBtn.titleLabel.font = FontBoldSize(14, ScreenWidth);
+    [BKshopBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [BKshopBtn setBackgroundColor:[UIColor blueColor]];
+    BKshopBtn.titleLabel.font = FontBoldSize(12, ScreenWidth);
     BKshopBtn.layer.cornerRadius = 4;
     BKshopBtn.layer.masksToBounds = YES;
     [BKshopBtn addTarget:self action:@selector(BKshopBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -131,10 +130,15 @@
 - (void)BKloadData{
     NSDictionary *BKdict;
     if (UserId) {
-        BKdict = @{@"type":@(1),@"is_hot":@(2),@"user_id":UserId};
+        BKdict = @{@"pic_type":@(6),@"type":@(1),@"is_hot":@(2),@"user_id":UserId};
     }else{
-        BKdict = @{@"type":@(1),@"is_hot":@(1)};
+        BKdict = @{@"pic_type":@(6),@"type":@(1),@"is_hot":@(2)};
     }
+//    if (UserId) {
+//        BKdict = @{@"pic_type":@(6),@"type":@(1),@"user_id":UserId};
+//    }else{
+//        BKdict = @{@"pic_type":@(6),@"type":@(1)};
+//    }
     [MIHttpTool Post:PicList parameters:BKdict success:^(id BKresponseObject) {
         NSLog(@"BKresponseObject:%@",BKresponseObject);
         if ([BKresponseObject[@"status"] integerValue] == 1) {
@@ -278,7 +282,7 @@
     return ScreenHeight/2-110;
 }
 - (UIView *)tableView:(UITableView *)BKtableView viewForHeaderInSection:(NSInteger)BKsection{
-    NSArray *BKtitleArray = @[@"TOOLS",@"STICKER"];
+    NSArray *BKtitleArray = @[@"Tools",@"STICKER"];
     UIView *BKview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
     BKview.backgroundColor = RGB(242, 242, 242);
     UILabel *BKtitileLabel = [[UILabel alloc] init];
@@ -313,6 +317,21 @@
         .centerYEqualToView(BKimageView)
         .widthIs(50)
         .heightIs(30);
+    }else{
+        UIColor *BKColor = [UIColor colorWithHexString:@"#FEB692"];
+        UIColor *BKColor1 = [UIColor colorWithHexString:@"#EA5455"];
+        UIColor *BKColor2 = [UIColor colorWithHexString:@"#CE9FFC"];
+        UIColor *BKColor3 = [UIColor colorWithHexString:@"#7367F0"];
+        UIColor *BKColor4 = [UIColor colorWithHexString:@"#CE9FFC"];
+        UIColor *BKColor5 = [UIColor colorWithHexString:@"#7367F0"];
+        UIColor *BKColor6 = [UIColor colorWithHexString:@"#43CBFF"];
+        UIColor *BKColor7 = [UIColor colorWithHexString:@"#9708CC"];
+        UIColor *BKColor8 = [UIColor colorWithHexString:@"#FCCF31"];
+        UIColor *BKColor9 = [UIColor colorWithHexString:@"#F55555"];
+        UIColor *BKColor10 = [UIColor colorWithHexString:@"#65FDF0"];
+        UIColor *BKColor11 = [UIColor colorWithHexString:@"#1D6FA3"];
+        UIImage *bgImg = [UIImage gradientColorImageFromColors:@[BKColor,BKColor1,BKColor2,BKColor3,BKColor4,BKColor5,BKColor6,BKColor7,BKColor8,BKColor9,BKColor10,BKColor11,] gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
+        [BKview setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
     }
     return BKview;
 }
@@ -339,15 +358,15 @@
 - (void)cycleScrollView:(SDCycleScrollView *)BKcycleScrollView didSelectItemAtIndex:(NSInteger)BKindex{
     if (BKindex == 0) {
         BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
-        BKstickerVC.BKpId = @"3";
+        BKstickerVC.BKpId = @"165";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }else if (BKindex == 1){
         BKMIFilterDetailVC *BKfilterVC = [[BKMIFilterDetailVC alloc] init];
-        BKfilterVC.BKpid = @"21";
+        BKfilterVC.BKpid = @"166";
         [self.navigationController pushViewController:BKfilterVC animated:YES];
     }else{
         BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
-        BKstickerVC.BKpId = @"7";
+        BKstickerVC.BKpId = @"167";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }
 }

@@ -6,12 +6,6 @@
 @implementation BKMIHomeSectionOneCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)BKstyle reuseIdentifier:(NSString *)BKreuseIdentifier{
     if (self = [super initWithStyle:BKstyle reuseIdentifier:BKreuseIdentifier]) {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-        BKMIHomeView *BKhomeView = [[BKMIHomeView alloc] init];
-        KWeakSelf(self);
-        BKhomeView.block = ^(NSInteger tag) {
-            weakself.block(tag);
-        };
         UIColor *BKColor = [UIColor colorWithHexString:@"#FEB692"];
         UIColor *BKColor1 = [UIColor colorWithHexString:@"#EA5455"];
         UIColor *BKColor2 = [UIColor colorWithHexString:@"#CE9FFC"];
@@ -25,7 +19,14 @@
         UIColor *BKColor10 = [UIColor colorWithHexString:@"#65FDF0"];
         UIColor *BKColor11 = [UIColor colorWithHexString:@"#1D6FA3"];
         UIImage *bgImg = [UIImage gradientColorImageFromColors:@[BKColor,BKColor1,BKColor2,BKColor3,BKColor4,BKColor5,BKColor6,BKColor7,BKColor8,BKColor9,BKColor10,BKColor11,] gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
-        [BKhomeView setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
+        [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        BKMIHomeView *BKhomeView = [[BKMIHomeView alloc] init];
+        KWeakSelf(self);
+        BKhomeView.block = ^(NSInteger tag) {
+            weakself.block(tag);
+        };
         [self.contentView addSubview:BKhomeView];
         BKhomeView.sd_layout
         .leftSpaceToView(self.contentView, 10)

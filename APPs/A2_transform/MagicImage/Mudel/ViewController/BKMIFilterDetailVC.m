@@ -108,7 +108,7 @@
     [BKpicker dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)BKloadData{
-        [MIHttpTool Post:PicList parameters:@{@"type":@(2),@"id":self.BKpid} success:^(id BKresponseObject) {
+        [MIHttpTool Post:PicList parameters:@{@"pic_type":@(1),@"type":@(2),@"id":self.BKpid} success:^(id BKresponseObject) {
         if ([BKresponseObject[@"status"] integerValue] == 1) {
                 NSDictionary *BKdict = BKresponseObject[@"data"][0];
             BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];

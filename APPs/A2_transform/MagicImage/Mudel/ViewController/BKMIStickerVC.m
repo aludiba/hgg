@@ -56,9 +56,9 @@
 - (void)BKloadData{
     NSDictionary *BKdict;
     if (UserId) {
-        BKdict = @{@"type":@(1),@"user_id":UserId};
+        BKdict = @{@"pic_type":@(6),@"type":@(1),@"user_id":UserId};
     }else{
-        BKdict = @{@"type":@(1)};
+        BKdict = @{@"pic_type":@(6),@"type":@(1)};
     }
     [MIHttpTool Post:PicList parameters:BKdict success:^(id BKresponseObject) {
         NSLog(@"BKresponseObject:%@",BKresponseObject);
