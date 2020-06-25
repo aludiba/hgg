@@ -1,5 +1,6 @@
 #import "BKMIFeedbackVC.h"
-#import "FSTextView.h"
+//#import "FSTextView.h"
+#import <FSTextView/FSTextView.h>
 @interface BKMIFeedbackVC ()
 @property (nonatomic, strong) FSTextView *BKtextView;
 @end

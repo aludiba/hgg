@@ -1,4 +1,4 @@
-#import "MBProgressHUD.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 @interface MBProgressHUD (JDragon)
 + (void)showTipMessageInWindow:(NSString*)message;
 + (void)showTipMessageInView:(NSString*)message;

@@ -8,7 +8,9 @@
 
 #ifndef MagicImage_pch
 #define MagicImage_pch
-#import "SDAutoLayout.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+//#import "SDAutoLayout.h"
+#import <SDAutoLayout/SDAutoLayout.h>
 #import "MBProgressHUD+JDragon.h"
 #import "MJExtension.h"
 #import "LSHttpParameter.h"

@@ -44,14 +44,14 @@
     UIButton *BKbuyBtn = [[UIButton alloc] init];
     [BKbuyBtn setTitle:@"Apply" forState:UIControlStateNormal];
     [BKbuyBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    BKbuyBtn.layer.cornerRadius = 8;
+    BKbuyBtn.layer.cornerRadius = 6;
     BKbuyBtn.layer.masksToBounds = YES;
     BKbuyBtn.backgroundColor = RGB(62, 85, 250);
     [BKbuyBtn addTarget:self action:@selector(BKbtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [BKbottomView addSubview:BKbuyBtn];
     BKbuyBtn.sd_layout
-    .leftSpaceToView(BKbottomView, 15)
-    .rightSpaceToView(BKbottomView, 15)
+    .leftSpaceToView(BKbottomView, 25)
+    .rightSpaceToView(BKbottomView, 25)
     .centerYEqualToView(BKbottomView)
     .heightIs(45);
      [self BKloadData];
@@ -110,11 +110,15 @@
 - (void)BKloadData{
         [MIHttpTool Post:PicList parameters:@{@"pic_type":@(1),@"type":@(2),@"id":self.BKpid} success:^(id BKresponseObject) {
         if ([BKresponseObject[@"status"] integerValue] == 1) {
-                NSDictionary *BKdict = BKresponseObject[@"data"][0];
+            if ([BKresponseObject[@"data"] count]) {
+            NSDictionary *BKdict = [BKresponseObject[@"data"] objectAtIndex:0];
             BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];
             [self.BKdataArray addObjectsFromArray:BKmodel.pic_url_detail_array];
+            }
         }
-        [self.BKtableView reloadData];
+            if (self.BKdataArray.count) {
+                [self.BKtableView reloadData];
+            }
     } failure:^(NSError *error) {
         MyLog(@"%@",error);
     }];

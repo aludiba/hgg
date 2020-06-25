@@ -23,23 +23,28 @@
 @implementation BKMIStickerDetailVC
 - (NSMutableArray *)BKdataArray{
     if (!_BKdataArray) {
-        _BKdataArray = @[].mutableCopy;
+        _BKdataArray = [[NSMutableArray alloc] init];
     }
     return _BKdataArray;
+}
+- (UICollectionView *)BKcollectionView{
+    if (!_BKcollectionView) {
+        UICollectionViewFlowLayout *BKlayout = [[UICollectionViewFlowLayout alloc] init];
+        _BKcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, ScreenHeight/4, ScreenWidth, ScreenHeight*3/4-NavBarHeight) collectionViewLayout:BKlayout];
+        _BKcollectionView.delegate = self;
+        _BKcollectionView.dataSource = self;
+        _BKcollectionView.backgroundColor = [UIColor whiteColor];
+        [_BKcollectionView registerClass:[BKMIStickerDetailCell class] forCellWithReuseIdentifier:@"cellId1"];
+        [self.view addSubview:_BKcollectionView];
+        _BKcollectionView.backgroundColor = UIColor.groupTableViewBackgroundColor;
+    }
+    return _BKcollectionView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Sticker";
     self.view.backgroundColor = UIColor.whiteColor;
     [self BKaddTopView];
-    UICollectionViewFlowLayout *BKlayout = [[UICollectionViewFlowLayout alloc] init];
-    self.BKcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, ScreenHeight/4, ScreenWidth, ScreenHeight*3/4-NavBarHeight) collectionViewLayout:BKlayout];
-    self.BKcollectionView.delegate = self;
-    self.BKcollectionView.dataSource = self;
-    self.BKcollectionView.backgroundColor = [UIColor whiteColor];
-    [self.BKcollectionView registerClass:[BKMIStickerDetailCell class] forCellWithReuseIdentifier:@"cellId1"];
-    [self.view addSubview:self.BKcollectionView];
-    self.BKcollectionView.backgroundColor = UIColor.groupTableViewBackgroundColor;
     [self.BKdataArray addObjectsFromArray:self.BKmodel.pic_url_detail_array];
     if (UserId) {
         [self BKloadUserModel];
@@ -97,13 +102,13 @@
     self.BKbuyBtn = BKbuyBtn;
     [BKbuyBtn setTitle:@"DownLoad" forState:UIControlStateNormal];
     [BKbuyBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    BKbuyBtn.layer.cornerRadius = 8;
+    BKbuyBtn.layer.cornerRadius = 6;
     BKbuyBtn.layer.masksToBounds = YES;
     [BKbuyBtn addTarget:self action:@selector(BKbtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [BKtopView addSubview:BKbuyBtn];
     BKbuyBtn.sd_layout
-    .leftSpaceToView(BKtopView, 15)
-    .rightSpaceToView(BKtopView, 15)
+    .leftSpaceToView(BKtopView, 25)
+    .rightSpaceToView(BKtopView, 25)
     .topSpaceToView(BKheaderImageView, 15)
     .heightIs(45);
     NSFileManager *BKfileManager = [NSFileManager new];
@@ -139,7 +144,8 @@
     }else{
         BKuser_id = @"";
     }
-    [MIHttpTool Post:PicList parameters:@{@"type":@(BKtype),@"id":self.BKpId,@"user_id":BKuser_id} success:^(id BKresponseObject) {
+    [MIHttpTool Post:PicList parameters:@{@"pic_type":@(6),@"type":@(BKtype),@"id":self.BKpId,@"user_id":BKuser_id} success:^(id BKresponseObject) {
+        NSLog(@"sticker:%@",BKresponseObject);
         if ([BKresponseObject[@"status"] integerValue] == 1) {
             for (NSDictionary *BKdict in BKresponseObject[@"data"]) {
                 BKMIHomeModel *BKmodel = [BKMIHomeModel mj_objectWithKeyValues:BKdict];
@@ -154,7 +160,9 @@
                 [self.BKdataArray addObjectsFromArray:BKmodel.pic_url_detail_array];
             }
         }
-        [self.BKcollectionView reloadData];
+        if (self.BKdataArray.count) {
+            [self.BKcollectionView reloadData];
+        }
     } failure:^(NSError *error) {
     }];
 }
@@ -224,6 +232,12 @@
             }
         }];
     }
+}
+- (BKMIHomeModel *)BKmodel{
+    if (!_BKmodel) {
+        _BKmodel = [[BKMIHomeModel alloc] init];
+    }
+    return _BKmodel;
 }
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)BKalertView clickedButtonAtIndex:(NSInteger)BKbuttonIndex{

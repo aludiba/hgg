@@ -1,4 +1,4 @@
-#import "MBProgressHUD+JDragon.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 @implementation MBProgressHUD (JDragon)
 + (MBProgressHUD*)createMBProgressHUDviewWithMessage:(NSString*)message withView:(UIView *)view{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -7,10 +7,9 @@
     }else if ([message isEqualToString:@"Loading..."]){
         hud.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1.0f];
     }
-    hud.detailsLabelText=message?message:@"Loading.....";
-    hud.detailsLabelFont=[UIFont systemFontOfSize:15];
+    hud.detailsLabel.text = message?message:@"Loading.....";
+    hud.detailsLabel.font=[UIFont systemFontOfSize:15];
     hud.removeFromSuperViewOnHide = YES;
-    hud.dimBackground = NO;
     return hud;
 }
 + (MBProgressHUD*)createMBProgressHUDviewWithMessage:(NSString*)message isWindiw:(BOOL)isWindow
@@ -22,10 +21,10 @@
     }else if ([message isEqualToString:@"Loading..."]){
         hud.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1.0f];
     }
-    hud.detailsLabelText=message?message:@"Loading.....";
-    hud.detailsLabelFont=[UIFont systemFontOfSize:15];
+    hud.detailsLabel.text = message?message:@"Loading.....";
+    hud.detailsLabel.font = [UIFont systemFontOfSize:15];
     hud.removeFromSuperViewOnHide = YES;
-    hud.dimBackground = NO;
+//    hud.dimBackground = NO;
     return hud;
 }
 #pragma mark-------------------- show Tip----------------------------
@@ -49,7 +48,7 @@
 {
     MBProgressHUD *hud = [self createMBProgressHUDviewWithMessage:message isWindiw:isWindow];
     hud.mode = MBProgressHUDModeText;
-    [hud hide:YES afterDelay:aTimer];
+    [hud hideAnimated:YES afterDelay:aTimer];
 }
 #pragma mark-------------------- show Activity----------------------------
 + (void)showActivityMessageInWindow:(NSString*)message
@@ -75,7 +74,7 @@
     MBProgressHUD *hud  =  [self createMBProgressHUDviewWithMessage:message withView:view];
     hud.mode = MBProgressHUDModeIndeterminate;
     if (aTimer>0) {
-        [hud hide:YES afterDelay:aTimer];
+        [hud hideAnimated:YES afterDelay:aTimer];
     }
 }
 + (void)showActivityMessage:(NSString*)message isWindow:(BOOL)isWindow timer:(int)aTimer
@@ -83,7 +82,7 @@
     MBProgressHUD *hud  =  [self createMBProgressHUDviewWithMessage:message isWindiw:isWindow];
     hud.mode = MBProgressHUDModeIndeterminate;
     if (aTimer>0) {
-        [hud hide:YES afterDelay:aTimer];
+        [hud hideAnimated:YES afterDelay:aTimer];
     }
 }
 #pragma mark-------------------- show Image----------------------------
@@ -120,13 +119,13 @@
     MBProgressHUD *hud  =  [self createMBProgressHUDviewWithMessage:message isWindiw:isWindow];
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
     hud.mode = MBProgressHUDModeCustomView;
-    [hud hide:YES afterDelay:1];
+    [hud hideAnimated:YES afterDelay:1];
 }
 + (void)hideHUD
 {
     UIView  *winView =(UIView*)[UIApplication sharedApplication].delegate.window;
-    [self hideAllHUDsForView:winView animated:YES];
-    [self hideAllHUDsForView:[self getCurrentUIVC].view animated:YES];
+    [self hideHUDForView:winView animated:YES];
+    [self hideHUDForView:[self getCurrentUIVC].view animated:YES];
 }
 +(UIViewController *)getCurrentWindowVC
 {

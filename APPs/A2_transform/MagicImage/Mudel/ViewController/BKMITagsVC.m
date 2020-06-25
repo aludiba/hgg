@@ -36,7 +36,7 @@
     [self BKloadData];
 }
 - (void)BKloadData{
-    [MIHttpTool Post:SHTagsList parameters:@{@"type":@"1"} success:^(id BKresponseObject) {
+    [MIHttpTool Post:SHTagsList parameters:@{@"pic_type":@(1),@"type":@"1"} success:^(id BKresponseObject) {
         if ([BKresponseObject[@"status"] integerValue] == 1) {
             [self.BKdataArray removeAllObjects];
             for (NSInteger i = [BKresponseObject[@"data"] count]-1; i>=0; i--) {

@@ -10,6 +10,10 @@
         NSArray *BKimageArray = @[@"CAMERA",@"STICKER",@"TAILOR",@"FILTER"];
         NSArray *BKcolorArray = @[[UIColor redColor],[UIColor orangeColor],[UIColor blueColor],[UIColor greenColor]];
         NSArray *BKcontentArray = @[@"Quick beautiful",@"Rapid concise",@"Optional size",@"Scene change"];
+        UIColor *BKColor = [UIColor colorWithHexString:@"#EA5455"];
+        UIColor *BKColor1 = [UIColor colorWithHexString:@"#7367F0"];
+        UIColor *BKColor2 = [UIColor colorWithHexString:@"#F6416C"];
+        UIColor *BKColor3 = [UIColor colorWithHexString:@"#F8D800"];
         for (NSInteger BKi = 0; BKi < 4; BKi++) {
             UIView * BKbgView = [[UIView alloc] initWithFrame:CGRectMake((BKi%2) * BKw, (BKi / 2) * BKh, BKw, BKh)];
             [self addSubview:BKbgView];
@@ -27,21 +31,23 @@
             .rightSpaceToView(BKbgView, 5)
             .bottomSpaceToView(BKbgView, 0)
             .topSpaceToView(BKbgView, 18);
-            
-            UIColor *BKColor = [UIColor colorWithHexString:@"#FEB692"];
-            UIColor *BKColor1 = [UIColor colorWithHexString:@"#EA5455"];
-            UIColor *BKColor2 = [UIColor colorWithHexString:@"#CE9FFC"];
-            UIColor *BKColor3 = [UIColor colorWithHexString:@"#7367F0"];
-            UIColor *BKColor4 = [UIColor colorWithHexString:@"#CE9FFC"];
-            UIColor *BKColor5 = [UIColor colorWithHexString:@"#7367F0"];
-            UIColor *BKColor6 = [UIColor colorWithHexString:@"#43CBFF"];
-            UIColor *BKColor7 = [UIColor colorWithHexString:@"#9708CC"];
-            UIColor *BKColor8 = [UIColor colorWithHexString:@"#FCCF31"];
-            UIColor *BKColor9 = [UIColor colorWithHexString:@"#F55555"];
-            UIColor *BKColor10 = [UIColor colorWithHexString:@"#65FDF0"];
-            UIColor *BKColor11 = [UIColor colorWithHexString:@"#1D6FA3"];
-            UIImage *bgImg = [UIImage gradientColorImageFromColors:@[BKColor,BKColor1,BKColor2,BKColor3,BKColor4,BKColor5,BKColor6,BKColor7,BKColor8,BKColor9,BKColor10,BKColor11,] gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
-            [BKiconImageView setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
+            if (BKi == 0) {
+                [BKiconImageView setBackgroundColor:BKColor];
+//                [BKColorsArray addObject:BKColor];
+            }else if (BKi == 1){
+                [BKiconImageView setBackgroundColor:BKColor1];
+//                [BKColorsArray addObject:BKColor1];
+            }else if (BKi == 2){
+                [BKiconImageView setBackgroundColor:BKColor2];
+//                [BKColorsArray addObject:BKColor2];
+            }else if (BKi == 3){
+                [BKiconImageView setBackgroundColor:BKColor3];
+//                [BKColorsArray addObject:BKColor3];
+            }
+//            UIColor *BKColor4 = [UIColor colorWithHexString:@"#8C1BAB"];
+//            UIColor *BKColor5 = [UIColor colorWithHexString:@"#28C76F"];
+//            UIImage *bgImg = [UIImage gradientColorImageFromColors:BKColorsArray  gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
+//            [BKiconImageView setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
             
             UILabel *BKtitleLabel = [[UILabel alloc] init];
             BKtitleLabel.font = FontBoldSize(18, ScreenWidth);

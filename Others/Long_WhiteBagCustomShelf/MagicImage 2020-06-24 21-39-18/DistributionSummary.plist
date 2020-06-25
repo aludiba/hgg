@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MagicImage.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>2598BC3B31940228DF2557C40B9BFBD54DFDAF68</string>
+				<key>dateExpires</key>
+				<string>2021/6/21</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>YRFVZ8D4PD.com.getpiccollages1s.cc</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>YRFVZ8D4PD</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>YRFVZ8D4PD.com.getpiccollages1s.cc</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Magic Pic on Super collage
+.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>f7431c8f-4471-4769-95de-44e887d36dff</string>
+				<key>name</key>
+				<string>dev_Magic_pro_20200622</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>YRFVZ8D4PD</string>
+				<key>name</key>
+				<string>hengjun qiu</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

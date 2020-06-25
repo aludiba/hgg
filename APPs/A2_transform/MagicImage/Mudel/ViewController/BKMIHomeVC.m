@@ -14,6 +14,7 @@
 #import "BKMIStickerDetailVC.h"
 #import "BKMITagsVC.h"
 #import "BKMIFilterDetailVC.h"
+#import "BKMIStickerVC.h"
 #import "UIImage+GradientColor.h"
 #import "UIColor+Hex.h"
 
@@ -201,8 +202,12 @@
                 }
                     break;
                 case 5:{
-                    BKMITagsVC *BKtagsVC = [[BKMITagsVC alloc] init];
-                    [self.navigationController pushViewController:BKtagsVC animated:YES];
+//                    BKMITagsVC *BKtagsVC = [[BKMITagsVC alloc] init];
+//                    [self.navigationController pushViewController:BKtagsVC animated:YES];
+                    BKMIStickerVC *BKstickerVC = [[BKMIStickerVC alloc] init];
+                    BKstickerVC.isFromHomeVC = YES;
+                    BKstickerVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:BKstickerVC animated:YES];
                 }
                     break;
                 default:
@@ -284,7 +289,7 @@
 - (UIView *)tableView:(UITableView *)BKtableView viewForHeaderInSection:(NSInteger)BKsection{
     NSArray *BKtitleArray = @[@"Tools",@"STICKER"];
     UIView *BKview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    BKview.backgroundColor = RGB(242, 242, 242);
+    BKview.backgroundColor = [UIColor whiteColor];
     UILabel *BKtitileLabel = [[UILabel alloc] init];
     BKtitileLabel.font = [UIFont boldSystemFontOfSize:16];
     BKtitileLabel.textColor = UIColor.blackColor;
@@ -317,21 +322,6 @@
         .centerYEqualToView(BKimageView)
         .widthIs(50)
         .heightIs(30);
-    }else{
-        UIColor *BKColor = [UIColor colorWithHexString:@"#FEB692"];
-        UIColor *BKColor1 = [UIColor colorWithHexString:@"#EA5455"];
-        UIColor *BKColor2 = [UIColor colorWithHexString:@"#CE9FFC"];
-        UIColor *BKColor3 = [UIColor colorWithHexString:@"#7367F0"];
-        UIColor *BKColor4 = [UIColor colorWithHexString:@"#CE9FFC"];
-        UIColor *BKColor5 = [UIColor colorWithHexString:@"#7367F0"];
-        UIColor *BKColor6 = [UIColor colorWithHexString:@"#43CBFF"];
-        UIColor *BKColor7 = [UIColor colorWithHexString:@"#9708CC"];
-        UIColor *BKColor8 = [UIColor colorWithHexString:@"#FCCF31"];
-        UIColor *BKColor9 = [UIColor colorWithHexString:@"#F55555"];
-        UIColor *BKColor10 = [UIColor colorWithHexString:@"#65FDF0"];
-        UIColor *BKColor11 = [UIColor colorWithHexString:@"#1D6FA3"];
-        UIImage *bgImg = [UIImage gradientColorImageFromColors:@[BKColor,BKColor1,BKColor2,BKColor3,BKColor4,BKColor5,BKColor6,BKColor7,BKColor8,BKColor9,BKColor10,BKColor11,] gradientType:GradientTypeLeftToRight imgSize:CGSizeMake(ScreenWidth - 10,(ScreenWidth-20)*3/5)];
-        [BKview setBackgroundColor:[UIColor colorWithPatternImage:bgImg]];
     }
     return BKview;
 }
@@ -361,9 +351,9 @@
         BKstickerVC.BKpId = @"165";
         [self.navigationController pushViewController:BKstickerVC animated:YES];
     }else if (BKindex == 1){
-        BKMIFilterDetailVC *BKfilterVC = [[BKMIFilterDetailVC alloc] init];
-        BKfilterVC.BKpid = @"166";
-        [self.navigationController pushViewController:BKfilterVC animated:YES];
+        BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
+        BKstickerVC.BKpId = @"166";
+        [self.navigationController pushViewController:BKstickerVC animated:YES];
     }else{
         BKMIStickerDetailVC *BKstickerVC = [[BKMIStickerDetailVC alloc] init];
         BKstickerVC.BKpId = @"167";

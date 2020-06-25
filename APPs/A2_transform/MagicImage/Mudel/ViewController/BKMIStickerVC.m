@@ -26,12 +26,20 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat bottomDistance;
+    if (self.isFromHomeVC == YES) {
+        self.title = @"Hot Stickers";
+        bottomDistance = 0;
+    }else{
+        bottomDistance = 64;
+    }
     [self.view addSubview:self.BKtableView];
+    
     self.BKtableView.sd_layout
     .leftEqualToView(self.view)
     .rightEqualToView(self.view)
     .topEqualToView(self.view)
-    .bottomSpaceToView(self.view, 64);
+    .bottomSpaceToView(self.view, bottomDistance);
     [self BKloadData];
     [NotifiCenter addObserver:self selector:@selector(BKupdatePrice) name:@"loginSuccess" object:nil];
     [NotifiCenter addObserver:self selector:@selector(BKloginOut) name:@"loginOut" object:nil];

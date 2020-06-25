@@ -15,10 +15,16 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - DGActivityIndicatorView (2.1.1)
+  - FSTextView (1.8)
   - GPUImage (0.1.7)
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJExtension (3.2.1)
+  - MJRefresh (3.4.3)
   - ReactiveObjC (3.1.0)
+  - SDAutoLayout (2.2.1)
   - TOCropViewController (2.3.8)
+  - YCPopover (1.2.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -27,10 +33,16 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - DGActivityIndicatorView
+  - FSTextView
   - GPUImage
   - Masonry
+  - MBProgressHUD
+  - MJExtension
+  - MJRefresh
   - ReactiveObjC
+  - SDAutoLayout
   - TOCropViewController
+  - YCPopover
   - YYCategories
   - YYModel
 
@@ -38,23 +50,35 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - DGActivityIndicatorView
+    - FSTextView
     - GPUImage
     - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
     - ReactiveObjC
+    - SDAutoLayout
     - TOCropViewController
+    - YCPopover
     - YYCategories
     - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
+  FSTextView: 9e2ca07bb6bb0fb7e77b49b2717adf81f3c620b5
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
   TOCropViewController: 0a075f02c253e88095143bbac7b013fc6fba5090
+  YCPopover: a11e06b685e9cddaa10e8f1bb3c1ba5bb52d719e
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: f24aeeaf9b1dc958e19657c86bd1734efd869c0c
+PODFILE CHECKSUM: 2d2fa71784ad7ac3522f515e4dc3fac1a65f12bb
 
 COCOAPODS: 1.9.2

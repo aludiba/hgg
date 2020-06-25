@@ -34,7 +34,7 @@
 }
 - (void)BKloadTagDetail{
     NSLog(@"parent_id:%ld",self.BKtagId);
-    [MIHttpTool Post:TagsList parameters:@{@"parent_id":@(self.BKtagId),@"type":@"1"} success:^(id BKresponseObject) {
+    [MIHttpTool Post:TagsList parameters:@{@"pic_type":@(1),@"parent_id":@(self.BKtagId),@"type":@"1"} success:^(id BKresponseObject) {
         NSLog(@"BKresponseObject:%@",BKresponseObject);
         if ([BKresponseObject[@"status"] integerValue] == 1) {
             for (NSDictionary *BKdict in BKresponseObject[@"data"]) {

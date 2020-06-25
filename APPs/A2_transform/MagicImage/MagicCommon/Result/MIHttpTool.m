@@ -1,6 +1,7 @@
 #import "MIHttpTool.h"
 #import "AFNetworking.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
+#import <MJExtension/MJExtension.h>
 #import "AFNetworkActivityIndicatorManager.h"
 #import "GSKeyChainDataManager.h"
 static const NSUInteger REQUEST_TIME = 30;
