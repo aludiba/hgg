@@ -1,3 +1,3 @@
 #import <UIKit/UIKit.h>
-@interface QMCameraSettingViewController : UIViewController
+@interface BKQMCameraSettingViewController : UIViewController
 @end

@@ -8,7 +8,7 @@
 #import "BKMIStoreVC.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "QMPhotoEffectViewController.h"
+#import "BKQMPhotoEffectViewController.h"
 #import "SDProgressView.h"
 @interface BKMIStickerDetailVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UICollectionView *BKcollectionView;
@@ -178,8 +178,8 @@
         [self presentViewController:BKnavi animated:YES completion:nil];
         return;
     }
-    BKMIStoreVC *BKstoreVC = [[BKMIStoreVC alloc] init];
-    [self.navigationController pushViewController:BKstoreVC animated:YES];
+//    BKMIStoreVC *BKstoreVC = [[BKMIStoreVC alloc] init];
+//    [self.navigationController pushViewController:BKstoreVC animated:YES];
 }
 - (void)BKbtnClicked:(UIButton *)BKsender{
     if ([BKsender.titleLabel.text isEqualToString:@"Download"]) {
@@ -255,9 +255,9 @@
     ALAssetsLibrary *BKlibrary = [[ALAssetsLibrary alloc] init];
     [BKlibrary assetForURL:BKurl resultBlock:^(ALAsset *BKasset){
         UIImage *BKimage = BKinfo[UIImagePickerControllerOriginalImage];
-        QMPhotoEffectViewController *BKcmVC = [[QMPhotoEffectViewController alloc] initWithImage:BKimage];
-        BKcmVC.type = 1;
-        BKcmVC.resourcePath = [YWebDataHandle documentYWebImageFileWithFolder:self.BKpId];
+        BKQMPhotoEffectViewController *BKcmVC = [[BKQMPhotoEffectViewController alloc] initWithImage:BKimage];
+        BKcmVC.BKtype = 1;
+        BKcmVC.BKresourcePath = [YWebDataHandle documentYWebImageFileWithFolder:self.BKpId];
         [self presentViewController:BKcmVC animated:YES completion:nil];
     }failureBlock:^(NSError *error){
     }];

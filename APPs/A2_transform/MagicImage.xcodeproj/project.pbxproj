@@ -211,41 +211,40 @@
 		0401A2442490843B007FB925 /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0C82490843A007FB925 /* UIView+Geometry.m */; };
 		0401A2452490843B007FB925 /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0CA2490843A007FB925 /* UIView+Size.m */; };
 		0401A2462490843B007FB925 /* UIImageView+GraudatedAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0CC2490843A007FB925 /* UIImageView+GraudatedAnimation.m */; };
-		0401A2472490843B007FB925 /* QMCameraSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0D12490843A007FB925 /* QMCameraSettingViewController.m */; };
-		0401A2482490843B007FB925 /* QMSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0D52490843A007FB925 /* QMSettingModel.m */; };
-		0401A2492490843B007FB925 /* QMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0D72490843A007FB925 /* QMSettingTableViewCell.m */; };
-		0401A24A2490843B007FB925 /* QMSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A0D82490843A007FB925 /* QMSettingTableViewCell.xib */; };
-		0401A24B2490843B007FB925 /* QMPhotoClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0DD2490843A007FB925 /* QMPhotoClipViewController.m */; };
-		0401A24C2490843B007FB925 /* QMPhotoEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0E12490843A007FB925 /* QMPhotoEffectViewController.m */; };
-		0401A24D2490843B007FB925 /* QMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0E72490843A007FB925 /* QMProgressHUD.m */; };
-		0401A24E2490843B007FB925 /* QMCustomSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0EA2490843A007FB925 /* QMCustomSlider.m */; };
-		0401A24F2490843B007FB925 /* QMSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0ED2490843A007FB925 /* QMSuspensionView.m */; };
-		0401A2502490843B007FB925 /* CKStillCameraPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0EF2490843A007FB925 /* CKStillCameraPreview.m */; };
-		0401A2512490843B007FB925 /* CKStillCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F02490843A007FB925 /* CKStillCamera.m */; };
-		0401A2522490843B007FB925 /* QMCropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F52490843A007FB925 /* QMCropModel.m */; };
-		0401A2532490843B007FB925 /* QMFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F82490843A007FB925 /* QMFilterModel.m */; };
-		0401A2542490843B007FB925 /* QMFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0FA2490843A007FB925 /* QMFrameModel.m */; };
-		0401A2552490843B007FB925 /* QMFrameThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0FF2490843A007FB925 /* QMFrameThemeView.m */; };
-		0401A2562490843B007FB925 /* QMFrameThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1002490843A007FB925 /* QMFrameThemeViewCell.xib */; };
-		0401A2572490843B007FB925 /* QMFrameThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1012490843A007FB925 /* QMFrameThemeViewCell.m */; };
-		0401A2582490843B007FB925 /* QMFilterThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1032490843A007FB925 /* QMFilterThemeView.m */; };
-		0401A2592490843B007FB925 /* QMFilterThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1052490843A007FB925 /* QMFilterThemeViewCell.m */; };
-		0401A25A2490843B007FB925 /* QMFilterThemeSilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1062490843A007FB925 /* QMFilterThemeSilder.m */; };
-		0401A25B2490843B007FB925 /* QMFilterThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1082490843A007FB925 /* QMFilterThemeViewCell.xib */; };
-		0401A25C2490843B007FB925 /* QMBaseThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A10B2490843A007FB925 /* QMBaseThemeView.m */; };
-		0401A25D2490843B007FB925 /* QMDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A10F2490843A007FB925 /* QMDragView.m */; };
-		0401A25E2490843B007FB925 /* QMCropThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1112490843A007FB925 /* QMCropThemeView.m */; };
-		0401A25F2490843B007FB925 /* QMCropThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1132490843A007FB925 /* QMCropThemeViewCell.xib */; };
-		0401A2602490843B007FB925 /* QMCropThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1152490843A007FB925 /* QMCropThemeViewCell.m */; };
-		0401A2612490843B007FB925 /* QMImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1172490843A007FB925 /* QMImageFilter.m */; };
-		0401A2622490843B007FB925 /* QMShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A11A2490843A007FB925 /* QMShakeButton.m */; };
-		0401A2632490843B007FB925 /* QMShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A11E2490843A007FB925 /* QMShareManager.m */; };
-		0401A2642490843B007FB925 /* QMPhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1212490843A007FB925 /* QMPhotoDisplayViewController.m */; };
-		0401A2652490843B007FB925 /* QMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1242490843A007FB925 /* QMCameraViewController.m */; };
-		0401A2662490843B007FB925 /* QMCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1262490843A007FB925 /* QMCameraFocusView.m */; };
-		0401A2672490843B007FB925 /* QMCameraFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1282490843A007FB925 /* QMCameraFilterView.m */; };
-		0401A2682490843B007FB925 /* QMCameraRatioSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1292490843A007FB925 /* QMCameraRatioSuspensionView.m */; };
-		0401A2692490843B007FB925 /* QMCameraFlashSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A12B2490843A007FB925 /* QMCameraFlashSuspensionView.m */; };
+		0401A2482490843B007FB925 /* BKQMSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0D52490843A007FB925 /* BKQMSettingModel.m */; };
+		0401A2492490843B007FB925 /* BKQMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0D72490843A007FB925 /* BKQMSettingTableViewCell.m */; };
+		0401A24A2490843B007FB925 /* BKQMSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A0D82490843A007FB925 /* BKQMSettingTableViewCell.xib */; };
+		0401A24B2490843B007FB925 /* BKQMPhotoClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0DD2490843A007FB925 /* BKQMPhotoClipViewController.m */; };
+		0401A24C2490843B007FB925 /* BKQMPhotoEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0E12490843A007FB925 /* BKQMPhotoEffectViewController.m */; };
+		0401A24D2490843B007FB925 /* BKQMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0E72490843A007FB925 /* BKQMProgressHUD.m */; };
+		0401A24E2490843B007FB925 /* BKQMCustomSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0EA2490843A007FB925 /* BKQMCustomSlider.m */; };
+		0401A24F2490843B007FB925 /* BKQMSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0ED2490843A007FB925 /* BKQMSuspensionView.m */; };
+		0401A2502490843B007FB925 /* BKCKStillCameraPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0EF2490843A007FB925 /* BKCKStillCameraPreview.m */; };
+		0401A2512490843B007FB925 /* BKCKStillCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F02490843A007FB925 /* BKCKStillCamera.m */; };
+		0401A2522490843B007FB925 /* BKQMCropModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F52490843A007FB925 /* BKQMCropModel.m */; };
+		0401A2532490843B007FB925 /* BKQMFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0F82490843A007FB925 /* BKQMFilterModel.m */; };
+		0401A2542490843B007FB925 /* BKQMFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0FA2490843A007FB925 /* BKQMFrameModel.m */; };
+		0401A2552490843B007FB925 /* BKQMFrameThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A0FF2490843A007FB925 /* BKQMFrameThemeView.m */; };
+		0401A2562490843B007FB925 /* BKQMFrameThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1002490843A007FB925 /* BKQMFrameThemeViewCell.xib */; };
+		0401A2572490843B007FB925 /* BKQMFrameThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1012490843A007FB925 /* BKQMFrameThemeViewCell.m */; };
+		0401A2582490843B007FB925 /* BKQMFilterThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1032490843A007FB925 /* BKQMFilterThemeView.m */; };
+		0401A2592490843B007FB925 /* BKQMFilterThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1052490843A007FB925 /* BKQMFilterThemeViewCell.m */; };
+		0401A25A2490843B007FB925 /* BKQMFilterThemeSilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1062490843A007FB925 /* BKQMFilterThemeSilder.m */; };
+		0401A25B2490843B007FB925 /* BKQMFilterThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1082490843A007FB925 /* BKQMFilterThemeViewCell.xib */; };
+		0401A25C2490843B007FB925 /* BKQMBaseThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A10B2490843A007FB925 /* BKQMBaseThemeView.m */; };
+		0401A25D2490843B007FB925 /* BKQMDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A10F2490843A007FB925 /* BKQMDragView.m */; };
+		0401A25E2490843B007FB925 /* BKQMCropThemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1112490843A007FB925 /* BKQMCropThemeView.m */; };
+		0401A25F2490843B007FB925 /* BKQMCropThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401A1132490843A007FB925 /* BKQMCropThemeViewCell.xib */; };
+		0401A2602490843B007FB925 /* BKQMCropThemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1152490843A007FB925 /* BKQMCropThemeViewCell.m */; };
+		0401A2612490843B007FB925 /* BKQMImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1172490843A007FB925 /* BKQMImageFilter.m */; };
+		0401A2622490843B007FB925 /* BKQMShakeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A11A2490843A007FB925 /* BKQMShakeButton.m */; };
+		0401A2632490843B007FB925 /* BKQMShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A11E2490843A007FB925 /* BKQMShareManager.m */; };
+		0401A2642490843B007FB925 /* BKQMPhotoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1212490843A007FB925 /* BKQMPhotoDisplayViewController.m */; };
+		0401A2652490843B007FB925 /* BKQMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1242490843A007FB925 /* BKQMCameraViewController.m */; };
+		0401A2662490843B007FB925 /* BKQMCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1262490843A007FB925 /* BKQMCameraFocusView.m */; };
+		0401A2672490843B007FB925 /* BKQMCameraFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1282490843A007FB925 /* BKQMCameraFilterView.m */; };
+		0401A2682490843B007FB925 /* BKQMCameraRatioSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A1292490843A007FB925 /* BKQMCameraRatioSuspensionView.m */; };
+		0401A2692490843B007FB925 /* BKQMCameraFlashSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401A12B2490843A007FB925 /* BKQMCameraFlashSuspensionView.m */; };
 		0401A26D24908675007FB925 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0401A26B24908675007FB925 /* LaunchScreen.strings */; };
 		041D3C472488F75300A1E26D /* CommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D3C422488F75300A1E26D /* CommonClass.m */; };
 		045640A5248A331500E24E0D /* MIHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0456409B248A331500E24E0D /* MIHttpTool.m */; };
@@ -294,6 +293,7 @@
 		CEA3177C249F06A3001CDA7F /* UIImage+GradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3177B249F06A3001CDA7F /* UIImage+GradientColor.m */; };
 		CECBBE9C24978BA20067B183 /* BKMIBaseTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECBBE9824978BA20067B183 /* BKMIBaseTabBarVC.m */; };
 		CECBBE9D24978BA20067B183 /* BKMIBaseNavigationC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECBBE9924978BA20067B183 /* BKMIBaseNavigationC.m */; };
+		CED42AEC24A5BCA900EAEEF4 /* BKQMCameraSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED42AEB24A5BCA900EAEEF4 /* BKQMCameraSettingViewController.m */; };
 		E78081801768A46A36A077D7 /* libPods-MagicImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5738CD54FAA1F2DD4E1875BF /* libPods-MagicImage.a */; };
 		ED2D5C82227886B000F5FF06 /* BKMIStoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2D5C81227886B000F5FF06 /* BKMIStoreVC.m */; };
 		ED2D5C85227886BC00F5FF06 /* BKMIMoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2D5C84227886BC00F5FF06 /* BKMIMoreVC.m */; };
@@ -614,72 +614,71 @@
 		0401A0CA2490843A007FB925 /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
 		0401A0CC2490843A007FB925 /* UIImageView+GraudatedAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GraudatedAnimation.m"; sourceTree = "<group>"; };
 		0401A0CD2490843A007FB925 /* UIImageView+GraudatedAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GraudatedAnimation.h"; sourceTree = "<group>"; };
-		0401A0D12490843A007FB925 /* QMCameraSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraSettingViewController.m; sourceTree = "<group>"; };
 		0401A0D22490843A007FB925 /* BKQMCameraSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraSettingViewController.h; sourceTree = "<group>"; };
-		0401A0D42490843A007FB925 /* QMSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingModel.h; sourceTree = "<group>"; };
-		0401A0D52490843A007FB925 /* QMSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingModel.m; sourceTree = "<group>"; };
-		0401A0D72490843A007FB925 /* QMSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingTableViewCell.m; sourceTree = "<group>"; };
-		0401A0D82490843A007FB925 /* QMSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMSettingTableViewCell.xib; sourceTree = "<group>"; };
-		0401A0D92490843A007FB925 /* QMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingTableViewCell.h; sourceTree = "<group>"; };
-		0401A0DC2490843A007FB925 /* QMPhotoClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPhotoClipViewController.h; sourceTree = "<group>"; };
-		0401A0DD2490843A007FB925 /* QMPhotoClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPhotoClipViewController.m; sourceTree = "<group>"; };
-		0401A0E02490843A007FB925 /* QMPhotoEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPhotoEffectViewController.h; sourceTree = "<group>"; };
-		0401A0E12490843A007FB925 /* QMPhotoEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPhotoEffectViewController.m; sourceTree = "<group>"; };
-		0401A0E62490843A007FB925 /* QMProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMProgressHUD.h; sourceTree = "<group>"; };
-		0401A0E72490843A007FB925 /* QMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMProgressHUD.m; sourceTree = "<group>"; };
-		0401A0E92490843A007FB925 /* QMCustomSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCustomSlider.h; sourceTree = "<group>"; };
-		0401A0EA2490843A007FB925 /* QMCustomSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCustomSlider.m; sourceTree = "<group>"; };
-		0401A0EC2490843A007FB925 /* QMSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSuspensionView.h; sourceTree = "<group>"; };
-		0401A0ED2490843A007FB925 /* QMSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSuspensionView.m; sourceTree = "<group>"; };
-		0401A0EF2490843A007FB925 /* CKStillCameraPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKStillCameraPreview.m; sourceTree = "<group>"; };
-		0401A0F02490843A007FB925 /* CKStillCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKStillCamera.m; sourceTree = "<group>"; };
-		0401A0F12490843A007FB925 /* CKStillCameraPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKStillCameraPreview.h; sourceTree = "<group>"; };
-		0401A0F22490843A007FB925 /* CKStillCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKStillCamera.h; sourceTree = "<group>"; };
-		0401A0F52490843A007FB925 /* QMCropModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCropModel.m; sourceTree = "<group>"; };
-		0401A0F62490843A007FB925 /* QMFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFilterModel.h; sourceTree = "<group>"; };
-		0401A0F72490843A007FB925 /* QMFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFrameModel.h; sourceTree = "<group>"; };
-		0401A0F82490843A007FB925 /* QMFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFilterModel.m; sourceTree = "<group>"; };
-		0401A0F92490843A007FB925 /* QMCropModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCropModel.h; sourceTree = "<group>"; };
-		0401A0FA2490843A007FB925 /* QMFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFrameModel.m; sourceTree = "<group>"; };
-		0401A0FD2490843A007FB925 /* QMFrameThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFrameThemeView.h; sourceTree = "<group>"; };
-		0401A0FE2490843A007FB925 /* QMFrameThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFrameThemeViewCell.h; sourceTree = "<group>"; };
-		0401A0FF2490843A007FB925 /* QMFrameThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFrameThemeView.m; sourceTree = "<group>"; };
-		0401A1002490843A007FB925 /* QMFrameThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMFrameThemeViewCell.xib; sourceTree = "<group>"; };
-		0401A1012490843A007FB925 /* QMFrameThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFrameThemeViewCell.m; sourceTree = "<group>"; };
-		0401A1032490843A007FB925 /* QMFilterThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFilterThemeView.m; sourceTree = "<group>"; };
-		0401A1042490843A007FB925 /* QMFilterThemeSilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFilterThemeSilder.h; sourceTree = "<group>"; };
-		0401A1052490843A007FB925 /* QMFilterThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFilterThemeViewCell.m; sourceTree = "<group>"; };
-		0401A1062490843A007FB925 /* QMFilterThemeSilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMFilterThemeSilder.m; sourceTree = "<group>"; };
-		0401A1072490843A007FB925 /* QMFilterThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFilterThemeView.h; sourceTree = "<group>"; };
-		0401A1082490843A007FB925 /* QMFilterThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMFilterThemeViewCell.xib; sourceTree = "<group>"; };
-		0401A1092490843A007FB925 /* QMFilterThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMFilterThemeViewCell.h; sourceTree = "<group>"; };
-		0401A10B2490843A007FB925 /* QMBaseThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMBaseThemeView.m; sourceTree = "<group>"; };
-		0401A10C2490843A007FB925 /* QMBaseThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMBaseThemeView.h; sourceTree = "<group>"; };
-		0401A10E2490843A007FB925 /* QMDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMDragView.h; sourceTree = "<group>"; };
-		0401A10F2490843A007FB925 /* QMDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMDragView.m; sourceTree = "<group>"; };
-		0401A1112490843A007FB925 /* QMCropThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCropThemeView.m; sourceTree = "<group>"; };
-		0401A1122490843A007FB925 /* QMCropThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCropThemeViewCell.h; sourceTree = "<group>"; };
-		0401A1132490843A007FB925 /* QMCropThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMCropThemeViewCell.xib; sourceTree = "<group>"; };
-		0401A1142490843A007FB925 /* QMCropThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCropThemeView.h; sourceTree = "<group>"; };
-		0401A1152490843A007FB925 /* QMCropThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCropThemeViewCell.m; sourceTree = "<group>"; };
-		0401A1172490843A007FB925 /* QMImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMImageFilter.m; sourceTree = "<group>"; };
-		0401A1182490843A007FB925 /* QMImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMImageFilter.h; sourceTree = "<group>"; };
-		0401A11A2490843A007FB925 /* QMShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMShakeButton.m; sourceTree = "<group>"; };
-		0401A11B2490843A007FB925 /* QMShakeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMShakeButton.h; sourceTree = "<group>"; };
-		0401A11D2490843A007FB925 /* QMShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMShareManager.h; sourceTree = "<group>"; };
-		0401A11E2490843A007FB925 /* QMShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMShareManager.m; sourceTree = "<group>"; };
-		0401A1212490843A007FB925 /* QMPhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPhotoDisplayViewController.m; sourceTree = "<group>"; };
-		0401A1222490843A007FB925 /* QMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCameraViewController.h; sourceTree = "<group>"; };
-		0401A1232490843A007FB925 /* QMPhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPhotoDisplayViewController.h; sourceTree = "<group>"; };
-		0401A1242490843A007FB925 /* QMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraViewController.m; sourceTree = "<group>"; };
-		0401A1262490843A007FB925 /* QMCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraFocusView.m; sourceTree = "<group>"; };
-		0401A1272490843A007FB925 /* QMCameraFlashSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCameraFlashSuspensionView.h; sourceTree = "<group>"; };
-		0401A1282490843A007FB925 /* QMCameraFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraFilterView.m; sourceTree = "<group>"; };
-		0401A1292490843A007FB925 /* QMCameraRatioSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraRatioSuspensionView.m; sourceTree = "<group>"; };
-		0401A12A2490843A007FB925 /* QMCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCameraFocusView.h; sourceTree = "<group>"; };
-		0401A12B2490843A007FB925 /* QMCameraFlashSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCameraFlashSuspensionView.m; sourceTree = "<group>"; };
-		0401A12C2490843A007FB925 /* QMCameraFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCameraFilterView.h; sourceTree = "<group>"; };
-		0401A12D2490843A007FB925 /* QMCameraRatioSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCameraRatioSuspensionView.h; sourceTree = "<group>"; };
+		0401A0D42490843A007FB925 /* BKQMSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMSettingModel.h; sourceTree = "<group>"; };
+		0401A0D52490843A007FB925 /* BKQMSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMSettingModel.m; sourceTree = "<group>"; };
+		0401A0D72490843A007FB925 /* BKQMSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMSettingTableViewCell.m; sourceTree = "<group>"; };
+		0401A0D82490843A007FB925 /* BKQMSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKQMSettingTableViewCell.xib; sourceTree = "<group>"; };
+		0401A0D92490843A007FB925 /* BKQMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMSettingTableViewCell.h; sourceTree = "<group>"; };
+		0401A0DC2490843A007FB925 /* BKQMPhotoClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMPhotoClipViewController.h; sourceTree = "<group>"; };
+		0401A0DD2490843A007FB925 /* BKQMPhotoClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMPhotoClipViewController.m; sourceTree = "<group>"; };
+		0401A0E02490843A007FB925 /* BKQMPhotoEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMPhotoEffectViewController.h; sourceTree = "<group>"; };
+		0401A0E12490843A007FB925 /* BKQMPhotoEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMPhotoEffectViewController.m; sourceTree = "<group>"; };
+		0401A0E62490843A007FB925 /* BKQMProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMProgressHUD.h; sourceTree = "<group>"; };
+		0401A0E72490843A007FB925 /* BKQMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMProgressHUD.m; sourceTree = "<group>"; };
+		0401A0E92490843A007FB925 /* BKQMCustomSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCustomSlider.h; sourceTree = "<group>"; };
+		0401A0EA2490843A007FB925 /* BKQMCustomSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCustomSlider.m; sourceTree = "<group>"; };
+		0401A0EC2490843A007FB925 /* BKQMSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMSuspensionView.h; sourceTree = "<group>"; };
+		0401A0ED2490843A007FB925 /* BKQMSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMSuspensionView.m; sourceTree = "<group>"; };
+		0401A0EF2490843A007FB925 /* BKCKStillCameraPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCKStillCameraPreview.m; sourceTree = "<group>"; };
+		0401A0F02490843A007FB925 /* BKCKStillCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCKStillCamera.m; sourceTree = "<group>"; };
+		0401A0F12490843A007FB925 /* BKCKStillCameraPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCKStillCameraPreview.h; sourceTree = "<group>"; };
+		0401A0F22490843A007FB925 /* BKCKStillCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCKStillCamera.h; sourceTree = "<group>"; };
+		0401A0F52490843A007FB925 /* BKQMCropModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCropModel.m; sourceTree = "<group>"; };
+		0401A0F62490843A007FB925 /* BKQMFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFilterModel.h; sourceTree = "<group>"; };
+		0401A0F72490843A007FB925 /* BKQMFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFrameModel.h; sourceTree = "<group>"; };
+		0401A0F82490843A007FB925 /* BKQMFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFilterModel.m; sourceTree = "<group>"; };
+		0401A0F92490843A007FB925 /* BKQMCropModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCropModel.h; sourceTree = "<group>"; };
+		0401A0FA2490843A007FB925 /* BKQMFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFrameModel.m; sourceTree = "<group>"; };
+		0401A0FD2490843A007FB925 /* BKQMFrameThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFrameThemeView.h; sourceTree = "<group>"; };
+		0401A0FE2490843A007FB925 /* BKQMFrameThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFrameThemeViewCell.h; sourceTree = "<group>"; };
+		0401A0FF2490843A007FB925 /* BKQMFrameThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFrameThemeView.m; sourceTree = "<group>"; };
+		0401A1002490843A007FB925 /* BKQMFrameThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKQMFrameThemeViewCell.xib; sourceTree = "<group>"; };
+		0401A1012490843A007FB925 /* BKQMFrameThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFrameThemeViewCell.m; sourceTree = "<group>"; };
+		0401A1032490843A007FB925 /* BKQMFilterThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFilterThemeView.m; sourceTree = "<group>"; };
+		0401A1042490843A007FB925 /* BKQMFilterThemeSilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFilterThemeSilder.h; sourceTree = "<group>"; };
+		0401A1052490843A007FB925 /* BKQMFilterThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFilterThemeViewCell.m; sourceTree = "<group>"; };
+		0401A1062490843A007FB925 /* BKQMFilterThemeSilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMFilterThemeSilder.m; sourceTree = "<group>"; };
+		0401A1072490843A007FB925 /* BKQMFilterThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFilterThemeView.h; sourceTree = "<group>"; };
+		0401A1082490843A007FB925 /* BKQMFilterThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKQMFilterThemeViewCell.xib; sourceTree = "<group>"; };
+		0401A1092490843A007FB925 /* BKQMFilterThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMFilterThemeViewCell.h; sourceTree = "<group>"; };
+		0401A10B2490843A007FB925 /* BKQMBaseThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMBaseThemeView.m; sourceTree = "<group>"; };
+		0401A10C2490843A007FB925 /* BKQMBaseThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMBaseThemeView.h; sourceTree = "<group>"; };
+		0401A10E2490843A007FB925 /* BKQMDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMDragView.h; sourceTree = "<group>"; };
+		0401A10F2490843A007FB925 /* BKQMDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMDragView.m; sourceTree = "<group>"; };
+		0401A1112490843A007FB925 /* BKQMCropThemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCropThemeView.m; sourceTree = "<group>"; };
+		0401A1122490843A007FB925 /* BKQMCropThemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCropThemeViewCell.h; sourceTree = "<group>"; };
+		0401A1132490843A007FB925 /* BKQMCropThemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BKQMCropThemeViewCell.xib; sourceTree = "<group>"; };
+		0401A1142490843A007FB925 /* BKQMCropThemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCropThemeView.h; sourceTree = "<group>"; };
+		0401A1152490843A007FB925 /* BKQMCropThemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCropThemeViewCell.m; sourceTree = "<group>"; };
+		0401A1172490843A007FB925 /* BKQMImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMImageFilter.m; sourceTree = "<group>"; };
+		0401A1182490843A007FB925 /* BKQMImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMImageFilter.h; sourceTree = "<group>"; };
+		0401A11A2490843A007FB925 /* BKQMShakeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMShakeButton.m; sourceTree = "<group>"; };
+		0401A11B2490843A007FB925 /* BKQMShakeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMShakeButton.h; sourceTree = "<group>"; };
+		0401A11D2490843A007FB925 /* BKQMShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMShareManager.h; sourceTree = "<group>"; };
+		0401A11E2490843A007FB925 /* BKQMShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMShareManager.m; sourceTree = "<group>"; };
+		0401A1212490843A007FB925 /* BKQMPhotoDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMPhotoDisplayViewController.m; sourceTree = "<group>"; };
+		0401A1222490843A007FB925 /* BKQMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraViewController.h; sourceTree = "<group>"; };
+		0401A1232490843A007FB925 /* BKQMPhotoDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMPhotoDisplayViewController.h; sourceTree = "<group>"; };
+		0401A1242490843A007FB925 /* BKQMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraViewController.m; sourceTree = "<group>"; };
+		0401A1262490843A007FB925 /* BKQMCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraFocusView.m; sourceTree = "<group>"; };
+		0401A1272490843A007FB925 /* BKQMCameraFlashSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraFlashSuspensionView.h; sourceTree = "<group>"; };
+		0401A1282490843A007FB925 /* BKQMCameraFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraFilterView.m; sourceTree = "<group>"; };
+		0401A1292490843A007FB925 /* BKQMCameraRatioSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraRatioSuspensionView.m; sourceTree = "<group>"; };
+		0401A12A2490843A007FB925 /* BKQMCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraFocusView.h; sourceTree = "<group>"; };
+		0401A12B2490843A007FB925 /* BKQMCameraFlashSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraFlashSuspensionView.m; sourceTree = "<group>"; };
+		0401A12C2490843A007FB925 /* BKQMCameraFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraFilterView.h; sourceTree = "<group>"; };
+		0401A12D2490843A007FB925 /* BKQMCameraRatioSuspensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKQMCameraRatioSuspensionView.h; sourceTree = "<group>"; };
 		0401A26C24908675007FB925 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = LaunchScreen.strings; sourceTree = "<group>"; };
 		041D3C422488F75300A1E26D /* CommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonClass.m; sourceTree = "<group>"; };
 		041D3C442488F75300A1E26D /* CommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonClass.h; sourceTree = "<group>"; };
@@ -754,6 +753,7 @@
 		CECBBE9924978BA20067B183 /* BKMIBaseNavigationC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKMIBaseNavigationC.m; sourceTree = "<group>"; };
 		CECBBE9A24978BA20067B183 /* BKMIBaseTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMIBaseTabBarVC.h; sourceTree = "<group>"; };
 		CECBBE9B24978BA20067B183 /* BKMIBaseNavigationC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMIBaseNavigationC.h; sourceTree = "<group>"; };
+		CED42AEB24A5BCA900EAEEF4 /* BKQMCameraSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKQMCameraSettingViewController.m; sourceTree = "<group>"; };
 		ED2D5C80227886B000F5FF06 /* BKMIStoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKMIStoreVC.h; sourceTree = "<group>"; };
 		ED2D5C81227886B000F5FF06 /* BKMIStoreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKMIStoreVC.m; sourceTree = "<group>"; };
 		ED2D5C83227886BC00F5FF06 /* BKMIMoreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKMIMoreVC.h; sourceTree = "<group>"; };
@@ -768,8 +768,7 @@
 		ED2D5C972278995900F5FF06 /* BKMILoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKMILoginVC.m; sourceTree = "<group>"; };
 		ED2D5C9D2278A9C000F5FF06 /* BKMIRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKMIRegisterVC.h; sourceTree = "<group>"; };
 		ED2D5C9E2278A9C000F5FF06 /* BKMIRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKMIRegisterVC.m; sourceTree = "<group>"; };
-		ED566F912271EA260048B47C /* Magic Pic on Super collage
-.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Pic on Super collage\n.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED566F912271EA260048B47C /* Magic Pic on Super collage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Pic on Super collage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED566F942271EA270048B47C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED566F952271EA270048B47C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED566F9B2271EA270048B47C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1464,7 +1463,7 @@
 			isa = PBXGroup;
 			children = (
 				0401A0D22490843A007FB925 /* BKQMCameraSettingViewController.h */,
-				0401A0D12490843A007FB925 /* QMCameraSettingViewController.m */,
+				CED42AEB24A5BCA900EAEEF4 /* BKQMCameraSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1472,8 +1471,8 @@
 		0401A0D32490843A007FB925 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0D42490843A007FB925 /* QMSettingModel.h */,
-				0401A0D52490843A007FB925 /* QMSettingModel.m */,
+				0401A0D42490843A007FB925 /* BKQMSettingModel.h */,
+				0401A0D52490843A007FB925 /* BKQMSettingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1481,9 +1480,9 @@
 		0401A0D62490843A007FB925 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0D72490843A007FB925 /* QMSettingTableViewCell.m */,
-				0401A0D82490843A007FB925 /* QMSettingTableViewCell.xib */,
-				0401A0D92490843A007FB925 /* QMSettingTableViewCell.h */,
+				0401A0D92490843A007FB925 /* BKQMSettingTableViewCell.h */,
+				0401A0D72490843A007FB925 /* BKQMSettingTableViewCell.m */,
+				0401A0D82490843A007FB925 /* BKQMSettingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1499,8 +1498,8 @@
 		0401A0DB2490843A007FB925 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0DC2490843A007FB925 /* QMPhotoClipViewController.h */,
-				0401A0DD2490843A007FB925 /* QMPhotoClipViewController.m */,
+				0401A0DC2490843A007FB925 /* BKQMPhotoClipViewController.h */,
+				0401A0DD2490843A007FB925 /* BKQMPhotoClipViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1516,8 +1515,8 @@
 		0401A0DF2490843A007FB925 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0E02490843A007FB925 /* QMPhotoEffectViewController.h */,
-				0401A0E12490843A007FB925 /* QMPhotoEffectViewController.m */,
+				0401A0E02490843A007FB925 /* BKQMPhotoEffectViewController.h */,
+				0401A0E12490843A007FB925 /* BKQMPhotoEffectViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1555,8 +1554,8 @@
 		0401A0E52490843A007FB925 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0E62490843A007FB925 /* QMProgressHUD.h */,
-				0401A0E72490843A007FB925 /* QMProgressHUD.m */,
+				0401A0E62490843A007FB925 /* BKQMProgressHUD.h */,
+				0401A0E72490843A007FB925 /* BKQMProgressHUD.m */,
 			);
 			path = ProgressHUD;
 			sourceTree = "<group>";
@@ -1564,8 +1563,8 @@
 		0401A0E82490843A007FB925 /* CustomSlider */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0E92490843A007FB925 /* QMCustomSlider.h */,
-				0401A0EA2490843A007FB925 /* QMCustomSlider.m */,
+				0401A0E92490843A007FB925 /* BKQMCustomSlider.h */,
+				0401A0EA2490843A007FB925 /* BKQMCustomSlider.m */,
 			);
 			path = CustomSlider;
 			sourceTree = "<group>";
@@ -1573,8 +1572,8 @@
 		0401A0EB2490843A007FB925 /* SuspensionView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0EC2490843A007FB925 /* QMSuspensionView.h */,
-				0401A0ED2490843A007FB925 /* QMSuspensionView.m */,
+				0401A0EC2490843A007FB925 /* BKQMSuspensionView.h */,
+				0401A0ED2490843A007FB925 /* BKQMSuspensionView.m */,
 			);
 			path = SuspensionView;
 			sourceTree = "<group>";
@@ -1582,10 +1581,10 @@
 		0401A0EE2490843A007FB925 /* CameraKit */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0EF2490843A007FB925 /* CKStillCameraPreview.m */,
-				0401A0F02490843A007FB925 /* CKStillCamera.m */,
-				0401A0F12490843A007FB925 /* CKStillCameraPreview.h */,
-				0401A0F22490843A007FB925 /* CKStillCamera.h */,
+				0401A0F12490843A007FB925 /* BKCKStillCameraPreview.h */,
+				0401A0EF2490843A007FB925 /* BKCKStillCameraPreview.m */,
+				0401A0F22490843A007FB925 /* BKCKStillCamera.h */,
+				0401A0F02490843A007FB925 /* BKCKStillCamera.m */,
 			);
 			path = CameraKit;
 			sourceTree = "<group>";
@@ -1602,12 +1601,12 @@
 		0401A0F42490843A007FB925 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0F52490843A007FB925 /* QMCropModel.m */,
-				0401A0F62490843A007FB925 /* QMFilterModel.h */,
-				0401A0F72490843A007FB925 /* QMFrameModel.h */,
-				0401A0F82490843A007FB925 /* QMFilterModel.m */,
-				0401A0F92490843A007FB925 /* QMCropModel.h */,
-				0401A0FA2490843A007FB925 /* QMFrameModel.m */,
+				0401A0F92490843A007FB925 /* BKQMCropModel.h */,
+				0401A0F52490843A007FB925 /* BKQMCropModel.m */,
+				0401A0F62490843A007FB925 /* BKQMFilterModel.h */,
+				0401A0F82490843A007FB925 /* BKQMFilterModel.m */,
+				0401A0F72490843A007FB925 /* BKQMFrameModel.h */,
+				0401A0FA2490843A007FB925 /* BKQMFrameModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1627,11 +1626,11 @@
 		0401A0FC2490843A007FB925 /* FrameView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A0FD2490843A007FB925 /* QMFrameThemeView.h */,
-				0401A0FE2490843A007FB925 /* QMFrameThemeViewCell.h */,
-				0401A0FF2490843A007FB925 /* QMFrameThemeView.m */,
-				0401A1002490843A007FB925 /* QMFrameThemeViewCell.xib */,
-				0401A1012490843A007FB925 /* QMFrameThemeViewCell.m */,
+				0401A0FD2490843A007FB925 /* BKQMFrameThemeView.h */,
+				0401A0FF2490843A007FB925 /* BKQMFrameThemeView.m */,
+				0401A0FE2490843A007FB925 /* BKQMFrameThemeViewCell.h */,
+				0401A1012490843A007FB925 /* BKQMFrameThemeViewCell.m */,
+				0401A1002490843A007FB925 /* BKQMFrameThemeViewCell.xib */,
 			);
 			path = FrameView;
 			sourceTree = "<group>";
@@ -1639,13 +1638,13 @@
 		0401A1022490843A007FB925 /* FilterView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A1032490843A007FB925 /* QMFilterThemeView.m */,
-				0401A1042490843A007FB925 /* QMFilterThemeSilder.h */,
-				0401A1052490843A007FB925 /* QMFilterThemeViewCell.m */,
-				0401A1062490843A007FB925 /* QMFilterThemeSilder.m */,
-				0401A1072490843A007FB925 /* QMFilterThemeView.h */,
-				0401A1082490843A007FB925 /* QMFilterThemeViewCell.xib */,
-				0401A1092490843A007FB925 /* QMFilterThemeViewCell.h */,
+				0401A1072490843A007FB925 /* BKQMFilterThemeView.h */,
+				0401A1032490843A007FB925 /* BKQMFilterThemeView.m */,
+				0401A1042490843A007FB925 /* BKQMFilterThemeSilder.h */,
+				0401A1062490843A007FB925 /* BKQMFilterThemeSilder.m */,
+				0401A1092490843A007FB925 /* BKQMFilterThemeViewCell.h */,
+				0401A1052490843A007FB925 /* BKQMFilterThemeViewCell.m */,
+				0401A1082490843A007FB925 /* BKQMFilterThemeViewCell.xib */,
 			);
 			path = FilterView;
 			sourceTree = "<group>";
@@ -1653,8 +1652,8 @@
 		0401A10A2490843A007FB925 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A10B2490843A007FB925 /* QMBaseThemeView.m */,
-				0401A10C2490843A007FB925 /* QMBaseThemeView.h */,
+				0401A10C2490843A007FB925 /* BKQMBaseThemeView.h */,
+				0401A10B2490843A007FB925 /* BKQMBaseThemeView.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1662,8 +1661,8 @@
 		0401A10D2490843A007FB925 /* DragView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A10E2490843A007FB925 /* QMDragView.h */,
-				0401A10F2490843A007FB925 /* QMDragView.m */,
+				0401A10E2490843A007FB925 /* BKQMDragView.h */,
+				0401A10F2490843A007FB925 /* BKQMDragView.m */,
 			);
 			path = DragView;
 			sourceTree = "<group>";
@@ -1671,11 +1670,11 @@
 		0401A1102490843A007FB925 /* CropView */ = {
 			isa = PBXGroup;
 			children = (
-				0401A1112490843A007FB925 /* QMCropThemeView.m */,
-				0401A1122490843A007FB925 /* QMCropThemeViewCell.h */,
-				0401A1132490843A007FB925 /* QMCropThemeViewCell.xib */,
-				0401A1142490843A007FB925 /* QMCropThemeView.h */,
-				0401A1152490843A007FB925 /* QMCropThemeViewCell.m */,
+				0401A1122490843A007FB925 /* BKQMCropThemeViewCell.h */,
+				0401A1152490843A007FB925 /* BKQMCropThemeViewCell.m */,
+				0401A1132490843A007FB925 /* BKQMCropThemeViewCell.xib */,
+				0401A1142490843A007FB925 /* BKQMCropThemeView.h */,
+				0401A1112490843A007FB925 /* BKQMCropThemeView.m */,
 			);
 			path = CropView;
 			sourceTree = "<group>";
@@ -1683,8 +1682,8 @@
 		0401A1162490843A007FB925 /* ImageFilter */ = {
 			isa = PBXGroup;
 			children = (
-				0401A1172490843A007FB925 /* QMImageFilter.m */,
-				0401A1182490843A007FB925 /* QMImageFilter.h */,
+				0401A1182490843A007FB925 /* BKQMImageFilter.h */,
+				0401A1172490843A007FB925 /* BKQMImageFilter.m */,
 			);
 			path = ImageFilter;
 			sourceTree = "<group>";
@@ -1692,8 +1691,8 @@
 		0401A1192490843A007FB925 /* ShakeButton */ = {
 			isa = PBXGroup;
 			children = (
-				0401A11A2490843A007FB925 /* QMShakeButton.m */,
-				0401A11B2490843A007FB925 /* QMShakeButton.h */,
+				0401A11B2490843A007FB925 /* BKQMShakeButton.h */,
+				0401A11A2490843A007FB925 /* BKQMShakeButton.m */,
 			);
 			path = ShakeButton;
 			sourceTree = "<group>";
@@ -1701,8 +1700,8 @@
 		0401A11C2490843A007FB925 /* ImageShare */ = {
 			isa = PBXGroup;
 			children = (
-				0401A11D2490843A007FB925 /* QMShareManager.h */,
-				0401A11E2490843A007FB925 /* QMShareManager.m */,
+				0401A11D2490843A007FB925 /* BKQMShareManager.h */,
+				0401A11E2490843A007FB925 /* BKQMShareManager.m */,
 			);
 			path = ImageShare;
 			sourceTree = "<group>";
@@ -1719,10 +1718,10 @@
 		0401A1202490843A007FB925 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0401A1212490843A007FB925 /* QMPhotoDisplayViewController.m */,
-				0401A1222490843A007FB925 /* QMCameraViewController.h */,
-				0401A1232490843A007FB925 /* QMPhotoDisplayViewController.h */,
-				0401A1242490843A007FB925 /* QMCameraViewController.m */,
+				0401A1232490843A007FB925 /* BKQMPhotoDisplayViewController.h */,
+				0401A1212490843A007FB925 /* BKQMPhotoDisplayViewController.m */,
+				0401A1222490843A007FB925 /* BKQMCameraViewController.h */,
+				0401A1242490843A007FB925 /* BKQMCameraViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1730,14 +1729,14 @@
 		0401A1252490843A007FB925 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0401A1262490843A007FB925 /* QMCameraFocusView.m */,
-				0401A1272490843A007FB925 /* QMCameraFlashSuspensionView.h */,
-				0401A1282490843A007FB925 /* QMCameraFilterView.m */,
-				0401A1292490843A007FB925 /* QMCameraRatioSuspensionView.m */,
-				0401A12A2490843A007FB925 /* QMCameraFocusView.h */,
-				0401A12B2490843A007FB925 /* QMCameraFlashSuspensionView.m */,
-				0401A12C2490843A007FB925 /* QMCameraFilterView.h */,
-				0401A12D2490843A007FB925 /* QMCameraRatioSuspensionView.h */,
+				0401A12A2490843A007FB925 /* BKQMCameraFocusView.h */,
+				0401A1262490843A007FB925 /* BKQMCameraFocusView.m */,
+				0401A12C2490843A007FB925 /* BKQMCameraFilterView.h */,
+				0401A1282490843A007FB925 /* BKQMCameraFilterView.m */,
+				0401A12D2490843A007FB925 /* BKQMCameraRatioSuspensionView.h */,
+				0401A1292490843A007FB925 /* BKQMCameraRatioSuspensionView.m */,
+				0401A1272490843A007FB925 /* BKQMCameraFlashSuspensionView.h */,
+				0401A12B2490843A007FB925 /* BKQMCameraFlashSuspensionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2011,8 +2010,7 @@
 		ED566F922271EA260048B47C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED566F912271EA260048B47C /* Magic Pic on Super collage
-.app */,
+				ED566F912271EA260048B47C /* Magic Pic on Super collage.app */,
 				ED566FA92271EA290048B47C /* MagicImageTests.xctest */,
 			);
 			name = Products;
@@ -2122,8 +2120,7 @@
 			);
 			name = MagicImage;
 			productName = MagicImage;
-			productReference = ED566F912271EA260048B47C /* Magic Pic on Super collage
-.app */;
+			productReference = ED566F912271EA260048B47C /* Magic Pic on Super collage.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ED566FA82271EA290048B47C /* MagicImageTests */ = {
@@ -2207,7 +2204,7 @@
 				0401A1C72490843A007FB925 /* qmkit_close_btn@2x.png in Resources */,
 				0401A1E82490843A007FB925 /* qmkit_ratio_free@2x.png in Resources */,
 				0401A2232490843B007FB925 /* love20.png in Resources */,
-				0401A25F2490843B007FB925 /* QMCropThemeViewCell.xib in Resources */,
+				0401A25F2490843B007FB925 /* BKQMCropThemeViewCell.xib in Resources */,
 				0401A1BB2490843A007FB925 /* qmkit_image_blur_effect_3@2x.png in Resources */,
 				0401A2252490843B007FB925 /* love35.png in Resources */,
 				0401A2052490843A007FB925 /* love53.png in Resources */,
@@ -2228,7 +2225,7 @@
 				0401A1C62490843A007FB925 /* qmkit_setting_btn@2x.png in Resources */,
 				0401A1482490843A007FB925 /* rtimagepicker_snap@2x.png in Resources */,
 				0401A1C92490843A007FB925 /* qmkit_setting_btn@3x.png in Resources */,
-				0401A25B2490843B007FB925 /* QMFilterThemeViewCell.xib in Resources */,
+				0401A25B2490843B007FB925 /* BKQMFilterThemeViewCell.xib in Resources */,
 				0401A1D62490843A007FB925 /* qmkit_toolbar_share_btn@2x.png in Resources */,
 				0401A1D02490843A007FB925 /* qmkit_fiter_btn@2x.png in Resources */,
 				0401A1C02490843A007FB925 /* qmkit_photo_share@2x.png in Resources */,
@@ -2305,7 +2302,7 @@
 				0401A1F92490843A007FB925 /* love15.png in Resources */,
 				0401A2002490843A007FB925 /* love49.png in Resources */,
 				0401A1502490843A007FB925 /* rtimagepicker_flash_off@2x.png in Resources */,
-				0401A24A2490843B007FB925 /* QMSettingTableViewCell.xib in Resources */,
+				0401A24A2490843B007FB925 /* BKQMSettingTableViewCell.xib in Resources */,
 				0401A1AE2490843A007FB925 /* croper.geojson in Resources */,
 				0401A2042490843A007FB925 /* love52.png in Resources */,
 				0401A1F42490843A007FB925 /* love16.png in Resources */,
@@ -2313,7 +2310,7 @@
 				0401A1D22490843A007FB925 /* qmkit_save_photo_btn@2x.png in Resources */,
 				0401A1422490843A007FB925 /* rtimagepicker_flash_on@3x.png in Resources */,
 				0401A1EE2490843A007FB925 /* love3.png in Resources */,
-				0401A2562490843B007FB925 /* QMFrameThemeViewCell.xib in Resources */,
+				0401A2562490843B007FB925 /* BKQMFrameThemeViewCell.xib in Resources */,
 				0401A1C32490843A007FB925 /* qmkit_no_flash_btn@2x.png in Resources */,
 				0401A2032490843A007FB925 /* love46.png in Resources */,
 				0401A1DB2490843A007FB925 /* qmkit_ratio_169@2x.png in Resources */,
@@ -2405,10 +2402,10 @@
 				0401A1342490843A007FB925 /* RTImagePickerTapDetectingView.m in Sources */,
 				0401A2442490843B007FB925 /* UIView+Geometry.m in Sources */,
 				EDD9F17D2279B73300AC1E98 /* SDBaseProgressView.m in Sources */,
-				0401A2662490843B007FB925 /* QMCameraFocusView.m in Sources */,
-				0401A2622490843B007FB925 /* QMShakeButton.m in Sources */,
+				0401A2662490843B007FB925 /* BKQMCameraFocusView.m in Sources */,
+				0401A2622490843B007FB925 /* BKQMShakeButton.m in Sources */,
 				045640A5248A331500E24E0D /* MIHttpTool.m in Sources */,
-				0401A2672490843B007FB925 /* QMCameraFilterView.m in Sources */,
+				0401A2672490843B007FB925 /* BKQMCameraFilterView.m in Sources */,
 				0401A15F2490843A007FB925 /* RTImagePickerToolbarView.m in Sources */,
 				0401A1622490843A007FB925 /* RTCheckMarkView.m in Sources */,
 				045640A6248A331500E24E0D /* GSKeyChainDataManager.m in Sources */,
@@ -2418,7 +2415,7 @@
 				0401A2392490843B007FB925 /* UIImage+DrawImage.m in Sources */,
 				0401A22B2490843B007FB925 /* QMDBManager.m in Sources */,
 				53DBAA8A2276EC07006C3512 /* BKMIHomeView.m in Sources */,
-				0401A2542490843B007FB925 /* QMFrameModel.m in Sources */,
+				0401A2542490843B007FB925 /* BKQMFrameModel.m in Sources */,
 				0401A1612490843A007FB925 /* RTAssetCollectionViewCell.m in Sources */,
 				EDD9F1542279736700AC1E98 /* YWebFileManager.m in Sources */,
 				0401A1392490843A007FB925 /* LLSimpleCamera.m in Sources */,
@@ -2429,31 +2426,31 @@
 				EDD9F1782279B73300AC1E98 /* SDRotationLoopProgressView.m in Sources */,
 				53DBB542227836D1006C3512 /* BKMIFilterVC.m in Sources */,
 				0401A1332490843A007FB925 /* UIImage+RTImagePickerPhotoBrowser.m in Sources */,
-				0401A2502490843B007FB925 /* CKStillCameraPreview.m in Sources */,
-				0401A24F2490843B007FB925 /* QMSuspensionView.m in Sources */,
+				0401A2502490843B007FB925 /* BKCKStillCameraPreview.m in Sources */,
+				0401A24F2490843B007FB925 /* BKQMSuspensionView.m in Sources */,
 				0401A22D2490843B007FB925 /* BKQMBaseImageView.m in Sources */,
-				0401A2612490843B007FB925 /* QMImageFilter.m in Sources */,
+				0401A2612490843B007FB925 /* BKQMImageFilter.m in Sources */,
 				0401A12F2490843A007FB925 /* TKImageView.m in Sources */,
-				0401A24E2490843B007FB925 /* QMCustomSlider.m in Sources */,
+				0401A24E2490843B007FB925 /* BKQMCustomSlider.m in Sources */,
 				0401A22E2490843B007FB925 /* UIImage+backgroundImage.m in Sources */,
 				0401A23B2490843B007FB925 /* UIImage+Rotate.m in Sources */,
-				0401A2682490843B007FB925 /* QMCameraRatioSuspensionView.m in Sources */,
+				0401A2682490843B007FB925 /* BKQMCameraRatioSuspensionView.m in Sources */,
 				CEA3177C249F06A3001CDA7F /* UIImage+GradientColor.m in Sources */,
 				0401A1322490843A007FB925 /* VIMVideoPlayerView.m in Sources */,
 				0401A2412490843B007FB925 /* UIImage+Resize.m in Sources */,
 				53DBB548227844B9006C3512 /* BKMIStickerDetailCell.m in Sources */,
 				0401A15B2490843A007FB925 /* RTAlbumTableViewCell.m in Sources */,
-				0401A25A2490843B007FB925 /* QMFilterThemeSilder.m in Sources */,
+				0401A25A2490843B007FB925 /* BKQMFilterThemeSilder.m in Sources */,
 				0401A1562490843A007FB925 /* RTCameraViewController.m in Sources */,
 				0401A15D2490843A007FB925 /* RTImagePickerUnauthorizedView.m in Sources */,
-				0401A2592490843B007FB925 /* QMFilterThemeViewCell.m in Sources */,
+				0401A2592490843B007FB925 /* BKQMFilterThemeViewCell.m in Sources */,
 				53DBB535227823AE006C3512 /* BKMIHomeModel.m in Sources */,
 				EDD9F186227A893700AC1E98 /* BKMITagsCell.m in Sources */,
 				0401A1582490843A007FB925 /* RTShortVideoViewController.m in Sources */,
-				0401A25D2490843B007FB925 /* QMDragView.m in Sources */,
+				0401A25D2490843B007FB925 /* BKQMDragView.m in Sources */,
 				EDD9F189227A8F5C00AC1E98 /* BKMITagsDetailVC.m in Sources */,
 				0401A22A2490843B007FB925 /* GeometryFun.m in Sources */,
-				0401A24D2490843B007FB925 /* QMProgressHUD.m in Sources */,
+				0401A24D2490843B007FB925 /* BKQMProgressHUD.m in Sources */,
 				EDDF678C227B1C0600904CEF /* BKMITagsDetailCell.m in Sources */,
 				0401A23C2490843B007FB925 /* UIImage+ImageEffects.m in Sources */,
 				53DBB54522784380006C3512 /* BKMIStickerDetailVC.m in Sources */,
@@ -2466,17 +2463,17 @@
 				EDD9F17E2279B73300AC1E98 /* SDPieLoopProgressView.m in Sources */,
 				ED566FA42271EA290048B47C /* main.m in Sources */,
 				0401A1312490843A007FB925 /* VIMVideoPlayer.m in Sources */,
-				0401A25C2490843B007FB925 /* QMBaseThemeView.m in Sources */,
+				0401A25C2490843B007FB925 /* BKQMBaseThemeView.m in Sources */,
 				045640A8248A331500E24E0D /* GSKeyChain.m in Sources */,
 				0401A2312490843B007FB925 /* UIImage+SubImage.m in Sources */,
-				0401A2602490843B007FB925 /* QMCropThemeViewCell.m in Sources */,
+				0401A2602490843B007FB925 /* BKQMCropThemeViewCell.m in Sources */,
 				0401A1382490843A007FB925 /* RTImagePickerTapDetectingImageView.m in Sources */,
 				EDD9F1522279736700AC1E98 /* YWebDownManager.m in Sources */,
 				EDD9F1472279619C00AC1E98 /* BKMIFilterCell.m in Sources */,
 				EDD9F14A227972E300AC1E98 /* BKMIFilterDetailVC.m in Sources */,
-				0401A2582490843B007FB925 /* QMFilterThemeView.m in Sources */,
+				0401A2582490843B007FB925 /* BKQMFilterThemeView.m in Sources */,
 				53DBAA852276EB7A006C3512 /* BKMIHomeVC.m in Sources */,
-				0401A2572490843B007FB925 /* QMFrameThemeViewCell.m in Sources */,
+				0401A2572490843B007FB925 /* BKQMFrameThemeViewCell.m in Sources */,
 				ED2D5C8A2278872C00F5FF06 /* BKMIMoreHeaderView.m in Sources */,
 				045640A7248A331500E24E0D /* MIHttpEnclosureTool.m in Sources */,
 				0401A2402490843B007FB925 /* UIImage+RoundedCorner.m in Sources */,
@@ -2485,9 +2482,9 @@
 				EDD9F1642279845800AC1E98 /* BKMITagsVC.m in Sources */,
 				ED7365A822775AA300FD769E /* BKMIHomeSectionTowCell.m in Sources */,
 				EDD9F16122797F3A00AC1E98 /* MIIPAPurchase.m in Sources */,
-				0401A2492490843B007FB925 /* QMSettingTableViewCell.m in Sources */,
+				0401A2492490843B007FB925 /* BKQMSettingTableViewCell.m in Sources */,
 				ED2D5C82227886B000F5FF06 /* BKMIStoreVC.m in Sources */,
-				0401A2632490843B007FB925 /* QMShareManager.m in Sources */,
+				0401A2632490843B007FB925 /* BKQMShareManager.m in Sources */,
 				ED7365A2227739D100FD769E /* BKMIHomeSectionOneCell.m in Sources */,
 				0401A2382490843B007FB925 /* UIImage+Clip.m in Sources */,
 				53600351234596F10059EA05 /* MBProgressHUD+JDragon.m in Sources */,
@@ -2496,22 +2493,22 @@
 				EDD9F1832279FCC600AC1E98 /* BKMIFilterDetialCell.m in Sources */,
 				ED2D5C982278995900F5FF06 /* BKMILoginVC.m in Sources */,
 				0401A2452490843B007FB925 /* UIView+Size.m in Sources */,
-				0401A2642490843B007FB925 /* QMPhotoDisplayViewController.m in Sources */,
+				0401A2642490843B007FB925 /* BKQMPhotoDisplayViewController.m in Sources */,
 				ED2D5C9F2278A9C000F5FF06 /* BKMIRegisterVC.m in Sources */,
 				0401A23E2490843B007FB925 /* UIImage+Alpha.m in Sources */,
 				0401A1602490843A007FB925 /* RTVideoIndicatorView.m in Sources */,
 				ED2D5C90227891C100F5FF06 /* BKMIFeedbackVC.m in Sources */,
-				0401A24B2490843B007FB925 /* QMPhotoClipViewController.m in Sources */,
+				0401A24B2490843B007FB925 /* BKQMPhotoClipViewController.m in Sources */,
 				EDD9F157227975D800AC1E98 /* BKMIUserModel.m in Sources */,
 				ED566F962271EA270048B47C /* AppDelegate.m in Sources */,
 				0401A1532490843A007FB925 /* RTImagePickerUtils.m in Sources */,
-				0401A2522490843B007FB925 /* QMCropModel.m in Sources */,
+				0401A2522490843B007FB925 /* BKQMCropModel.m in Sources */,
 				0401A23F2490843B007FB925 /* UIImage+animatedGIF.m in Sources */,
 				ED7365A52277445000FD769E /* BKMIHomeToolsView.m in Sources */,
 				0401A1542490843A007FB925 /* RTImagePickerNavigationController.m in Sources */,
 				CECBBE9D24978BA20067B183 /* BKMIBaseNavigationC.m in Sources */,
-				0401A2552490843B007FB925 /* QMFrameThemeView.m in Sources */,
-				0401A24C2490843B007FB925 /* QMPhotoEffectViewController.m in Sources */,
+				0401A2552490843B007FB925 /* BKQMFrameThemeView.m in Sources */,
+				0401A24C2490843B007FB925 /* BKQMPhotoEffectViewController.m in Sources */,
 				0401A22C2490843B007FB925 /* BKQMBaseNavigationController.m in Sources */,
 				EDD9F17B2279B73300AC1E98 /* SDTransparentPieProgressView.m in Sources */,
 				CECBBE9C24978BA20067B183 /* BKMIBaseTabBarVC.m in Sources */,
@@ -2519,33 +2516,33 @@
 				53DBB53B22783691006C3512 /* BKMIBaseTypeVC.m in Sources */,
 				EDD9F1532279736700AC1E98 /* YWebDataHandle.m in Sources */,
 				0401A1362490843A007FB925 /* RTImagePickerPhotoBrowser.m in Sources */,
-				0401A2652490843B007FB925 /* QMCameraViewController.m in Sources */,
+				0401A2652490843B007FB925 /* BKQMCameraViewController.m in Sources */,
 				0401A2432490843B007FB925 /* UIColor+Additions.m in Sources */,
-				0401A2472490843B007FB925 /* QMCameraSettingViewController.m in Sources */,
-				0401A2512490843B007FB925 /* CKStillCamera.m in Sources */,
+				0401A2512490843B007FB925 /* BKCKStillCamera.m in Sources */,
 				0401A1572490843A007FB925 /* RTAssetCollectionViewController.m in Sources */,
-				0401A2532490843B007FB925 /* QMFilterModel.m in Sources */,
+				0401A2532490843B007FB925 /* BKQMFilterModel.m in Sources */,
 				0401A2332490843B007FB925 /* UIImage+Text.m in Sources */,
 				0401A15C2490843A007FB925 /* RTImagePickerTitleButton.m in Sources */,
 				0401A22F2490843B007FB925 /* UIImage+fill.m in Sources */,
 				045640A9248A331500E24E0D /* MIReturnFormat.m in Sources */,
 				0401A2352490843B007FB925 /* UIImage+ImageWithCorner.m in Sources */,
 				ED2D5C85227886BC00F5FF06 /* BKMIMoreVC.m in Sources */,
+				CED42AEC24A5BCA900EAEEF4 /* BKQMCameraSettingViewController.m in Sources */,
 				0401A23A2490843B007FB925 /* UIImage+Mosaic.m in Sources */,
 				0401A2362490843B007FB925 /* UIImage+watermark.m in Sources */,
 				0401A1552490843A007FB925 /* RTCameraPreviewViewController.m in Sources */,
 				0401A2372490843B007FB925 /* UIImage+MaskShape.m in Sources */,
 				53DBB5382278365D006C3512 /* BKMISlideVC.m in Sources */,
-				0401A2692490843B007FB925 /* QMCameraFlashSuspensionView.m in Sources */,
+				0401A2692490843B007FB925 /* BKQMCameraFlashSuspensionView.m in Sources */,
 				53DBB53F227836C7006C3512 /* BKMIStickerVC.m in Sources */,
 				EDD9F17C2279B73300AC1E98 /* SDPieProgressView.m in Sources */,
 				0401A13A2490843A007FB925 /* UIImage+FixOrientation.m in Sources */,
 				EDD9F17A2279B73300AC1E98 /* SDLoopProgressView.m in Sources */,
 				0401A1302490843A007FB925 /* SFHFKeychainUtils.m in Sources */,
 				0401A15A2490843A007FB925 /* RTVideoIconView.m in Sources */,
-				0401A2482490843B007FB925 /* QMSettingModel.m in Sources */,
+				0401A2482490843B007FB925 /* BKQMSettingModel.m in Sources */,
 				0401A2342490843B007FB925 /* UIImage+BoxBlur.m in Sources */,
-				0401A25E2490843B007FB925 /* QMCropThemeView.m in Sources */,
+				0401A25E2490843B007FB925 /* BKQMCropThemeView.m in Sources */,
 				041D3C472488F75300A1E26D /* CommonClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2713,7 +2710,7 @@
 			baseConfigurationReference = B2AD854E65F1B6E6299B1FB1 /* Pods-MagicImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hengjun qiu (VKWP6STHNV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: hengjun qiu (YRFVZ8D4PD)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YRFVZ8D4PD;
@@ -2734,8 +2731,8 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpiccollages1s.cc;
-				PRODUCT_NAME = "Magic Pic on Super collage\n";
-				PROVISIONING_PROFILE_SPECIFIER = dev_Magic_pro_20200622;
+				PRODUCT_NAME = "Magic Pic on Super collage";
+				PROVISIONING_PROFILE_SPECIFIER = dis_Magic_pro_20200622;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2745,7 +2742,7 @@
 			baseConfigurationReference = 7076D15E15E31C52589D9758 /* Pods-MagicImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hengjun qiu (VKWP6STHNV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: hengjun qiu (YRFVZ8D4PD)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YRFVZ8D4PD;
@@ -2766,8 +2763,8 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpiccollages1s.cc;
-				PRODUCT_NAME = "Magic Pic on Super collage\n";
-				PROVISIONING_PROFILE_SPECIFIER = dev_Magic_pro_20200622;
+				PRODUCT_NAME = "Magic Pic on Super collage";
+				PROVISIONING_PROFILE_SPECIFIER = dis_Magic_pro_20200622;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

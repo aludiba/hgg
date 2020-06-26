@@ -1,7 +1,7 @@
 #import "BKMIHomeVC.h"
 #import "BKMIHomeView.h"
 #import "BKQMBaseNavigationController.h"
-#import "QMCameraViewController.h"
+#import "BKQMCameraViewController.h"
 #import "BKMIHomeSectionOneCell.h"
 #import "BKMIHomeSectionTowCell.h"
 //#import "SDCycleScrollView.h"
@@ -9,7 +9,7 @@
 #import "BKMIHomeHeaderView.h"
 #import "BKMIHomeModel.h"
 #import "BKMIBaseTypeVC.h"
-#import "QMPhotoEffectViewController.h"
+#import "BKQMPhotoEffectViewController.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "BKMIStickerDetailVC.h"
@@ -177,7 +177,7 @@
         BKcell.block = ^(NSInteger BKtag) {
             switch (BKtag) {
                 case 0:{
-                    QMCameraViewController *BKcmVC = [[QMCameraViewController alloc] init];
+                    BKQMCameraViewController *BKcmVC = [[BKQMCameraViewController alloc] init];
                     BKQMBaseNavigationController *BKnavi = [[BKQMBaseNavigationController alloc] initWithRootViewController:BKcmVC];
                     [self presentViewController:BKnavi animated:YES completion:nil];
                 }
@@ -274,8 +274,8 @@
     ALAssetsLibrary *BKlibrary = [[ALAssetsLibrary alloc]init];
     [BKlibrary assetForURL:BKurl resultBlock:^(ALAsset *BKasset){
         UIImage *BKimage = BKinfo[UIImagePickerControllerOriginalImage];
-        QMPhotoEffectViewController *BKcmVC = [[QMPhotoEffectViewController alloc] initWithImage:BKimage];
-        BKcmVC.type = self.BKtype;
+        BKQMPhotoEffectViewController *BKcmVC = [[BKQMPhotoEffectViewController alloc] initWithImage:BKimage];
+        BKcmVC.BKtype = self.BKtype;
         [self presentViewController:BKcmVC animated:YES completion:nil];
     }failureBlock:^(NSError *error){
     }];

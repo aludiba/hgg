@@ -1,7 +1,7 @@
 #import "BKMIFilterDetailVC.h"
 #import "BKMIFilterDetialCell.h"
 #import "BKMIHomeModel.h"
-#import "QMPhotoEffectViewController.h"
+#import "BKQMPhotoEffectViewController.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 @interface BKMIFilterDetailVC ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -100,8 +100,8 @@
     ALAssetsLibrary *BKlibrary = [[ALAssetsLibrary alloc]init];
     [BKlibrary assetForURL:BKurl resultBlock:^(ALAsset *asset){
         UIImage *BKimage = BKinfo[UIImagePickerControllerOriginalImage];
-        QMPhotoEffectViewController *BKcmVC = [[QMPhotoEffectViewController alloc] initWithImage:BKimage];
-        BKcmVC.type = 3;
+        BKQMPhotoEffectViewController *BKcmVC = [[BKQMPhotoEffectViewController alloc] initWithImage:BKimage];
+        BKcmVC.BKtype = 3;
         [self presentViewController:BKcmVC animated:YES completion:nil];
     }failureBlock:^(NSError *error){
     }];

@@ -52,8 +52,8 @@
         [self presentViewController:BKnavi animated:YES completion:nil];
         return;
     }
-    BKMIStoreVC *BKstoreVC = [[BKMIStoreVC alloc] init];
-    [self.navigationController pushViewController:BKstoreVC animated:YES];
+//    BKMIStoreVC *BKstoreVC = [[BKMIStoreVC alloc] init];
+//    [self.navigationController pushViewController:BKstoreVC animated:YES];
 }
 - (void)dealloc{
     [NotifiCenter removeObserver:self];
