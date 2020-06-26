@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomDistance;
-    if (self.isFromHomeVC == YES) {
+    if (self.BKisFromHomeVC == YES) {
         self.title = @"Hot Stickers";
         bottomDistance = 0;
     }else{
@@ -115,7 +115,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return  ScreenHeight/2-110;
 }
-- (void)slideMenuController:(MISlideVC *)slideMenuController didViewDidLoad:(NSInteger)index{
+- (void)slideMenuController:(BKMISlideVC *)slideMenuController didViewDidLoad:(NSInteger)index{
 }
 - (void)dealloc{
     [NotifiCenter removeObserver:self];

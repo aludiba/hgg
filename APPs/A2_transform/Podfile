@@ -16,4 +16,6 @@ pod 'MJRefresh'
 pod 'FSTextView'
 pod 'MBProgressHUD'
 pod 'SDAutoLayout'
+pod 'SDWebImage'
+pod 'SDCycleScrollView'
 end

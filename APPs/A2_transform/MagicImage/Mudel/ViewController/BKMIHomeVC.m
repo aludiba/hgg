@@ -1,10 +1,11 @@
 #import "BKMIHomeVC.h"
 #import "BKMIHomeView.h"
-#import "QMBaseNavigationController.h"
+#import "BKQMBaseNavigationController.h"
 #import "QMCameraViewController.h"
 #import "BKMIHomeSectionOneCell.h"
 #import "BKMIHomeSectionTowCell.h"
-#import "SDCycleScrollView.h"
+//#import "SDCycleScrollView.h"
+#import <SDCycleScrollView/SDCycleScrollView.h>
 #import "BKMIHomeHeaderView.h"
 #import "BKMIHomeModel.h"
 #import "BKMIBaseTypeVC.h"
@@ -177,7 +178,7 @@
             switch (BKtag) {
                 case 0:{
                     QMCameraViewController *BKcmVC = [[QMCameraViewController alloc] init];
-                    QMBaseNavigationController *BKnavi = [[QMBaseNavigationController alloc] initWithRootViewController:BKcmVC];
+                    BKQMBaseNavigationController *BKnavi = [[BKQMBaseNavigationController alloc] initWithRootViewController:BKcmVC];
                     [self presentViewController:BKnavi animated:YES completion:nil];
                 }
                     break;
@@ -205,7 +206,7 @@
 //                    BKMITagsVC *BKtagsVC = [[BKMITagsVC alloc] init];
 //                    [self.navigationController pushViewController:BKtagsVC animated:YES];
                     BKMIStickerVC *BKstickerVC = [[BKMIStickerVC alloc] init];
-                    BKstickerVC.isFromHomeVC = YES;
+                    BKstickerVC.BKisFromHomeVC = YES;
                     BKstickerVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:BKstickerVC animated:YES];
                 }

@@ -1,5 +1,5 @@
 #import "BKMIBaseTypeVC.h"
-#import "MISlideVC.h"
+#import "BKMISlideVC.h"
 #import "BKMIFilterVC.h"
 #import "BKMIStickerVC.h"
 #import "BKMIUserModel.h"
@@ -13,14 +13,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"SHOP";
-    MISlideVC *BKslideMenu = [[MISlideVC alloc] init];
+    BKMISlideVC *BKslideMenu = [[BKMISlideVC alloc] init];
     BKMIStickerVC *BKstickerVC = [[BKMIStickerVC alloc] init];
     BKMIFilterVC *BKfilterVC = [[BKMIFilterVC alloc] init];
-    BKslideMenu.showBottomLine = NO;
-    BKslideMenu.titleSelectColor = RGB(62, 85, 250);
-    BKslideMenu.bottomLineColor = RGB(62, 85, 250);
-    BKslideMenu.titles = @[@"Sticker",@"Filter"];
-    BKslideMenu.controllers = @[BKstickerVC,BKfilterVC];
+    BKslideMenu.BKshowBottomLine = NO;
+    BKslideMenu.BKtitleSelectColor = RGB(62, 85, 250);
+    BKslideMenu.BKbottomLineColor = RGB(62, 85, 250);
+    BKslideMenu.BKtitles = @[@"Sticker",@"Filter"];
+    BKslideMenu.BKcontrollers = @[BKstickerVC,BKfilterVC];
     [self.view addSubview:BKslideMenu.view];
     [self addChildViewController:BKslideMenu];
     if (UserId) {

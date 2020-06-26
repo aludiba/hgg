@@ -86,6 +86,6 @@
 - (UIView *)tableView:(UITableView *)BKtableView viewForFooterInSection:(NSInteger)BKsection{
     return [UIView new];
 }
-- (void)slideMenuController:(MISlideVC *)BKslideMenuController didViewDidLoad:(NSInteger)BKindex{
+- (void)slideMenuController:(BKMISlideVC *)BKslideMenuController didViewDidLoad:(NSInteger)BKindex{
 }
 @end

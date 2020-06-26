@@ -9,7 +9,7 @@
 #import "QMFrameThemeView.h"
 #import "QMDragView.h"
 #import "UIImage+SubImage.h"
-#import "QMBaseImageView.h"
+#import "BKQMBaseImageView.h"
 #import <GPUImage.h>
 #import <Masonry.h>
 #import "TKImageView.h"
@@ -25,7 +25,7 @@
 @interface QMPhotoEffectViewController ()
 @property (nonatomic, strong) GPUImageFilter *filter;
 @property (nonatomic, strong) UIView *imageViewHodler;
-@property (nonatomic, strong) QMBaseImageView *imageView;
+@property (nonatomic, strong) BKQMBaseImageView *imageView;
 @property (nonatomic, strong) GPUImagePicture *picture;
 @property (nonatomic, strong) UIImage *originImage;
 @property (nonatomic, strong) QMFilterThemeView *filterThemeView;
@@ -67,7 +67,7 @@
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDragViewBorder:)];
     [_imageViewHodler addGestureRecognizer:gesture];
     [self.view addSubview:_imageViewHodler];
-    _imageView = [[QMBaseImageView alloc] initWithFrame:CGRectMake(30, 70, self.view.frame.size.width-60, self.view.frame.size.height-140)];
+    _imageView = [[BKQMBaseImageView alloc] initWithFrame:CGRectMake(30, 70, self.view.frame.size.width-60, self.view.frame.size.height-140)];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
     _imageView.image = _image;
     _imageView.userInteractionEnabled = YES;
