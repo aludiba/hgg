@@ -1,20 +1,24 @@
 PODS:
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
   - MJRefresh (3.4.3)
 
 DEPENDENCIES:
   - Masonry
+  - MBProgressHUD
   - MJRefresh
 
 SPEC REPOS:
   trunk:
     - Masonry
+    - MBProgressHUD
     - MJRefresh
 
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
 
-PODFILE CHECKSUM: 7e586404528c4c7fcb8c8e004b37449192cd222f
+PODFILE CHECKSUM: 0d017f5d90f0e6af0ed49a62a30add793d8b14f3
 
 COCOAPODS: 1.9.2
