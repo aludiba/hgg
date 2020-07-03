@@ -9,5 +9,6 @@ target 'MacroSports' do
     pod 'Masonry'
     pod 'MJRefresh'
     pod 'MBProgressHUD'
+    pod 'YYModel'
 
 end
