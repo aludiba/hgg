@@ -7,4 +7,6 @@ target 'MacroSports' do
 
   # Pods for MacroSports
     pod 'Masonry'
+    pod 'MJRefresh'
+
 end
