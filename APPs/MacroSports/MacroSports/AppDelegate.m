@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.LBwindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.LBwindow.backgroundColor = [UIColor whiteColor];
+//    self.LBwindow.rootViewController = [self LBrootController];
+    [self.LBwindow makeKeyAndVisible];
     return YES;
 }
 

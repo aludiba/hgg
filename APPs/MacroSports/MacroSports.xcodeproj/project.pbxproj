@@ -3,15 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B60A6DDE0EBECFAE8314CB85 /* Pods_MacroSports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365881A90FFC260438753439 /* Pods_MacroSports.framework */; };
 		CEDCE0C224AAF4B800105C18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDCE0C124AAF4B800105C18 /* AppDelegate.m */; };
-		CEDCE0C524AAF4B800105C18 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDCE0C424AAF4B800105C18 /* SceneDelegate.m */; };
-		CEDCE0C824AAF4B800105C18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDCE0C724AAF4B800105C18 /* ViewController.m */; };
-		CEDCE0CB24AAF4B800105C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDCE0C924AAF4B800105C18 /* Main.storyboard */; };
 		CEDCE0CD24AAF4BE00105C18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDCE0CC24AAF4BE00105C18 /* Assets.xcassets */; };
 		CEDCE0D024AAF4BE00105C18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDCE0CE24AAF4BE00105C18 /* LaunchScreen.storyboard */; };
 		CEDCE0D324AAF4BE00105C18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDCE0D224AAF4BE00105C18 /* main.m */; };
@@ -22,11 +19,6 @@
 		CEDCE0BD24AAF4B800105C18 /* MacroSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDCE0C024AAF4B800105C18 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEDCE0C124AAF4B800105C18 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CEDCE0C324AAF4B800105C18 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		CEDCE0C424AAF4B800105C18 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		CEDCE0C624AAF4B800105C18 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CEDCE0C724AAF4B800105C18 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CEDCE0CA24AAF4B800105C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEDCE0CC24AAF4BE00105C18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDCE0CF24AAF4BE00105C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDCE0D124AAF4BE00105C18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +45,6 @@
 				F3809600C10C80A90A8AC081 /* Pods-MacroSports.debug.xcconfig */,
 				E0F61D9A70C01B46292E9A9C /* Pods-MacroSports.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,11 +79,6 @@
 			children = (
 				CEDCE0C024AAF4B800105C18 /* AppDelegate.h */,
 				CEDCE0C124AAF4B800105C18 /* AppDelegate.m */,
-				CEDCE0C324AAF4B800105C18 /* SceneDelegate.h */,
-				CEDCE0C424AAF4B800105C18 /* SceneDelegate.m */,
-				CEDCE0C624AAF4B800105C18 /* ViewController.h */,
-				CEDCE0C724AAF4B800105C18 /* ViewController.m */,
-				CEDCE0C924AAF4B800105C18 /* Main.storyboard */,
 				CEDCE0CC24AAF4BE00105C18 /* Assets.xcassets */,
 				CEDCE0CE24AAF4BE00105C18 /* LaunchScreen.storyboard */,
 				CEDCE0D124AAF4BE00105C18 /* Info.plist */,
@@ -162,7 +148,6 @@
 			files = (
 				CEDCE0D024AAF4BE00105C18 /* LaunchScreen.storyboard in Resources */,
 				CEDCE0CD24AAF4BE00105C18 /* Assets.xcassets in Resources */,
-				CEDCE0CB24AAF4B800105C18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,24 +200,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDCE0C824AAF4B800105C18 /* ViewController.m in Sources */,
 				CEDCE0C224AAF4B800105C18 /* AppDelegate.m in Sources */,
 				CEDCE0D324AAF4BE00105C18 /* main.m in Sources */,
-				CEDCE0C524AAF4B800105C18 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CEDCE0C924AAF4B800105C18 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEDCE0CA24AAF4B800105C18 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CEDCE0CE24AAF4BE00105C18 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
